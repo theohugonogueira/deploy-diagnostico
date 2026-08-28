@@ -661,492 +661,260 @@
 
 </div>
 </div><!-- /page-briefing -->
-<!-- PAGE: JANEIRO / 2026 -->
-<div class="page page-month" id="page-jan">
+
+
+<!-- PAGE: JANEIRO 2026 -->
+<div class="page page-evo" id="page-jan">
 <div class="doc">
-  <div class="month-header">
-    <div class="month-eyebrow">MaisTODOS · Lealdade · OKR 3 · Janeiro 2026</div>
-    <h2>Janeiro / 2026</h2>
-    <p class="month-sub">Indicadores de onboarding de parceiros locais · OKR 3 — Novos Parceiros</p>
+
+  <div class="header">
+    <div class="eyebrow">MaisTODOS Â· Diretoria de Lealdade Â· OKR 3 -- Novos Parceiros</div>
+    <h1>Evolucao de Indicadores<br>Janeiro 2026</h1>
+    <p class="header-sub">Comparativo Dez/25 vs Jan/26 -- pipeline de onboarding e performance financeira. Accounts DB (DB39) Â· dados extraidos ao longo de 2026.</p>
+    <div class="period-chip"><span>Dez/25</span><span style="opacity:.5"> -&gt; </span><span>Jan/26</span></div>
+    <div class="header-meta"><span class="meta-chip">Accounts DB Â· DB39</span><span class="meta-chip">OKR 3 Â· Metabase</span><span class="meta-chip">Parceiros Locais</span></div>
+  </div>
+
+  <div class="intro-box">
+    <div class="intro-col"><h3>Jornada obrigatoria</h3><p>Para um parceiro ficar ativo no App, passa por <strong>tres etapas em sequencia</strong>: <strong style="color:#7200D6">Plataforma</strong> (cadastro + KYB) > <strong style="color:#E5087E">Conta PJ</strong> (KYC + abertura) > <strong style="color:#7200D6">Plataforma</strong> (ativacao do cashback).</p></div>
+    <div class="intro-col"><h3>Etapas monitoradas</h3><span class="tag tag-purple">Perfil bancario PJ/PF</span><span class="tag tag-purple">KYB automatico</span><span class="tag tag-red">KYC biometria</span><span class="tag tag-purple">Conta duplicada</span><p style="margin-top:8px;font-size:12px;color:var(--text3)">Accounts DB: falhas no mes. KRs: % de atingimento da meta.</p></div>
+    <div class="intro-col"><h3>Destaques do periodo</h3><p>KR 3.2 PL atingiu 119% -- unico mes acima da meta em todo o diagnostico. KR 3.1 CDT (51%) e KR 3.5 Txs (28%) abaixo da meta. Volume de falhas ainda baixo no inicio do periodo.</p></div>
   </div>
 
   <div class="section">
-    <div class="section-header">
-      <span class="section-icon">🎯</span>
-      <span class="section-title">OKR 3 — Atingimento da Meta</span>
-    </div>
-    <div class="month-okr-summary"><p>KR 3.2 Private Label atingiu 119% da meta — único mês acima do target em todo o período. KR 3.1 CDT (51%) e KR 3.5 Txs (28%) ficaram abaixo da meta. Volume de falhas no onboarding ainda baixo, com apenas 1 falha de KYC registrada.</p></div>
-    <div class="month-kr-grid">
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.1 · CDT</div>
-        <div class="month-kr-val kr-warn">51%</div>
-        <div class="month-kr-desc">Credenciamento direto</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.2 · PL</div>
-        <div class="month-kr-val kr-ok">119%</div>
-        <div class="month-kr-desc">Private Label</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.3 · Raia</div>
-        <div class="month-kr-val kr-warn">62%</div>
-        <div class="month-kr-desc">Raia / Drogasil</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.4 · Cashin</div>
-        <div class="month-kr-val kr-bad">R$0</div>
-        <div class="month-kr-desc">Modelo novo</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.5 · Txs</div>
-        <div class="month-kr-val kr-bad">28%</div>
-        <div class="month-kr-desc">Transações</div>
-      </div>
-    </div>
+    <div class="section-header"><span class="section-icon">&#9711;</span><span class="section-title">Funil de onboarding -- Falhas por etapa</span><span class="section-count">Accounts DB Â· Dez/25 vs Jan/26</span></div>
+    <p class="section-desc">Etapas com status <code>failed</code> no banco Accounts (DB39). Comparativo com mes anterior.</p>
+    <div style="margin-bottom:20px"><div class="etapa-row er-plat"><div class="etapa-num">1</div><div class="etapa-info"><span class="etapa-name">Plataforma</span><span class="etapa-sub">Cadastro Â· Perfil bancario Â· KYB</span></div><span class="etapa-meta">Accounts DB</span></div>
+    <div class="table-wrap"><table><thead><tr><th>Desafio</th><th>Dez/25</th><th>Jan/26</th><th>Variacao / Impacto</th><th>Status</th></tr></thead><tbody><tr><td><strong>Notificacao perfil bancario PJ (notif_business)</strong></td><td class="mono">--</td><td class="mono">--</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#999">--</span> &middot; Perfil PJ criado mas notificacao falhou</td><td><span class="sev sev-m">OK</span></td></tr> <tr><td><strong>Notificacao perfil bancario PF (notif_personal)</strong></td><td class="mono">--</td><td class="mono">--</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#999">--</span> &middot; Perfil PF criado mas notificacao falhou</td><td><span class="sev sev-m">OK</span></td></tr> <tr><td><strong>Envio perfil bancario PJ para criacao (send_business)</strong></td><td class="mono">--</td><td class="mono">--</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#999">--</span> &middot; Step upstream -- falha impede criacao do perfil</td><td><span class="sev sev-m">OK</span></td></tr> <tr><td><strong>KYB automatico CNPJ (kyb_automatic)</strong></td><td class="mono">--</td><td class="mono">--</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#999">--</span> &middot; Validacao automatica de CNPJ</td><td><span class="sev sev-m">OK</span></td></tr></tbody></table></div></div>
+    <div style="margin-bottom:20px"><div class="etapa-row er-conta"><div class="etapa-num">2</div><div class="etapa-info"><span class="etapa-name">Conta PJ</span><span class="etapa-sub">KYC Â· Abertura de conta</span></div><span class="etapa-meta">Accounts DB</span></div>
+    <div class="table-wrap"><table><thead><tr><th>Desafio</th><th>Dez/25</th><th>Jan/26</th><th>Variacao / Impacto</th><th>Status</th></tr></thead><tbody><tr><td><strong>KYC biometria / identidade (onboarding_kyc)</strong></td><td class="mono">--</td><td class="mono">1 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#999">--</span> &middot; Parceiro preso sem notificacao automatica</td><td><span class="sev sev-m">Baixo</span></td></tr> <tr><td><strong>Conta bancaria duplicada (verify_dup)</strong></td><td class="mono">--</td><td class="mono">--</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#999">--</span> &middot; Conflito de duplicidade -- queda e positiva</td><td><span class="sev sev-m">OK</span></td></tr></tbody></table></div></div>
   </div>
 
-  <div class="section">
-    <div class="section-header">
-      <span class="section-icon">⚠️</span>
-      <span class="section-title">Falhas no Funil de Onboarding</span>
-    </div>
-    <p class="section-desc">Etapas com status <code>failed</code> no banco Accounts (DB39). Cada linha representa falhas distintas no mês.</p>
-    <div class="month-fail-wrap">
-      <table class="month-fail-table">
-        <thead>
-          <tr><th>Etapa</th><th>Falhas</th><th>Perspectiva</th><th>Descrição</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>notif_business</td><td class='none'>—</td><td>Conta PJ</td><td>Notificação perfil bancário PJ</td></tr>
-          <tr><td>notif_personal</td><td class='none'>—</td><td>Conta PF</td><td>Notificação perfil bancário PF</td></tr>
-          <tr><td>send_business_docs</td><td class='none'>—</td><td>Plataforma</td><td>Envio de documentos PJ</td></tr>
-          <tr><td>onboarding_kyc</td><td class='fail-count' style='color:#7A4400'>1</td><td>Conta</td><td>KYC biometria / identidade</td></tr>
-          <tr><td>verify_bank_account</td><td class='none'>—</td><td>Conta</td><td>Verificação conta bancária / dedup</td></tr>
-          <tr><td>kyb_automatic</td><td class='none'>—</td><td>Plataforma</td><td>KYB automático CNPJ</td></tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="section"><div class="section-header"><span>OKR 3 -- Performance financeira</span><span class="period-chip">Jan/26 Â· dados Metabase</span></div>
+    <div class="table-wrap"><table><thead><tr><th style="width:70px">KR</th><th>Descricao</th><th class="mono" style="text-align:right">% meta Jan/26</th><th style="text-align:center">Status</th></tr></thead><tbody><tr><td class="mono sev sev-a">KR 3.1</td><td>Cashout CDT + AmorSaude + Outros</td><td class="mono delta d-bad" style="text-align:right">51%</td><td class="sev sev-a" style="text-align:center">Alto</td></tr> <tr><td class="mono sev sev-m">KR 3.2</td><td>App CDT - checkout TPV - Private Label</td><td class="mono delta d-ok" style="text-align:right">119%</td><td class="sev sev-m" style="text-align:center">OK</td></tr> <tr><td class="mono sev sev-a">KR 3.3</td><td>Cashout Raia Drogasil + Ultragaz + Giftcard</td><td class="mono delta d-bad" style="text-align:right">62%</td><td class="sev sev-a" style="text-align:center">Alto</td></tr> <tr><td class="mono sev sev-c">KR 3.4</td><td>Cashin modelo novo (Raia Drogasil)</td><td class="mono delta d-bad" style="text-align:right">0%</td><td class="sev sev-c" style="text-align:center">Critico</td></tr> <tr><td class="mono sev sev-c">KR 3.5</td><td>Total de transacoes (cashout + checkout)</td><td class="mono delta d-bad" style="text-align:right">28%</td><td class="sev sev-c" style="text-align:center">Critico</td></tr></tbody></table></div>
   </div>
+
+  <div class="footer"><div>+maisTODOS Â· Diretoria de Lealdade Â· Janeiro 2026</div><div class="footer-mono">Accounts DB (DB39) Â· dados compilados em ago/2026</div></div>
 
 </div>
 </div><!-- /page-jan -->
-<!-- PAGE: FEVEREIRO / 2026 -->
-<div class="page page-month" id="page-fev">
+
+<!-- PAGE: FEVEREIRO 2026 -->
+<div class="page page-evo" id="page-fev">
 <div class="doc">
-  <div class="month-header">
-    <div class="month-eyebrow">MaisTODOS · Lealdade · OKR 3 · Fevereiro 2026</div>
-    <h2>Fevereiro / 2026</h2>
-    <p class="month-sub">Indicadores de onboarding de parceiros locais · OKR 3 — Novos Parceiros</p>
+
+  <div class="header">
+    <div class="eyebrow">MaisTODOS Â· Diretoria de Lealdade Â· OKR 3 -- Novos Parceiros</div>
+    <h1>Evolucao de Indicadores<br>Fevereiro 2026</h1>
+    <p class="header-sub">Comparativo Jan/26 vs Fev/26 -- pipeline de onboarding e performance financeira. Accounts DB (DB39) Â· dados extraidos ao longo de 2026.</p>
+    <div class="period-chip"><span>Jan/26</span><span style="opacity:.5"> -&gt; </span><span>Fev/26</span></div>
+    <div class="header-meta"><span class="meta-chip">Accounts DB Â· DB39</span><span class="meta-chip">OKR 3 Â· Metabase</span><span class="meta-chip">Parceiros Locais</span></div>
+  </div>
+
+  <div class="intro-box">
+    <div class="intro-col"><h3>Jornada obrigatoria</h3><p>Para um parceiro ficar ativo no App, passa por <strong>tres etapas em sequencia</strong>: <strong style="color:#7200D6">Plataforma</strong> (cadastro + KYB) > <strong style="color:#E5087E">Conta PJ</strong> (KYC + abertura) > <strong style="color:#7200D6">Plataforma</strong> (ativacao do cashback).</p></div>
+    <div class="intro-col"><h3>Etapas monitoradas</h3><span class="tag tag-purple">Perfil bancario PJ/PF</span><span class="tag tag-purple">KYB automatico</span><span class="tag tag-red">KYC biometria</span><span class="tag tag-purple">Conta duplicada</span><p style="margin-top:8px;font-size:12px;color:var(--text3)">Accounts DB: falhas no mes. KRs: % de atingimento da meta.</p></div>
+    <div class="intro-col"><h3>Destaques do periodo</h3><p>Inicio do declinio dos KRs. KR 3.1 e 3.5 caem para 1% da meta. Primeiras falhas de perfil bancario: notif_business (7) e notif_personal (13) surgem como padrao cronico.</p></div>
   </div>
 
   <div class="section">
-    <div class="section-header">
-      <span class="section-icon">🎯</span>
-      <span class="section-title">OKR 3 — Atingimento da Meta</span>
-    </div>
-    <div class="month-okr-summary"><p>Início do declínio: KR 3.2 cai para 68% e KR 3.1 e 3.5 chegam a 1% da meta. Primeiros registros de falhas crônicas em notif_business (7) e notif_personal (13). KYC com 3 falhas.</p></div>
-    <div class="month-kr-grid">
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.1 · CDT</div>
-        <div class="month-kr-val kr-bad">1%</div>
-        <div class="month-kr-desc">Credenciamento direto</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.2 · PL</div>
-        <div class="month-kr-val kr-warn">68%</div>
-        <div class="month-kr-desc">Private Label</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.3 · Raia</div>
-        <div class="month-kr-val kr-bad">49%</div>
-        <div class="month-kr-desc">Raia / Drogasil</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.4 · Cashin</div>
-        <div class="month-kr-val kr-bad">R$0</div>
-        <div class="month-kr-desc">Modelo novo</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.5 · Txs</div>
-        <div class="month-kr-val kr-bad">1%</div>
-        <div class="month-kr-desc">Transações</div>
-      </div>
-    </div>
+    <div class="section-header"><span class="section-icon">&#9711;</span><span class="section-title">Funil de onboarding -- Falhas por etapa</span><span class="section-count">Accounts DB Â· Jan/26 vs Fev/26</span></div>
+    <p class="section-desc">Etapas com status <code>failed</code> no banco Accounts (DB39). Comparativo com mes anterior.</p>
+    <div style="margin-bottom:20px"><div class="etapa-row er-plat"><div class="etapa-num">1</div><div class="etapa-info"><span class="etapa-name">Plataforma</span><span class="etapa-sub">Cadastro Â· Perfil bancario Â· KYB</span></div><span class="etapa-meta">Accounts DB</span></div>
+    <div class="table-wrap"><table><thead><tr><th>Desafio</th><th>Jan/26</th><th>Fev/26</th><th>Variacao / Impacto</th><th>Status</th></tr></thead><tbody><tr><td><strong>Notificacao perfil bancario PJ (notif_business)</strong></td><td class="mono">--</td><td class="mono">7 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#999">--</span> &middot; Perfil PJ criado mas notificacao falhou</td><td><span class="sev sev-a">Alto</span></td></tr> <tr><td><strong>Notificacao perfil bancario PF (notif_personal)</strong></td><td class="mono">--</td><td class="mono">13 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#999">--</span> &middot; Perfil PF criado mas notificacao falhou</td><td><span class="sev sev-a">Alto</span></td></tr> <tr><td><strong>Envio perfil bancario PJ para criacao (send_business)</strong></td><td class="mono">--</td><td class="mono">2 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#999">--</span> &middot; Step upstream -- falha impede criacao do perfil</td><td><span class="sev sev-m">Baixo</span></td></tr> <tr><td><strong>KYB automatico CNPJ (kyb_automatic)</strong></td><td class="mono">--</td><td class="mono">2 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#999">--</span> &middot; Validacao automatica de CNPJ</td><td><span class="sev sev-m">Baixo</span></td></tr></tbody></table></div></div>
+    <div style="margin-bottom:20px"><div class="etapa-row er-conta"><div class="etapa-num">2</div><div class="etapa-info"><span class="etapa-name">Conta PJ</span><span class="etapa-sub">KYC Â· Abertura de conta</span></div><span class="etapa-meta">Accounts DB</span></div>
+    <div class="table-wrap"><table><thead><tr><th>Desafio</th><th>Jan/26</th><th>Fev/26</th><th>Variacao / Impacto</th><th>Status</th></tr></thead><tbody><tr><td><strong>KYC biometria / identidade (onboarding_kyc)</strong></td><td class="mono">1 falhas</td><td class="mono">3 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#dc2626">+2</span> &middot; Parceiro preso sem notificacao automatica</td><td><span class="sev sev-m">Baixo</span></td></tr> <tr><td><strong>Conta bancaria duplicada (verify_dup)</strong></td><td class="mono">--</td><td class="mono">--</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#999">--</span> &middot; Conflito de duplicidade -- queda e positiva</td><td><span class="sev sev-m">OK</span></td></tr></tbody></table></div></div>
   </div>
 
-  <div class="section">
-    <div class="section-header">
-      <span class="section-icon">⚠️</span>
-      <span class="section-title">Falhas no Funil de Onboarding</span>
-    </div>
-    <p class="section-desc">Etapas com status <code>failed</code> no banco Accounts (DB39). Cada linha representa falhas distintas no mês.</p>
-    <div class="month-fail-wrap">
-      <table class="month-fail-table">
-        <thead>
-          <tr><th>Etapa</th><th>Falhas</th><th>Perspectiva</th><th>Descrição</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>notif_business</td><td class='fail-count' style='color:#99004F'>7</td><td>Conta PJ</td><td>Notificação perfil bancário PJ</td></tr>
-          <tr><td>notif_personal</td><td class='fail-count' style='color:#99004F'>13</td><td>Conta PF</td><td>Notificação perfil bancário PF</td></tr>
-          <tr><td>send_business_docs</td><td class='fail-count' style='color:#7A4400'>2</td><td>Plataforma</td><td>Envio de documentos PJ</td></tr>
-          <tr><td>onboarding_kyc</td><td class='fail-count' style='color:#7A4400'>3</td><td>Conta</td><td>KYC biometria / identidade</td></tr>
-          <tr><td>verify_bank_account</td><td class='none'>—</td><td>Conta</td><td>Verificação conta bancária / dedup</td></tr>
-          <tr><td>kyb_automatic</td><td class='fail-count' style='color:#7A4400'>2</td><td>Plataforma</td><td>KYB automático CNPJ</td></tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="section"><div class="section-header"><span>OKR 3 -- Performance financeira</span><span class="period-chip">Fev/26 Â· dados Metabase</span></div>
+    <div class="table-wrap"><table><thead><tr><th style="width:70px">KR</th><th>Descricao</th><th class="mono" style="text-align:right">% meta Fev/26</th><th style="text-align:center">Status</th></tr></thead><tbody><tr><td class="mono sev sev-c">KR 3.1</td><td>Cashout CDT + AmorSaude + Outros</td><td class="mono delta d-bad" style="text-align:right">1%</td><td class="sev sev-c" style="text-align:center">Critico</td></tr> <tr><td class="mono sev sev-a">KR 3.2</td><td>App CDT - checkout TPV - Private Label</td><td class="mono delta d-bad" style="text-align:right">68%</td><td class="sev sev-a" style="text-align:center">Alto</td></tr> <tr><td class="mono sev sev-a">KR 3.3</td><td>Cashout Raia Drogasil + Ultragaz + Giftcard</td><td class="mono delta d-bad" style="text-align:right">49%</td><td class="sev sev-a" style="text-align:center">Alto</td></tr> <tr><td class="mono sev sev-c">KR 3.4</td><td>Cashin modelo novo (Raia Drogasil)</td><td class="mono delta d-bad" style="text-align:right">0%</td><td class="sev sev-c" style="text-align:center">Critico</td></tr> <tr><td class="mono sev sev-c">KR 3.5</td><td>Total de transacoes (cashout + checkout)</td><td class="mono delta d-bad" style="text-align:right">1%</td><td class="sev sev-c" style="text-align:center">Critico</td></tr></tbody></table></div>
   </div>
+
+  <div class="footer"><div>+maisTODOS Â· Diretoria de Lealdade Â· Fevereiro 2026</div><div class="footer-mono">Accounts DB (DB39) Â· dados compilados em ago/2026</div></div>
 
 </div>
 </div><!-- /page-fev -->
-<!-- PAGE: MARÇO / 2026 -->
-<div class="page page-month" id="page-mar">
+
+<!-- PAGE: MARCO 2026 -->
+<div class="page page-evo" id="page-mar">
 <div class="doc">
-  <div class="month-header">
-    <div class="month-eyebrow">MaisTODOS · Lealdade · OKR 3 · Março 2026</div>
-    <h2>Março / 2026</h2>
-    <p class="month-sub">Indicadores de onboarding de parceiros locais · OKR 3 — Novos Parceiros</p>
+
+  <div class="header">
+    <div class="eyebrow">MaisTODOS Â· Diretoria de Lealdade Â· OKR 3 -- Novos Parceiros</div>
+    <h1>Evolucao de Indicadores<br>Marco 2026</h1>
+    <p class="header-sub">Comparativo Fev/26 vs Mar/26 -- pipeline de onboarding e performance financeira. Accounts DB (DB39) Â· dados extraidos ao longo de 2026.</p>
+    <div class="period-chip"><span>Fev/26</span><span style="opacity:.5"> -&gt; </span><span>Mar/26</span></div>
+    <div class="header-meta"><span class="meta-chip">Accounts DB Â· DB39</span><span class="meta-chip">OKR 3 Â· Metabase</span><span class="meta-chip">Parceiros Locais</span></div>
+  </div>
+
+  <div class="intro-box">
+    <div class="intro-col"><h3>Jornada obrigatoria</h3><p>Para um parceiro ficar ativo no App, passa por <strong>tres etapas em sequencia</strong>: <strong style="color:#7200D6">Plataforma</strong> (cadastro + KYB) > <strong style="color:#E5087E">Conta PJ</strong> (KYC + abertura) > <strong style="color:#7200D6">Plataforma</strong> (ativacao do cashback).</p></div>
+    <div class="intro-col"><h3>Etapas monitoradas</h3><span class="tag tag-purple">Perfil bancario PJ/PF</span><span class="tag tag-purple">KYB automatico</span><span class="tag tag-red">KYC biometria</span><span class="tag tag-purple">Conta duplicada</span><p style="margin-top:8px;font-size:12px;color:var(--text3)">Accounts DB: falhas no mes. KRs: % de atingimento da meta.</p></div>
+    <div class="intro-col"><h3>Destaques do periodo</h3><p>Todos os KRs abaixo de 65% da meta. KYC cresce para 9 falhas. Primeira ocorrencia de verify_dup (1). Notificacoes bancarias persistem e crescem.</p></div>
   </div>
 
   <div class="section">
-    <div class="section-header">
-      <span class="section-icon">🎯</span>
-      <span class="section-title">OKR 3 — Atingimento da Meta</span>
-    </div>
-    <div class="month-okr-summary"><p>KRs abaixo de 65%. Notificações bancárias persistem. Primeira ocorrência de verify_bank_account (1). KYC com 9 falhas. Mês de referência para queda em KR 3.1 e 3.5.</p></div>
-    <div class="month-kr-grid">
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.1 · CDT</div>
-        <div class="month-kr-val kr-bad"><1%</div>
-        <div class="month-kr-desc">Credenciamento direto</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.2 · PL</div>
-        <div class="month-kr-val kr-warn">61%</div>
-        <div class="month-kr-desc">Private Label</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.3 · Raia</div>
-        <div class="month-kr-val kr-warn">54%</div>
-        <div class="month-kr-desc">Raia / Drogasil</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.4 · Cashin</div>
-        <div class="month-kr-val kr-bad">R$0</div>
-        <div class="month-kr-desc">Modelo novo</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.5 · Txs</div>
-        <div class="month-kr-val kr-bad"><1%</div>
-        <div class="month-kr-desc">Transações</div>
-      </div>
-    </div>
+    <div class="section-header"><span class="section-icon">&#9711;</span><span class="section-title">Funil de onboarding -- Falhas por etapa</span><span class="section-count">Accounts DB Â· Fev/26 vs Mar/26</span></div>
+    <p class="section-desc">Etapas com status <code>failed</code> no banco Accounts (DB39). Comparativo com mes anterior.</p>
+    <div style="margin-bottom:20px"><div class="etapa-row er-plat"><div class="etapa-num">1</div><div class="etapa-info"><span class="etapa-name">Plataforma</span><span class="etapa-sub">Cadastro Â· Perfil bancario Â· KYB</span></div><span class="etapa-meta">Accounts DB</span></div>
+    <div class="table-wrap"><table><thead><tr><th>Desafio</th><th>Fev/26</th><th>Mar/26</th><th>Variacao / Impacto</th><th>Status</th></tr></thead><tbody><tr><td><strong>Notificacao perfil bancario PJ (notif_business)</strong></td><td class="mono">7 falhas</td><td class="mono">9 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#dc2626">+2</span> &middot; Perfil PJ criado mas notificacao falhou</td><td><span class="sev sev-a">Alto</span></td></tr> <tr><td><strong>Notificacao perfil bancario PF (notif_personal)</strong></td><td class="mono">13 falhas</td><td class="mono">11 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#4A9900">-2</span> &middot; Perfil PF criado mas notificacao falhou</td><td><span class="sev sev-m">Melhora</span></td></tr> <tr><td><strong>Envio perfil bancario PJ para criacao (send_business)</strong></td><td class="mono">2 falhas</td><td class="mono">3 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#dc2626">+1</span> &middot; Step upstream -- falha impede criacao do perfil</td><td><span class="sev sev-m">Baixo</span></td></tr> <tr><td><strong>KYB automatico CNPJ (kyb_automatic)</strong></td><td class="mono">2 falhas</td><td class="mono">--</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#4A9900">-2</span> &middot; Validacao automatica de CNPJ</td><td><span class="sev sev-m">OK</span></td></tr></tbody></table></div></div>
+    <div style="margin-bottom:20px"><div class="etapa-row er-conta"><div class="etapa-num">2</div><div class="etapa-info"><span class="etapa-name">Conta PJ</span><span class="etapa-sub">KYC Â· Abertura de conta</span></div><span class="etapa-meta">Accounts DB</span></div>
+    <div class="table-wrap"><table><thead><tr><th>Desafio</th><th>Fev/26</th><th>Mar/26</th><th>Variacao / Impacto</th><th>Status</th></tr></thead><tbody><tr><td><strong>KYC biometria / identidade (onboarding_kyc)</strong></td><td class="mono">3 falhas</td><td class="mono">9 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#dc2626">+6</span> &middot; Parceiro preso sem notificacao automatica</td><td><span class="sev sev-a">Alto</span></td></tr> <tr><td><strong>Conta bancaria duplicada (verify_dup)</strong></td><td class="mono">--</td><td class="mono">1 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#999">--</span> &middot; Conflito de duplicidade -- queda e positiva</td><td><span class="sev sev-m">Baixo</span></td></tr></tbody></table></div></div>
   </div>
 
-  <div class="section">
-    <div class="section-header">
-      <span class="section-icon">⚠️</span>
-      <span class="section-title">Falhas no Funil de Onboarding</span>
-    </div>
-    <p class="section-desc">Etapas com status <code>failed</code> no banco Accounts (DB39). Cada linha representa falhas distintas no mês.</p>
-    <div class="month-fail-wrap">
-      <table class="month-fail-table">
-        <thead>
-          <tr><th>Etapa</th><th>Falhas</th><th>Perspectiva</th><th>Descrição</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>notif_business</td><td class='fail-count' style='color:#99004F'>9</td><td>Conta PJ</td><td>Notificação perfil bancário PJ</td></tr>
-          <tr><td>notif_personal</td><td class='fail-count' style='color:#99004F'>11</td><td>Conta PF</td><td>Notificação perfil bancário PF</td></tr>
-          <tr><td>send_business_docs</td><td class='fail-count' style='color:#7A4400'>3</td><td>Plataforma</td><td>Envio de documentos PJ</td></tr>
-          <tr><td>onboarding_kyc</td><td class='fail-count' style='color:#99004F'>9</td><td>Conta</td><td>KYC biometria / identidade</td></tr>
-          <tr><td>verify_bank_account</td><td class='fail-count' style='color:#7A4400'>1</td><td>Conta</td><td>Verificação conta bancária / dedup</td></tr>
-          <tr><td>kyb_automatic</td><td class='none'>—</td><td>Plataforma</td><td>KYB automático CNPJ</td></tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="section"><div class="section-header"><span>OKR 3 -- Performance financeira</span><span class="period-chip">Mar/26 Â· dados Metabase</span></div>
+    <div class="table-wrap"><table><thead><tr><th style="width:70px">KR</th><th>Descricao</th><th class="mono" style="text-align:right">% meta Mar/26</th><th style="text-align:center">Status</th></tr></thead><tbody><tr><td class="mono sev sev-c">KR 3.1</td><td>Cashout CDT + AmorSaude + Outros</td><td class="mono delta d-bad" style="text-align:right"><1%</td><td class="sev sev-c" style="text-align:center">Critico</td></tr> <tr><td class="mono sev sev-a">KR 3.2</td><td>App CDT - checkout TPV - Private Label</td><td class="mono delta d-bad" style="text-align:right">61%</td><td class="sev sev-a" style="text-align:center">Alto</td></tr> <tr><td class="mono sev sev-a">KR 3.3</td><td>Cashout Raia Drogasil + Ultragaz + Giftcard</td><td class="mono delta d-bad" style="text-align:right">54%</td><td class="sev sev-a" style="text-align:center">Alto</td></tr> <tr><td class="mono sev sev-c">KR 3.4</td><td>Cashin modelo novo (Raia Drogasil)</td><td class="mono delta d-bad" style="text-align:right">0%</td><td class="sev sev-c" style="text-align:center">Critico</td></tr> <tr><td class="mono sev sev-c">KR 3.5</td><td>Total de transacoes (cashout + checkout)</td><td class="mono delta d-bad" style="text-align:right"><1%</td><td class="sev sev-c" style="text-align:center">Critico</td></tr></tbody></table></div>
   </div>
+
+  <div class="footer"><div>+maisTODOS Â· Diretoria de Lealdade Â· Marco 2026</div><div class="footer-mono">Accounts DB (DB39) Â· dados compilados em ago/2026</div></div>
 
 </div>
 </div><!-- /page-mar -->
-<!-- PAGE: ABRIL / 2026 -->
-<div class="page page-month" id="page-abr">
+
+<!-- PAGE: ABRIL 2026 -->
+<div class="page page-evo" id="page-abr">
 <div class="doc">
-  <div class="month-header">
-    <div class="month-eyebrow">MaisTODOS · Lealdade · OKR 3 · Abril 2026</div>
-    <h2>Abril / 2026</h2>
-    <p class="month-sub">Indicadores de onboarding de parceiros locais · OKR 3 — Novos Parceiros</p>
+
+  <div class="header">
+    <div class="eyebrow">MaisTODOS Â· Diretoria de Lealdade Â· OKR 3 -- Novos Parceiros</div>
+    <h1>Evolucao de Indicadores<br>Abril 2026</h1>
+    <p class="header-sub">Comparativo Mar/26 vs Abr/26 -- pipeline de onboarding e performance financeira. Accounts DB (DB39) Â· dados extraidos ao longo de 2026.</p>
+    <div class="period-chip"><span>Mar/26</span><span style="opacity:.5"> -&gt; </span><span>Abr/26</span></div>
+    <div class="header-meta"><span class="meta-chip">Accounts DB Â· DB39</span><span class="meta-chip">OKR 3 Â· Metabase</span><span class="meta-chip">Parceiros Locais</span></div>
+  </div>
+
+  <div class="intro-box">
+    <div class="intro-col"><h3>Jornada obrigatoria</h3><p>Para um parceiro ficar ativo no App, passa por <strong>tres etapas em sequencia</strong>: <strong style="color:#7200D6">Plataforma</strong> (cadastro + KYB) > <strong style="color:#E5087E">Conta PJ</strong> (KYC + abertura) > <strong style="color:#7200D6">Plataforma</strong> (ativacao do cashback).</p></div>
+    <div class="intro-col"><h3>Etapas monitoradas</h3><span class="tag tag-purple">Perfil bancario PJ/PF</span><span class="tag tag-purple">KYB automatico</span><span class="tag tag-red">KYC biometria</span><span class="tag tag-purple">Conta duplicada</span><p style="margin-top:8px;font-size:12px;color:var(--text3)">Accounts DB: falhas no mes. KRs: % de atingimento da meta.</p></div>
+    <div class="intro-col"><h3>Destaques do periodo</h3><p>Explosao de falhas: notif_business +267% (9 para 33), send_business +367% (3 para 14), KYC +122% (9 para 20). KRs continuam abaixo de 50% -- exceto KR 3.1 com leve recuperacao (41%).</p></div>
   </div>
 
   <div class="section">
-    <div class="section-header">
-      <span class="section-icon">🎯</span>
-      <span class="section-title">OKR 3 — Atingimento da Meta</span>
-    </div>
-    <div class="month-okr-summary"><p>Aumento expressivo de falhas: KYC atinge 20, notif_business dispara para 33, send_business_docs sobe para 14. KRs continuam em queda. Destaque negativo para KR 3.2 PL que chegou a 40%.</p></div>
-    <div class="month-kr-grid">
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.1 · CDT</div>
-        <div class="month-kr-val kr-bad">41%</div>
-        <div class="month-kr-desc">Credenciamento direto</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.2 · PL</div>
-        <div class="month-kr-val kr-bad">40%</div>
-        <div class="month-kr-desc">Private Label</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.3 · Raia</div>
-        <div class="month-kr-val kr-bad">41%</div>
-        <div class="month-kr-desc">Raia / Drogasil</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.4 · Cashin</div>
-        <div class="month-kr-val kr-bad">R$0</div>
-        <div class="month-kr-desc">Modelo novo</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.5 · Txs</div>
-        <div class="month-kr-val kr-bad">22%</div>
-        <div class="month-kr-desc">Transações</div>
-      </div>
-    </div>
+    <div class="section-header"><span class="section-icon">&#9711;</span><span class="section-title">Funil de onboarding -- Falhas por etapa</span><span class="section-count">Accounts DB Â· Mar/26 vs Abr/26</span></div>
+    <p class="section-desc">Etapas com status <code>failed</code> no banco Accounts (DB39). Comparativo com mes anterior.</p>
+    <div style="margin-bottom:20px"><div class="etapa-row er-plat"><div class="etapa-num">1</div><div class="etapa-info"><span class="etapa-name">Plataforma</span><span class="etapa-sub">Cadastro Â· Perfil bancario Â· KYB</span></div><span class="etapa-meta">Accounts DB</span></div>
+    <div class="table-wrap"><table><thead><tr><th>Desafio</th><th>Mar/26</th><th>Abr/26</th><th>Variacao / Impacto</th><th>Status</th></tr></thead><tbody><tr><td><strong>Notificacao perfil bancario PJ (notif_business)</strong></td><td class="mono">9 falhas</td><td class="mono">33 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#dc2626">+24</span> &middot; Perfil PJ criado mas notificacao falhou</td><td><span class="sev sev-c">Critico</span></td></tr> <tr><td><strong>Notificacao perfil bancario PF (notif_personal)</strong></td><td class="mono">11 falhas</td><td class="mono">19 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#dc2626">+8</span> &middot; Perfil PF criado mas notificacao falhou</td><td><span class="sev sev-a">Alto</span></td></tr> <tr><td><strong>Envio perfil bancario PJ para criacao (send_business)</strong></td><td class="mono">3 falhas</td><td class="mono">14 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#dc2626">+11</span> &middot; Step upstream -- falha impede criacao do perfil</td><td><span class="sev sev-a">Alto</span></td></tr> <tr><td><strong>KYB automatico CNPJ (kyb_automatic)</strong></td><td class="mono">--</td><td class="mono">3 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#999">--</span> &middot; Validacao automatica de CNPJ</td><td><span class="sev sev-m">Baixo</span></td></tr></tbody></table></div></div>
+    <div style="margin-bottom:20px"><div class="etapa-row er-conta"><div class="etapa-num">2</div><div class="etapa-info"><span class="etapa-name">Conta PJ</span><span class="etapa-sub">KYC Â· Abertura de conta</span></div><span class="etapa-meta">Accounts DB</span></div>
+    <div class="table-wrap"><table><thead><tr><th>Desafio</th><th>Mar/26</th><th>Abr/26</th><th>Variacao / Impacto</th><th>Status</th></tr></thead><tbody><tr><td><strong>KYC biometria / identidade (onboarding_kyc)</strong></td><td class="mono">9 falhas</td><td class="mono">20 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#dc2626">+11</span> &middot; Parceiro preso sem notificacao automatica</td><td><span class="sev sev-c">Critico</span></td></tr> <tr><td><strong>Conta bancaria duplicada (verify_dup)</strong></td><td class="mono">1 falhas</td><td class="mono">1 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#999">0</span> &middot; Conflito de duplicidade -- queda e positiva</td><td><span class="sev sev-m">Baixo</span></td></tr></tbody></table></div></div>
   </div>
 
-  <div class="section">
-    <div class="section-header">
-      <span class="section-icon">⚠️</span>
-      <span class="section-title">Falhas no Funil de Onboarding</span>
-    </div>
-    <p class="section-desc">Etapas com status <code>failed</code> no banco Accounts (DB39). Cada linha representa falhas distintas no mês.</p>
-    <div class="month-fail-wrap">
-      <table class="month-fail-table">
-        <thead>
-          <tr><th>Etapa</th><th>Falhas</th><th>Perspectiva</th><th>Descrição</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>notif_business</td><td class='fail-count' style='color:#99004F'>33</td><td>Conta PJ</td><td>Notificação perfil bancário PJ</td></tr>
-          <tr><td>notif_personal</td><td class='fail-count' style='color:#99004F'>19</td><td>Conta PF</td><td>Notificação perfil bancário PF</td></tr>
-          <tr><td>send_business_docs</td><td class='fail-count' style='color:#99004F'>14</td><td>Plataforma</td><td>Envio de documentos PJ</td></tr>
-          <tr><td>onboarding_kyc</td><td class='fail-count' style='color:#99004F'>20</td><td>Conta</td><td>KYC biometria / identidade</td></tr>
-          <tr><td>verify_bank_account</td><td class='fail-count' style='color:#7A4400'>1</td><td>Conta</td><td>Verificação conta bancária / dedup</td></tr>
-          <tr><td>kyb_automatic</td><td class='fail-count' style='color:#7A4400'>3</td><td>Plataforma</td><td>KYB automático CNPJ</td></tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="section"><div class="section-header"><span>OKR 3 -- Performance financeira</span><span class="period-chip">Abr/26 Â· dados Metabase</span></div>
+    <div class="table-wrap"><table><thead><tr><th style="width:70px">KR</th><th>Descricao</th><th class="mono" style="text-align:right">% meta Abr/26</th><th style="text-align:center">Status</th></tr></thead><tbody><tr><td class="mono sev sev-a">KR 3.1</td><td>Cashout CDT + AmorSaude + Outros</td><td class="mono delta d-bad" style="text-align:right">41%</td><td class="sev sev-a" style="text-align:center">Alto</td></tr> <tr><td class="mono sev sev-a">KR 3.2</td><td>App CDT - checkout TPV - Private Label</td><td class="mono delta d-bad" style="text-align:right">40%</td><td class="sev sev-a" style="text-align:center">Alto</td></tr> <tr><td class="mono sev sev-a">KR 3.3</td><td>Cashout Raia Drogasil + Ultragaz + Giftcard</td><td class="mono delta d-bad" style="text-align:right">41%</td><td class="sev sev-a" style="text-align:center">Alto</td></tr> <tr><td class="mono sev sev-c">KR 3.4</td><td>Cashin modelo novo (Raia Drogasil)</td><td class="mono delta d-bad" style="text-align:right">0%</td><td class="sev sev-c" style="text-align:center">Critico</td></tr> <tr><td class="mono sev sev-c">KR 3.5</td><td>Total de transacoes (cashout + checkout)</td><td class="mono delta d-bad" style="text-align:right">22%</td><td class="sev sev-c" style="text-align:center">Critico</td></tr></tbody></table></div>
   </div>
+
+  <div class="footer"><div>+maisTODOS Â· Diretoria de Lealdade Â· Abril 2026</div><div class="footer-mono">Accounts DB (DB39) Â· dados compilados em ago/2026</div></div>
 
 </div>
 </div><!-- /page-abr -->
-<!-- PAGE: MAIO / 2026 -->
-<div class="page page-month" id="page-mai">
+
+<!-- PAGE: MAIO 2026 -->
+<div class="page page-evo" id="page-mai">
 <div class="doc">
-  <div class="month-header">
-    <div class="month-eyebrow">MaisTODOS · Lealdade · OKR 3 · Maio 2026</div>
-    <h2>Maio / 2026</h2>
-    <p class="month-sub">Indicadores de onboarding de parceiros locais · OKR 3 — Novos Parceiros</p>
+
+  <div class="header">
+    <div class="eyebrow">MaisTODOS Â· Diretoria de Lealdade Â· OKR 3 -- Novos Parceiros</div>
+    <h1>Evolucao de Indicadores<br>Maio 2026</h1>
+    <p class="header-sub">Comparativo Abr/26 vs Mai/26 -- pipeline de onboarding e performance financeira. Accounts DB (DB39) Â· dados extraidos ao longo de 2026.</p>
+    <div class="period-chip"><span>Abr/26</span><span style="opacity:.5"> -&gt; </span><span>Mai/26</span></div>
+    <div class="header-meta"><span class="meta-chip">Accounts DB Â· DB39</span><span class="meta-chip">OKR 3 Â· Metabase</span><span class="meta-chip">Parceiros Locais</span></div>
+  </div>
+
+  <div class="intro-box">
+    <div class="intro-col"><h3>Jornada obrigatoria</h3><p>Para um parceiro ficar ativo no App, passa por <strong>tres etapas em sequencia</strong>: <strong style="color:#7200D6">Plataforma</strong> (cadastro + KYB) > <strong style="color:#E5087E">Conta PJ</strong> (KYC + abertura) > <strong style="color:#7200D6">Plataforma</strong> (ativacao do cashback).</p></div>
+    <div class="intro-col"><h3>Etapas monitoradas</h3><span class="tag tag-purple">Perfil bancario PJ/PF</span><span class="tag tag-purple">KYB automatico</span><span class="tag tag-red">KYC biometria</span><span class="tag tag-purple">Conta duplicada</span><p style="margin-top:8px;font-size:12px;color:var(--text3)">Accounts DB: falhas no mes. KRs: % de atingimento da meta.</p></div>
+    <div class="intro-col"><h3>Destaques do periodo</h3><p>KR 3.1 (133%) e KR 3.5 (100%) atingem a meta -- provavel evento ou sazonalidade. KR 3.2 continua em queda (32%). Pico de verify_dup (6). KYC cai de 20 para 15.</p></div>
   </div>
 
   <div class="section">
-    <div class="section-header">
-      <span class="section-icon">🎯</span>
-      <span class="section-title">OKR 3 — Atingimento da Meta</span>
-    </div>
-    <div class="month-okr-summary"><p>KR 3.1 CDT e KR 3.5 Txs atingem 100%+ da meta (pico sazonal / evento). KR 3.2 PL continua em queda (32%). Pico de falhas em verify_bank_account (6) e KYC (15).</p></div>
-    <div class="month-kr-grid">
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.1 · CDT</div>
-        <div class="month-kr-val kr-ok">133%</div>
-        <div class="month-kr-desc">Credenciamento direto</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.2 · PL</div>
-        <div class="month-kr-val kr-bad">32%</div>
-        <div class="month-kr-desc">Private Label</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.3 · Raia</div>
-        <div class="month-kr-val kr-bad">38%</div>
-        <div class="month-kr-desc">Raia / Drogasil</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.4 · Cashin</div>
-        <div class="month-kr-val kr-bad">R$0</div>
-        <div class="month-kr-desc">Modelo novo</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.5 · Txs</div>
-        <div class="month-kr-val kr-ok">100%</div>
-        <div class="month-kr-desc">Transações</div>
-      </div>
-    </div>
+    <div class="section-header"><span class="section-icon">&#9711;</span><span class="section-title">Funil de onboarding -- Falhas por etapa</span><span class="section-count">Accounts DB Â· Abr/26 vs Mai/26</span></div>
+    <p class="section-desc">Etapas com status <code>failed</code> no banco Accounts (DB39). Comparativo com mes anterior.</p>
+    <div style="margin-bottom:20px"><div class="etapa-row er-plat"><div class="etapa-num">1</div><div class="etapa-info"><span class="etapa-name">Plataforma</span><span class="etapa-sub">Cadastro Â· Perfil bancario Â· KYB</span></div><span class="etapa-meta">Accounts DB</span></div>
+    <div class="table-wrap"><table><thead><tr><th>Desafio</th><th>Abr/26</th><th>Mai/26</th><th>Variacao / Impacto</th><th>Status</th></tr></thead><tbody><tr><td><strong>Notificacao perfil bancario PJ (notif_business)</strong></td><td class="mono">33 falhas</td><td class="mono">33 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#999">0</span> &middot; Perfil PJ criado mas notificacao falhou</td><td><span class="sev sev-c">Critico</span></td></tr> <tr><td><strong>Notificacao perfil bancario PF (notif_personal)</strong></td><td class="mono">19 falhas</td><td class="mono">16 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#4A9900">-3</span> &middot; Perfil PF criado mas notificacao falhou</td><td><span class="sev sev-m">Melhora</span></td></tr> <tr><td><strong>Envio perfil bancario PJ para criacao (send_business)</strong></td><td class="mono">14 falhas</td><td class="mono">4 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#4A9900">-10</span> &middot; Step upstream -- falha impede criacao do perfil</td><td><span class="sev sev-m">Melhora</span></td></tr> <tr><td><strong>KYB automatico CNPJ (kyb_automatic)</strong></td><td class="mono">3 falhas</td><td class="mono">2 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#4A9900">-1</span> &middot; Validacao automatica de CNPJ</td><td><span class="sev sev-m">Melhora</span></td></tr></tbody></table></div></div>
+    <div style="margin-bottom:20px"><div class="etapa-row er-conta"><div class="etapa-num">2</div><div class="etapa-info"><span class="etapa-name">Conta PJ</span><span class="etapa-sub">KYC Â· Abertura de conta</span></div><span class="etapa-meta">Accounts DB</span></div>
+    <div class="table-wrap"><table><thead><tr><th>Desafio</th><th>Abr/26</th><th>Mai/26</th><th>Variacao / Impacto</th><th>Status</th></tr></thead><tbody><tr><td><strong>KYC biometria / identidade (onboarding_kyc)</strong></td><td class="mono">20 falhas</td><td class="mono">15 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#4A9900">-5</span> &middot; Parceiro preso sem notificacao automatica</td><td><span class="sev sev-m">Melhora</span></td></tr> <tr><td><strong>Conta bancaria duplicada (verify_dup)</strong></td><td class="mono">1 falhas</td><td class="mono">6 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#dc2626">+5</span> &middot; Conflito de duplicidade -- queda e positiva</td><td><span class="sev sev-a">Alto</span></td></tr></tbody></table></div></div>
   </div>
 
-  <div class="section">
-    <div class="section-header">
-      <span class="section-icon">⚠️</span>
-      <span class="section-title">Falhas no Funil de Onboarding</span>
-    </div>
-    <p class="section-desc">Etapas com status <code>failed</code> no banco Accounts (DB39). Cada linha representa falhas distintas no mês.</p>
-    <div class="month-fail-wrap">
-      <table class="month-fail-table">
-        <thead>
-          <tr><th>Etapa</th><th>Falhas</th><th>Perspectiva</th><th>Descrição</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>notif_business</td><td class='fail-count' style='color:#99004F'>33</td><td>Conta PJ</td><td>Notificação perfil bancário PJ</td></tr>
-          <tr><td>notif_personal</td><td class='fail-count' style='color:#99004F'>16</td><td>Conta PF</td><td>Notificação perfil bancário PF</td></tr>
-          <tr><td>send_business_docs</td><td class='fail-count' style='color:#7A4400'>4</td><td>Plataforma</td><td>Envio de documentos PJ</td></tr>
-          <tr><td>onboarding_kyc</td><td class='fail-count' style='color:#99004F'>15</td><td>Conta</td><td>KYC biometria / identidade</td></tr>
-          <tr><td>verify_bank_account</td><td class='fail-count' style='color:#99004F'>6</td><td>Conta</td><td>Verificação conta bancária / dedup</td></tr>
-          <tr><td>kyb_automatic</td><td class='fail-count' style='color:#7A4400'>2</td><td>Plataforma</td><td>KYB automático CNPJ</td></tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="section"><div class="section-header"><span>OKR 3 -- Performance financeira</span><span class="period-chip">Mai/26 Â· dados Metabase</span></div>
+    <div class="table-wrap"><table><thead><tr><th style="width:70px">KR</th><th>Descricao</th><th class="mono" style="text-align:right">% meta Mai/26</th><th style="text-align:center">Status</th></tr></thead><tbody><tr><td class="mono sev sev-m">KR 3.1</td><td>Cashout CDT + AmorSaude + Outros</td><td class="mono delta d-ok" style="text-align:right">133%</td><td class="sev sev-m" style="text-align:center">OK</td></tr> <tr><td class="mono sev sev-c">KR 3.2</td><td>App CDT - checkout TPV - Private Label</td><td class="mono delta d-bad" style="text-align:right">32%</td><td class="sev sev-c" style="text-align:center">Critico</td></tr> <tr><td class="mono sev sev-c">KR 3.3</td><td>Cashout Raia Drogasil + Ultragaz + Giftcard</td><td class="mono delta d-bad" style="text-align:right">38%</td><td class="sev sev-c" style="text-align:center">Critico</td></tr> <tr><td class="mono sev sev-c">KR 3.4</td><td>Cashin modelo novo (Raia Drogasil)</td><td class="mono delta d-bad" style="text-align:right">0%</td><td class="sev sev-c" style="text-align:center">Critico</td></tr> <tr><td class="mono sev sev-m">KR 3.5</td><td>Total de transacoes (cashout + checkout)</td><td class="mono delta d-ok" style="text-align:right">100%</td><td class="sev sev-m" style="text-align:center">OK</td></tr></tbody></table></div>
   </div>
+
+  <div class="footer"><div>+maisTODOS Â· Diretoria de Lealdade Â· Maio 2026</div><div class="footer-mono">Accounts DB (DB39) Â· dados compilados em ago/2026</div></div>
 
 </div>
 </div><!-- /page-mai -->
-<!-- PAGE: JUNHO / 2026 -->
-<div class="page page-month" id="page-jun">
+
+<!-- PAGE: JUNHO 2026 -->
+<div class="page page-evo" id="page-jun">
 <div class="doc">
-  <div class="month-header">
-    <div class="month-eyebrow">MaisTODOS · Lealdade · OKR 3 · Junho 2026</div>
-    <h2>Junho / 2026</h2>
-    <p class="month-sub">Indicadores de onboarding de parceiros locais · OKR 3 — Novos Parceiros</p>
+
+  <div class="header">
+    <div class="eyebrow">MaisTODOS Â· Diretoria de Lealdade Â· OKR 3 -- Novos Parceiros</div>
+    <h1>Evolucao de Indicadores<br>Junho 2026</h1>
+    <p class="header-sub">Comparativo Mai/26 vs Jun/26 -- pipeline de onboarding e performance financeira. Accounts DB (DB39) Â· dados extraidos ao longo de 2026.</p>
+    <div class="period-chip"><span>Mai/26</span><span style="opacity:.5"> -&gt; </span><span>Jun/26</span></div>
+    <div class="header-meta"><span class="meta-chip">Accounts DB Â· DB39</span><span class="meta-chip">OKR 3 Â· Metabase</span><span class="meta-chip">Parceiros Locais</span></div>
+  </div>
+
+  <div class="intro-box">
+    <div class="intro-col"><h3>Jornada obrigatoria</h3><p>Para um parceiro ficar ativo no App, passa por <strong>tres etapas em sequencia</strong>: <strong style="color:#7200D6">Plataforma</strong> (cadastro + KYB) > <strong style="color:#E5087E">Conta PJ</strong> (KYC + abertura) > <strong style="color:#7200D6">Plataforma</strong> (ativacao do cashback).</p></div>
+    <div class="intro-col"><h3>Etapas monitoradas</h3><span class="tag tag-purple">Perfil bancario PJ/PF</span><span class="tag tag-purple">KYB automatico</span><span class="tag tag-red">KYC biometria</span><span class="tag tag-purple">Conta duplicada</span><p style="margin-top:8px;font-size:12px;color:var(--text3)">Accounts DB: falhas no mes. KRs: % de atingimento da meta.</p></div>
+    <div class="intro-col"><h3>Destaques do periodo</h3><p>KR 3.1 (264%) e KR 3.5 (202%) em maximo historico. notif_business atinge pico absoluto (45). KYC melhora (15 para 7). SLOs walletpl e webamei rompidos -- inicio do problema critico.</p></div>
   </div>
 
   <div class="section">
-    <div class="section-header">
-      <span class="section-icon">🎯</span>
-      <span class="section-title">OKR 3 — Atingimento da Meta</span>
-    </div>
-    <div class="month-okr-summary"><p>KR 3.1 CDT (264%) e KR 3.5 Txs (202%) disparam — provável evento ou concentração pontual. Máximo histórico de notif_business (45). SLOs de walletpl e webamei rompidos neste mês.</p></div>
-    <div class="month-kr-grid">
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.1 · CDT</div>
-        <div class="month-kr-val kr-ok">264%</div>
-        <div class="month-kr-desc">Credenciamento direto</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.2 · PL</div>
-        <div class="month-kr-val kr-bad">28%</div>
-        <div class="month-kr-desc">Private Label</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.3 · Raia</div>
-        <div class="month-kr-val kr-bad">31%</div>
-        <div class="month-kr-desc">Raia / Drogasil</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.4 · Cashin</div>
-        <div class="month-kr-val kr-bad">R$0</div>
-        <div class="month-kr-desc">Modelo novo</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.5 · Txs</div>
-        <div class="month-kr-val kr-ok">202%</div>
-        <div class="month-kr-desc">Transações</div>
-      </div>
-    </div>
+    <div class="section-header"><span class="section-icon">&#9711;</span><span class="section-title">Funil de onboarding -- Falhas por etapa</span><span class="section-count">Accounts DB Â· Mai/26 vs Jun/26</span></div>
+    <p class="section-desc">Etapas com status <code>failed</code> no banco Accounts (DB39). Comparativo com mes anterior.</p>
+    <div style="margin-bottom:20px"><div class="etapa-row er-plat"><div class="etapa-num">1</div><div class="etapa-info"><span class="etapa-name">Plataforma</span><span class="etapa-sub">Cadastro Â· Perfil bancario Â· KYB</span></div><span class="etapa-meta">Accounts DB</span></div>
+    <div class="table-wrap"><table><thead><tr><th>Desafio</th><th>Mai/26</th><th>Jun/26</th><th>Variacao / Impacto</th><th>Status</th></tr></thead><tbody><tr><td><strong>Notificacao perfil bancario PJ (notif_business)</strong></td><td class="mono">33 falhas</td><td class="mono">45 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#dc2626">+12</span> &middot; Perfil PJ criado mas notificacao falhou</td><td><span class="sev sev-c">Critico</span></td></tr> <tr><td><strong>Notificacao perfil bancario PF (notif_personal)</strong></td><td class="mono">16 falhas</td><td class="mono">19 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#dc2626">+3</span> &middot; Perfil PF criado mas notificacao falhou</td><td><span class="sev sev-a">Alto</span></td></tr> <tr><td><strong>Envio perfil bancario PJ para criacao (send_business)</strong></td><td class="mono">4 falhas</td><td class="mono">6 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#dc2626">+2</span> &middot; Step upstream -- falha impede criacao do perfil</td><td><span class="sev sev-a">Alto</span></td></tr> <tr><td><strong>KYB automatico CNPJ (kyb_automatic)</strong></td><td class="mono">2 falhas</td><td class="mono">--</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#4A9900">-2</span> &middot; Validacao automatica de CNPJ</td><td><span class="sev sev-m">OK</span></td></tr></tbody></table></div></div>
+    <div style="margin-bottom:20px"><div class="etapa-row er-conta"><div class="etapa-num">2</div><div class="etapa-info"><span class="etapa-name">Conta PJ</span><span class="etapa-sub">KYC Â· Abertura de conta</span></div><span class="etapa-meta">Accounts DB</span></div>
+    <div class="table-wrap"><table><thead><tr><th>Desafio</th><th>Mai/26</th><th>Jun/26</th><th>Variacao / Impacto</th><th>Status</th></tr></thead><tbody><tr><td><strong>KYC biometria / identidade (onboarding_kyc)</strong></td><td class="mono">15 falhas</td><td class="mono">7 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#4A9900">-8</span> &middot; Parceiro preso sem notificacao automatica</td><td><span class="sev sev-m">Melhora</span></td></tr> <tr><td><strong>Conta bancaria duplicada (verify_dup)</strong></td><td class="mono">6 falhas</td><td class="mono">4 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#4A9900">-2</span> &middot; Conflito de duplicidade -- queda e positiva</td><td><span class="sev sev-m">Melhora</span></td></tr></tbody></table></div></div>
   </div>
 
-  <div class="section">
-    <div class="section-header">
-      <span class="section-icon">⚠️</span>
-      <span class="section-title">Falhas no Funil de Onboarding</span>
-    </div>
-    <p class="section-desc">Etapas com status <code>failed</code> no banco Accounts (DB39). Cada linha representa falhas distintas no mês.</p>
-    <div class="month-fail-wrap">
-      <table class="month-fail-table">
-        <thead>
-          <tr><th>Etapa</th><th>Falhas</th><th>Perspectiva</th><th>Descrição</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>notif_business</td><td class='fail-count' style='color:#99004F'>45</td><td>Conta PJ</td><td>Notificação perfil bancário PJ</td></tr>
-          <tr><td>notif_personal</td><td class='fail-count' style='color:#99004F'>19</td><td>Conta PF</td><td>Notificação perfil bancário PF</td></tr>
-          <tr><td>send_business_docs</td><td class='fail-count' style='color:#99004F'>6</td><td>Plataforma</td><td>Envio de documentos PJ</td></tr>
-          <tr><td>onboarding_kyc</td><td class='fail-count' style='color:#99004F'>7</td><td>Conta</td><td>KYC biometria / identidade</td></tr>
-          <tr><td>verify_bank_account</td><td class='fail-count' style='color:#7A4400'>4</td><td>Conta</td><td>Verificação conta bancária / dedup</td></tr>
-          <tr><td>kyb_automatic</td><td class='none'>—</td><td>Plataforma</td><td>KYB automático CNPJ</td></tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="section"><div class="section-header"><span>OKR 3 -- Performance financeira</span><span class="period-chip">Jun/26 Â· dados Metabase</span></div>
+    <div class="table-wrap"><table><thead><tr><th style="width:70px">KR</th><th>Descricao</th><th class="mono" style="text-align:right">% meta Jun/26</th><th style="text-align:center">Status</th></tr></thead><tbody><tr><td class="mono sev sev-m">KR 3.1</td><td>Cashout CDT + AmorSaude + Outros</td><td class="mono delta d-ok" style="text-align:right">264%</td><td class="sev sev-m" style="text-align:center">OK</td></tr> <tr><td class="mono sev sev-c">KR 3.2</td><td>App CDT - checkout TPV - Private Label</td><td class="mono delta d-bad" style="text-align:right">28%</td><td class="sev sev-c" style="text-align:center">Critico</td></tr> <tr><td class="mono sev sev-c">KR 3.3</td><td>Cashout Raia Drogasil + Ultragaz + Giftcard</td><td class="mono delta d-bad" style="text-align:right">31%</td><td class="sev sev-c" style="text-align:center">Critico</td></tr> <tr><td class="mono sev sev-c">KR 3.4</td><td>Cashin modelo novo (Raia Drogasil)</td><td class="mono delta d-bad" style="text-align:right">0%</td><td class="sev sev-c" style="text-align:center">Critico</td></tr> <tr><td class="mono sev sev-m">KR 3.5</td><td>Total de transacoes (cashout + checkout)</td><td class="mono delta d-ok" style="text-align:right">202%</td><td class="sev sev-m" style="text-align:center">OK</td></tr></tbody></table></div>
   </div>
+
+  <div class="footer"><div>+maisTODOS Â· Diretoria de Lealdade Â· Junho 2026</div><div class="footer-mono">Accounts DB (DB39) Â· dados compilados em ago/2026</div></div>
 
 </div>
 </div><!-- /page-jun -->
-<!-- PAGE: JULHO / 2026 -->
-<div class="page page-month" id="page-jul">
+
+<!-- PAGE: JULHO 2026 -->
+<div class="page page-evo" id="page-jul">
 <div class="doc">
-  <div class="month-header">
-    <div class="month-eyebrow">MaisTODOS · Lealdade · OKR 3 · Julho 2026</div>
-    <h2>Julho / 2026</h2>
-    <p class="month-sub">Indicadores de onboarding de parceiros locais · OKR 3 — Novos Parceiros</p>
+
+  <div class="header">
+    <div class="eyebrow">MaisTODOS Â· Diretoria de Lealdade Â· OKR 3 -- Novos Parceiros</div>
+    <h1>Evolucao de Indicadores<br>Julho 2026</h1>
+    <p class="header-sub">Comparativo Jun/26 vs Jul/26 -- pipeline de onboarding e performance financeira. Accounts DB (DB39) Â· dados extraidos ao longo de 2026.</p>
+    <div class="period-chip"><span>Jun/26</span><span style="opacity:.5"> -&gt; </span><span>Jul/26</span></div>
+    <div class="header-meta"><span class="meta-chip">Accounts DB Â· DB39</span><span class="meta-chip">OKR 3 Â· Metabase</span><span class="meta-chip">Parceiros Locais</span></div>
+  </div>
+
+  <div class="intro-box">
+    <div class="intro-col"><h3>Jornada obrigatoria</h3><p>Para um parceiro ficar ativo no App, passa por <strong>tres etapas em sequencia</strong>: <strong style="color:#7200D6">Plataforma</strong> (cadastro + KYB) > <strong style="color:#E5087E">Conta PJ</strong> (KYC + abertura) > <strong style="color:#7200D6">Plataforma</strong> (ativacao do cashback).</p></div>
+    <div class="intro-col"><h3>Etapas monitoradas</h3><span class="tag tag-purple">Perfil bancario PJ/PF</span><span class="tag tag-purple">KYB automatico</span><span class="tag tag-red">KYC biometria</span><span class="tag tag-purple">Conta duplicada</span><p style="margin-top:8px;font-size:12px;color:var(--text3)">Accounts DB: falhas no mes. KRs: % de atingimento da meta.</p></div>
+    <div class="intro-col"><h3>Destaques do periodo</h3><p>KRs voltam ao patamar normal. KYC dispara para 17 falhas -- maximo historico. notif_business cai (45 para 33). KR 3.2 segue em declinio (29%). SLOs permanecem rompidos.</p></div>
   </div>
 
   <div class="section">
-    <div class="section-header">
-      <span class="section-icon">🎯</span>
-      <span class="section-title">OKR 3 — Atingimento da Meta</span>
-    </div>
-    <div class="month-okr-summary"><p>KRs voltam ao patamar habitual após pico de junho. KYC atinge seu máximo histórico (17 falhas). Notificações bancárias continuam crônicas (33+18). KR 3.2 PL segue em queda (29%).</p></div>
-    <div class="month-kr-grid">
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.1 · CDT</div>
-        <div class="month-kr-val kr-warn">64%</div>
-        <div class="month-kr-desc">Credenciamento direto</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.2 · PL</div>
-        <div class="month-kr-val kr-bad">29%</div>
-        <div class="month-kr-desc">Private Label</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.3 · Raia</div>
-        <div class="month-kr-val kr-bad">31%</div>
-        <div class="month-kr-desc">Raia / Drogasil</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.4 · Cashin</div>
-        <div class="month-kr-val kr-bad">R$0</div>
-        <div class="month-kr-desc">Modelo novo</div>
-      </div>
-      <div class="month-kr-card">
-        <div class="month-kr-label">KR 3.5 · Txs</div>
-        <div class="month-kr-val kr-warn">58%</div>
-        <div class="month-kr-desc">Transações</div>
-      </div>
-    </div>
+    <div class="section-header"><span class="section-icon">&#9711;</span><span class="section-title">Funil de onboarding -- Falhas por etapa</span><span class="section-count">Accounts DB Â· Jun/26 vs Jul/26</span></div>
+    <p class="section-desc">Etapas com status <code>failed</code> no banco Accounts (DB39). Comparativo com mes anterior.</p>
+    <div style="margin-bottom:20px"><div class="etapa-row er-plat"><div class="etapa-num">1</div><div class="etapa-info"><span class="etapa-name">Plataforma</span><span class="etapa-sub">Cadastro Â· Perfil bancario Â· KYB</span></div><span class="etapa-meta">Accounts DB</span></div>
+    <div class="table-wrap"><table><thead><tr><th>Desafio</th><th>Jun/26</th><th>Jul/26</th><th>Variacao / Impacto</th><th>Status</th></tr></thead><tbody><tr><td><strong>Notificacao perfil bancario PJ (notif_business)</strong></td><td class="mono">45 falhas</td><td class="mono">33 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#4A9900">-12</span> &middot; Perfil PJ criado mas notificacao falhou</td><td><span class="sev sev-m">Melhora</span></td></tr> <tr><td><strong>Notificacao perfil bancario PF (notif_personal)</strong></td><td class="mono">19 falhas</td><td class="mono">18 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#4A9900">-1</span> &middot; Perfil PF criado mas notificacao falhou</td><td><span class="sev sev-m">Melhora</span></td></tr> <tr><td><strong>Envio perfil bancario PJ para criacao (send_business)</strong></td><td class="mono">6 falhas</td><td class="mono">4 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#4A9900">-2</span> &middot; Step upstream -- falha impede criacao do perfil</td><td><span class="sev sev-m">Melhora</span></td></tr> <tr><td><strong>KYB automatico CNPJ (kyb_automatic)</strong></td><td class="mono">--</td><td class="mono">2 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#999">--</span> &middot; Validacao automatica de CNPJ</td><td><span class="sev sev-m">Baixo</span></td></tr></tbody></table></div></div>
+    <div style="margin-bottom:20px"><div class="etapa-row er-conta"><div class="etapa-num">2</div><div class="etapa-info"><span class="etapa-name">Conta PJ</span><span class="etapa-sub">KYC Â· Abertura de conta</span></div><span class="etapa-meta">Accounts DB</span></div>
+    <div class="table-wrap"><table><thead><tr><th>Desafio</th><th>Jun/26</th><th>Jul/26</th><th>Variacao / Impacto</th><th>Status</th></tr></thead><tbody><tr><td><strong>KYC biometria / identidade (onboarding_kyc)</strong></td><td class="mono">7 falhas</td><td class="mono">17 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#dc2626">+10</span> &middot; Parceiro preso sem notificacao automatica</td><td><span class="sev sev-a">Alto</span></td></tr> <tr><td><strong>Conta bancaria duplicada (verify_dup)</strong></td><td class="mono">4 falhas</td><td class="mono">4 falhas</td><td><span style="font-family:'DM Mono',monospace;font-weight:600;color:#999">0</span> &middot; Conflito de duplicidade -- queda e positiva</td><td><span class="sev sev-m">Baixo</span></td></tr></tbody></table></div></div>
   </div>
 
-  <div class="section">
-    <div class="section-header">
-      <span class="section-icon">⚠️</span>
-      <span class="section-title">Falhas no Funil de Onboarding</span>
-    </div>
-    <p class="section-desc">Etapas com status <code>failed</code> no banco Accounts (DB39). Cada linha representa falhas distintas no mês.</p>
-    <div class="month-fail-wrap">
-      <table class="month-fail-table">
-        <thead>
-          <tr><th>Etapa</th><th>Falhas</th><th>Perspectiva</th><th>Descrição</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>notif_business</td><td class='fail-count' style='color:#99004F'>33</td><td>Conta PJ</td><td>Notificação perfil bancário PJ</td></tr>
-          <tr><td>notif_personal</td><td class='fail-count' style='color:#99004F'>18</td><td>Conta PF</td><td>Notificação perfil bancário PF</td></tr>
-          <tr><td>send_business_docs</td><td class='fail-count' style='color:#7A4400'>4</td><td>Plataforma</td><td>Envio de documentos PJ</td></tr>
-          <tr><td>onboarding_kyc</td><td class='fail-count' style='color:#99004F'>17</td><td>Conta</td><td>KYC biometria / identidade</td></tr>
-          <tr><td>verify_bank_account</td><td class='fail-count' style='color:#7A4400'>4</td><td>Conta</td><td>Verificação conta bancária / dedup</td></tr>
-          <tr><td>kyb_automatic</td><td class='fail-count' style='color:#7A4400'>2</td><td>Plataforma</td><td>KYB automático CNPJ</td></tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="section"><div class="section-header"><span>OKR 3 -- Performance financeira</span><span class="period-chip">Jul/26 Â· dados Metabase</span></div>
+    <div class="table-wrap"><table><thead><tr><th style="width:70px">KR</th><th>Descricao</th><th class="mono" style="text-align:right">% meta Jul/26</th><th style="text-align:center">Status</th></tr></thead><tbody><tr><td class="mono sev sev-a">KR 3.1</td><td>Cashout CDT + AmorSaude + Outros</td><td class="mono delta d-bad" style="text-align:right">64%</td><td class="sev sev-a" style="text-align:center">Alto</td></tr> <tr><td class="mono sev sev-c">KR 3.2</td><td>App CDT - checkout TPV - Private Label</td><td class="mono delta d-bad" style="text-align:right">29%</td><td class="sev sev-c" style="text-align:center">Critico</td></tr> <tr><td class="mono sev sev-c">KR 3.3</td><td>Cashout Raia Drogasil + Ultragaz + Giftcard</td><td class="mono delta d-bad" style="text-align:right">31%</td><td class="sev sev-c" style="text-align:center">Critico</td></tr> <tr><td class="mono sev sev-c">KR 3.4</td><td>Cashin modelo novo (Raia Drogasil)</td><td class="mono delta d-bad" style="text-align:right">0%</td><td class="sev sev-c" style="text-align:center">Critico</td></tr> <tr><td class="mono sev sev-a">KR 3.5</td><td>Total de transacoes (cashout + checkout)</td><td class="mono delta d-bad" style="text-align:right">58%</td><td class="sev sev-a" style="text-align:center">Alto</td></tr></tbody></table></div>
   </div>
+
+  <div class="footer"><div>+maisTODOS Â· Diretoria de Lealdade Â· Julho 2026</div><div class="footer-mono">Accounts DB (DB39) Â· dados compilados em ago/2026</div></div>
 
 </div>
 </div><!-- /page-jul -->
-
 
-<!-- PAGE: EVOLUÇÃO AGO -->
 <div class="page page-evo" id="page-evo">
 <div class="doc">
 
