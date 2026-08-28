@@ -1,0 +1,411 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório OKR 3 · MaisTODOS · 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--roxo:#7200D6;--verde:#70E000;--mag:#E5087E;--bg:#F7F7FA;--bg2:#fff;--text:#1a0033;--text2:#3d1a66;--text3:#7E7E7E;--border:#DDD0F5;--red:#dc2626;--amber:#C47000;--green-c:#4A9900;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;}
+.gnav{position:fixed;top:0;left:0;right:0;height:44px;background:var(--roxo);display:flex;align-items:center;padding:0 24px;gap:10px;z-index:100;}
+.gnav-logo{font-weight:700;color:#fff;font-size:14px;letter-spacing:.02em;margin-right:8px;}
+.pill{font-size:10px;font-weight:700;padding:2px 9px;border-radius:10px;font-family:'JetBrains Mono',monospace;}
+.pill-okr{background:rgba(255,255,255,.15);color:#fff;}
+.pill-live{background:var(--verde);color:#1a0033;}
+.doc{max-width:1100px;margin:0 auto;padding:68px 24px 64px;}
+.header{margin-bottom:32px;}
+.eyebrow{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--roxo);margin-bottom:6px;}
+h1{font-size:24px;font-weight:700;line-height:1.2;margin-bottom:10px;}
+.period-chip{display:inline-flex;align-items:center;gap:8px;background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:500;margin-bottom:8px;}
+.atualizado{font-size:11px;color:var(--text3);margin-bottom:32px;}
+.section{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin-bottom:20px;}
+.sh{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px;gap:12px;}
+.sh-title{font-weight:600;font-size:14px;flex-shrink:0;}
+.sh-sub{font-size:11px;color:var(--text3);text-align:right;}
+.tw{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;min-width:700px;}
+th{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);padding:7px 9px;text-align:left;border-bottom:2px solid var(--border);white-space:nowrap;}
+th.num{text-align:right;}
+td{padding:7px 9px;border-bottom:1px solid #f4f0fb;vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:#faf8ff;}
+.mono{font-family:'JetBrains Mono',monospace;font-size:11px;}
+.label{font-size:11px;color:var(--text2);}
+.num{text-align:right;}
+.dash{color:#ccc;}
+.c-ok{color:var(--green-c);}
+.c-warn{color:var(--amber);}
+.c-bad{color:var(--red);}
+.c-neu{color:var(--text3);}
+.spark{display:flex;align-items:flex-end;gap:2px;height:22px;min-width:88px;}
+.spark-bar{width:9px;border-radius:2px 2px 0 0;flex-shrink:0;}
+.alert{border-radius:6px;padding:10px 14px;font-size:12px;line-height:1.5;margin-bottom:8px;}
+.alert:last-child{margin-bottom:0;}
+.alert-crit{background:#fdeaf3;border-left:3px solid #dc2626;color:#7a0020;}
+.alert-warn{background:#fff8e1;border-left:3px solid #C47000;color:#7a4400;}
+.alert-ok{background:#f0fce8;border-left:3px solid #4A9900;color:#1a4a00;}
+.alert-info{background:#eef2fa;border-left:3px solid var(--roxo);color:var(--text2);}
+.note{font-size:11px;color:var(--text3);margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);}
+.footer{text-align:center;font-size:11px;color:var(--text3);padding:32px 24px;}
+</style>
+</head>
+<body>
+
+<div class="gnav">
+  <span class="gnav-logo">+maisTODOS</span>
+  <span class="pill pill-okr">OKR 3</span>
+  <span class="pill pill-live">● Jan–Ago 2026</span>
+</div>
+
+<div class="doc">
+
+<div class="header">
+  <div class="eyebrow">Diretoria de Lealdade · Relatório mensal consolidado</div>
+  <h1>Evolução OKR 3 — Performance financeira</h1>
+  <div class="period-chip"><b>Jan–Ago 2026</b> <span style="color:var(--text3)">· 8 meses</span></div>
+  <p class="atualizado">Gerado em 28/ago/2026 · Accounts DB (DB39) + Metabase Lake (DB41) · dados Mixpanel e Datadog pendentes de API</p>
+</div>
+
+<!-- ===== OKR 3 KRs ===== -->
+<div class="section">
+  <div class="sh">
+    <span class="sh-title">KR 3.1–3.5 · Valor realizado por mês (componentes principais)</span>
+    <span class="sh-sub">Verde ≥70% meta · Amarelo 40–70% · Vermelho &lt;40%</span>
+  </div>
+  <div class="tw">
+  <table>
+    <thead>
+      <tr>
+        <th style="min-width:180px">KR / Componente</th>
+        <th class="num">Jan</th><th class="num">Fev</th><th class="num">Mar</th><th class="num">Abr</th>
+        <th class="num">Mai</th><th class="num">Jun</th><th class="num">Jul</th><th class="num">Ago</th>
+        <th style="min-width:96px">Tend.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- KR 3.1 CDT -->
+      <tr>
+        <td class="label"><strong>KR 3.1</strong> Cashout CDT<br><span style="font-size:10px;color:var(--text3)">componente CDT · meta crescente</span></td>
+        <td class="mono num c-warn">51%</td>
+        <td class="mono num c-bad">1%</td>
+        <td class="mono num c-bad">&lt;1%</td>
+        <td class="mono num c-warn">41%</td>
+        <td class="mono num c-ok">133%</td>
+        <td class="mono num c-ok">264%</td>
+        <td class="mono num c-warn">64%</td>
+        <td class="mono num c-bad">1%</td>
+        <td>
+          <div class="spark">
+            <div class="spark-bar" style="height:11px;background:#C47000" title="Jan 51%"></div>
+            <div class="spark-bar" style="height:1px;background:#dc2626" title="Fev 1%"></div>
+            <div class="spark-bar" style="height:1px;background:#dc2626" title="Mar &lt;1%"></div>
+            <div class="spark-bar" style="height:9px;background:#C47000" title="Abr 41%"></div>
+            <div class="spark-bar" style="height:16px;background:#4A9900" title="Mai 133%"></div>
+            <div class="spark-bar" style="height:22px;background:#4A9900" title="Jun 264%"></div>
+            <div class="spark-bar" style="height:14px;background:#4A9900" title="Jul 64%"></div>
+            <div class="spark-bar" style="height:1px;background:#dc2626" title="Ago 1%"></div>
+          </div>
+        </td>
+      </tr>
+      <!-- KR 3.2 Private Label -->
+      <tr>
+        <td class="label"><strong>KR 3.2</strong> Cashout Private Label<br><span style="font-size:10px;color:var(--text3)">App CDT local · meta escalante</span></td>
+        <td class="mono num c-ok">119%</td>
+        <td class="mono num c-warn">68%</td>
+        <td class="mono num c-warn">61%</td>
+        <td class="mono num c-warn">40%</td>
+        <td class="mono num c-bad">32%</td>
+        <td class="mono num c-bad">28%</td>
+        <td class="mono num c-bad">29%</td>
+        <td class="mono num c-bad">17%</td>
+        <td>
+          <div class="spark">
+            <div class="spark-bar" style="height:22px;background:#4A9900" title="Jan 119%"></div>
+            <div class="spark-bar" style="height:13px;background:#C47000" title="Fev 68%"></div>
+            <div class="spark-bar" style="height:11px;background:#C47000" title="Mar 61%"></div>
+            <div class="spark-bar" style="height:9px;background:#C47000" title="Abr 40%"></div>
+            <div class="spark-bar" style="height:6px;background:#dc2626" title="Mai 32%"></div>
+            <div class="spark-bar" style="height:5px;background:#dc2626" title="Jun 28%"></div>
+            <div class="spark-bar" style="height:5px;background:#dc2626" title="Jul 29%"></div>
+            <div class="spark-bar" style="height:3px;background:#dc2626" title="Ago 17%"></div>
+          </div>
+        </td>
+      </tr>
+      <!-- KR 3.3 Raia Drogasil -->
+      <tr>
+        <td class="label"><strong>KR 3.3</strong> Cashout Raia Drogasil<br><span style="font-size:10px;color:var(--text3)">parceiro nacional · meta escalante</span></td>
+        <td class="mono num c-warn">62%</td>
+        <td class="mono num c-warn">49%</td>
+        <td class="mono num c-warn">54%</td>
+        <td class="mono num c-warn">41%</td>
+        <td class="mono num c-bad">38%</td>
+        <td class="mono num c-bad">31%</td>
+        <td class="mono num c-bad">31%</td>
+        <td class="mono num c-bad">20%</td>
+        <td>
+          <div class="spark">
+            <div class="spark-bar" style="height:14px;background:#C47000" title="Jan 62%"></div>
+            <div class="spark-bar" style="height:11px;background:#C47000" title="Fev 49%"></div>
+            <div class="spark-bar" style="height:12px;background:#C47000" title="Mar 54%"></div>
+            <div class="spark-bar" style="height:9px;background:#C47000" title="Abr 41%"></div>
+            <div class="spark-bar" style="height:8px;background:#dc2626" title="Mai 38%"></div>
+            <div class="spark-bar" style="height:7px;background:#dc2626" title="Jun 31%"></div>
+            <div class="spark-bar" style="height:7px;background:#dc2626" title="Jul 31%"></div>
+            <div class="spark-bar" style="height:4px;background:#dc2626" title="Ago 20%"></div>
+          </div>
+        </td>
+      </tr>
+      <!-- KR 3.5 Transacoes CDT -->
+      <tr>
+        <td class="label"><strong>KR 3.5</strong> Transações CDT cashout<br><span style="font-size:10px;color:var(--text3)">qtd transações · componente CDT</span></td>
+        <td class="mono num c-bad">28%</td>
+        <td class="mono num c-bad">1%</td>
+        <td class="mono num c-bad">&lt;1%</td>
+        <td class="mono num c-bad">22%</td>
+        <td class="mono num c-ok">100%</td>
+        <td class="mono num c-ok">202%</td>
+        <td class="mono num c-warn">58%</td>
+        <td class="mono num c-bad">&lt;1%</td>
+        <td>
+          <div class="spark">
+            <div class="spark-bar" style="height:3px;background:#dc2626" title="Jan 28%"></div>
+            <div class="spark-bar" style="height:1px;background:#dc2626" title="Fev 1%"></div>
+            <div class="spark-bar" style="height:1px;background:#dc2626" title="Mar &lt;1%"></div>
+            <div class="spark-bar" style="height:2px;background:#dc2626" title="Abr 22%"></div>
+            <div class="spark-bar" style="height:11px;background:#4A9900" title="Mai 100%"></div>
+            <div class="spark-bar" style="height:22px;background:#4A9900" title="Jun 202%"></div>
+            <div class="spark-bar" style="height:6px;background:#C47000" title="Jul 58%"></div>
+            <div class="spark-bar" style="height:1px;background:#dc2626" title="Ago &lt;1%"></div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">⚠️ KR 3.4 (Cashin modelo novo) = R$ 0 todo o ano — produto ainda sem lançamento. KR 3.6 (Cashin nacional) sem breakdown mensal disponível; total YTD Jan–Ago = R$ 71,8M. Valores de % são relativos à meta do componente consultado, não ao KR total.</p>
+</div>
+
+<!-- ===== ACCOUNTS DB STEPS ===== -->
+<div class="section">
+  <div class="sh">
+    <span class="sh-title">Failed steps no onboarding · Accounts DB (DB39)</span>
+    <span class="sh-sub">Contagem mensal · created_at filtrado por período</span>
+  </div>
+  <div class="tw">
+  <table>
+    <thead>
+      <tr>
+        <th style="min-width:200px">Step</th>
+        <th class="num">Jan</th><th class="num">Fev</th><th class="num">Mar</th><th class="num">Abr</th>
+        <th class="num">Mai</th><th class="num">Jun</th><th class="num">Jul</th><th class="num">Ago</th>
+        <th style="min-width:96px">Tend.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- notif business -->
+      <tr>
+        <td class="label">Notif. perfil bancário PJ<br><span style="font-size:10px;color:var(--text3)">receive_notification_business_bank_profile_created</span></td>
+        <td class="mono num dash">—</td>
+        <td class="mono num">7</td>
+        <td class="mono num">9</td>
+        <td class="mono num c-bad">33</td>
+        <td class="mono num c-bad">33</td>
+        <td class="mono num c-bad" style="font-weight:700">45</td>
+        <td class="mono num c-bad">33</td>
+        <td class="mono num c-bad">38</td>
+        <td>
+          <div class="spark">
+            <div class="spark-bar" style="height:1px;background:#ccc" title="Jan —"></div>
+            <div class="spark-bar" style="height:3px;background:#7200D6" title="Fev 7"></div>
+            <div class="spark-bar" style="height:4px;background:#dc2626" title="Mar 9"></div>
+            <div class="spark-bar" style="height:16px;background:#dc2626" title="Abr 33"></div>
+            <div class="spark-bar" style="height:16px;background:#dc2626" title="Mai 33"></div>
+            <div class="spark-bar" style="height:22px;background:#dc2626" title="Jun 45"></div>
+            <div class="spark-bar" style="height:16px;background:#dc2626" title="Jul 33"></div>
+            <div class="spark-bar" style="height:19px;background:#dc2626" title="Ago 38"></div>
+          </div>
+        </td>
+      </tr>
+      <!-- notif personal -->
+      <tr>
+        <td class="label">Notif. perfil bancário PF<br><span style="font-size:10px;color:var(--text3)">receive_notification_personal_bank_profile_created</span></td>
+        <td class="mono num dash">—</td>
+        <td class="mono num c-bad">13</td>
+        <td class="mono num c-bad">11</td>
+        <td class="mono num c-bad">19</td>
+        <td class="mono num c-bad">16</td>
+        <td class="mono num c-bad">19</td>
+        <td class="mono num c-bad">18</td>
+        <td class="mono num c-bad">20</td>
+        <td>
+          <div class="spark">
+            <div class="spark-bar" style="height:1px;background:#ccc"></div>
+            <div class="spark-bar" style="height:14px;background:#dc2626" title="Fev 13"></div>
+            <div class="spark-bar" style="height:12px;background:#dc2626" title="Mar 11"></div>
+            <div class="spark-bar" style="height:22px;background:#dc2626" title="Abr 19"></div>
+            <div class="spark-bar" style="height:18px;background:#dc2626" title="Mai 16"></div>
+            <div class="spark-bar" style="height:22px;background:#dc2626" title="Jun 19"></div>
+            <div class="spark-bar" style="height:20px;background:#dc2626" title="Jul 18"></div>
+            <div class="spark-bar" style="height:22px;background:#dc2626" title="Ago 20"></div>
+          </div>
+        </td>
+      </tr>
+      <!-- send business -->
+      <tr>
+        <td class="label">Envio criação perfil bancário PJ<br><span style="font-size:10px;color:var(--text3)">send_business_bank_profile_for_creation</span></td>
+        <td class="mono num dash">—</td>
+        <td class="mono num">2</td>
+        <td class="mono num">3</td>
+        <td class="mono num c-bad">14</td>
+        <td class="mono num">4</td>
+        <td class="mono num">6</td>
+        <td class="mono num">4</td>
+        <td class="mono num c-bad" style="font-weight:700">13 ↑</td>
+        <td>
+          <div class="spark">
+            <div class="spark-bar" style="height:1px;background:#ccc"></div>
+            <div class="spark-bar" style="height:3px;background:#7200D6"></div>
+            <div class="spark-bar" style="height:4px;background:#7200D6"></div>
+            <div class="spark-bar" style="height:22px;background:#dc2626" title="Abr 14"></div>
+            <div class="spark-bar" style="height:6px;background:#7200D6"></div>
+            <div class="spark-bar" style="height:9px;background:#7200D6"></div>
+            <div class="spark-bar" style="height:6px;background:#7200D6"></div>
+            <div class="spark-bar" style="height:20px;background:#dc2626" title="Ago 13 +225%"></div>
+          </div>
+        </td>
+      </tr>
+      <!-- kyc -->
+      <tr>
+        <td class="label">KYC<br><span style="font-size:10px;color:var(--text3)">onboarding_kyc</span></td>
+        <td class="mono num">1</td>
+        <td class="mono num">3</td>
+        <td class="mono num">9</td>
+        <td class="mono num c-warn" style="font-weight:700">20</td>
+        <td class="mono num c-warn">15</td>
+        <td class="mono num">7</td>
+        <td class="mono num c-warn">17</td>
+        <td class="mono num">9</td>
+        <td>
+          <div class="spark">
+            <div class="spark-bar" style="height:1px;background:#7200D6"></div>
+            <div class="spark-bar" style="height:3px;background:#7200D6"></div>
+            <div class="spark-bar" style="height:10px;background:#C47000"></div>
+            <div class="spark-bar" style="height:22px;background:#C47000" title="Abr 20"></div>
+            <div class="spark-bar" style="height:16px;background:#C47000"></div>
+            <div class="spark-bar" style="height:8px;background:#7200D6"></div>
+            <div class="spark-bar" style="height:19px;background:#C47000" title="Jul 17"></div>
+            <div class="spark-bar" style="height:10px;background:#7200D6"></div>
+          </div>
+        </td>
+      </tr>
+      <!-- verify -->
+      <tr>
+        <td class="label">Verificação conta duplicada<br><span style="font-size:10px;color:var(--text3)">verify_bank_account_already_exists</span></td>
+        <td class="mono num dash">—</td>
+        <td class="mono num dash">—</td>
+        <td class="mono num">1</td>
+        <td class="mono num">1</td>
+        <td class="mono num c-warn">6</td>
+        <td class="mono num">4</td>
+        <td class="mono num">4</td>
+        <td class="mono num">3</td>
+        <td>
+          <div class="spark">
+            <div class="spark-bar" style="height:1px;background:#ccc"></div>
+            <div class="spark-bar" style="height:1px;background:#ccc"></div>
+            <div class="spark-bar" style="height:4px;background:#7200D6"></div>
+            <div class="spark-bar" style="height:4px;background:#7200D6"></div>
+            <div class="spark-bar" style="height:22px;background:#C47000" title="Mai 6"></div>
+            <div class="spark-bar" style="height:15px;background:#7200D6"></div>
+            <div class="spark-bar" style="height:15px;background:#7200D6"></div>
+            <div class="spark-bar" style="height:11px;background:#7200D6"></div>
+          </div>
+        </td>
+      </tr>
+      <!-- kyb -->
+      <tr>
+        <td class="label">KYB automático<br><span style="font-size:10px;color:var(--text3)">onboarding_kyb_automatic</span></td>
+        <td class="mono num dash">—</td>
+        <td class="mono num">2</td>
+        <td class="mono num dash">—</td>
+        <td class="mono num">3</td>
+        <td class="mono num">2</td>
+        <td class="mono num dash">—</td>
+        <td class="mono num">2</td>
+        <td class="mono num c-ok">1 ↓</td>
+        <td>
+          <div class="spark">
+            <div class="spark-bar" style="height:1px;background:#ccc"></div>
+            <div class="spark-bar" style="height:15px;background:#7200D6"></div>
+            <div class="spark-bar" style="height:1px;background:#ccc"></div>
+            <div class="spark-bar" style="height:22px;background:#7200D6"></div>
+            <div class="spark-bar" style="height:15px;background:#7200D6"></div>
+            <div class="spark-bar" style="height:1px;background:#ccc"></div>
+            <div class="spark-bar" style="height:15px;background:#7200D6"></div>
+            <div class="spark-bar" style="height:8px;background:#4A9900"></div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">Cores indicam volume relativo ao mês de pico. Seta ↑ = crescimento relevante vs mês anterior.</p>
+</div>
+
+<!-- ===== PONTOS DE MELHORIA ===== -->
+<div class="section">
+  <div class="sh">
+    <span class="sh-title">Pontos de melhoria identificados · Jan–Ago 2026</span>
+    <span class="sh-sub">Análise de tendência dos últimos 8 meses</span>
+  </div>
+
+  <div class="alert alert-crit">
+    🔴 <strong>KR 3.1 CDT + KR 3.5 Transações CDT colapsaram em agosto</strong> — de pico em Jun (264% e 202% da meta) para quase zero em Ago (&lt;1%). Causa provável: <strong>SLO walletpl BREACHED há 2+ meses</strong> sem correção — cada 1-em-10 chamadas de pagamento falha, destruindo conversão no app e, consequentemente, o cashout CDT.
+  </div>
+
+  <div class="alert alert-crit">
+    🔴 <strong>KR 3.2 Private Label em queda contínua há 8 meses</strong> — caiu de 119% (Jan) para 17% (Ago) enquanto a meta cresce mês a mês. Tendência linear de deterioração. Necessário revisar se a meta é compatível com o produto atual ou se há bloqueio operacional não mapeado.
+  </div>
+
+  <div class="alert alert-crit">
+    🔴 <strong>KR 3.3 Raia Drogasil em queda contínua</strong> — 62% (Jan) → 20% (Ago). Parceiro com potencial mas sem crescimento; possível problema de ativação ou cashback incorreto.
+  </div>
+
+  <div class="alert alert-crit">
+    🔴 <strong>send_business_bank_profile_for_creation</strong> com spike em Ago (13 falhas, +225% vs Jul) — segundo pico do ano depois de Abr (14). Step crítico para abertura de conta PJ: falha aqui bloqueia o parceiro antes mesmo da tentativa bancária.
+  </div>
+
+  <div class="alert alert-crit">
+    🔴 <strong>Notificações de perfil bancário PJ e PF cronicamente altas</strong> desde Abr — PJ nunca caiu abaixo de 33 falhas/mês, PF nunca abaixo de 16. São os steps com maior volume de falha no sistema. Investigar se há retry automático ou se cada falha representa um parceiro bloqueado.
+  </div>
+
+  <div class="alert alert-warn">
+    🟡 <strong>KYC oscila sem tendência clara</strong> — pico Abr (20), queda Jun (7), alta Jul (17), queda Ago (9). Pode indicar sazonalidade no envio de documentos ou dependência de processos manuais. Merece monitoramento semanal.
+  </div>
+
+  <div class="alert alert-warn">
+    🟡 <strong>KR 3.4 (Cashin modelo novo) = R$ 0 em todos os 8 meses</strong> — produto sem lançamento. Se a meta permanece ativa, é necessário decisão sobre revisão do KR ou aceleração do roadmap de lançamento.
+  </div>
+
+  <div class="alert alert-ok">
+    ✅ <strong>KYB automático melhorando</strong> — 3 falhas (Abr) → 1 falha (Ago). Step técnico com tendência positiva.
+  </div>
+
+  <div class="alert alert-ok">
+    ✅ <strong>verify_bank_account_already_exists</strong> caindo desde Mai (6) → Ago (3). Menos duplicatas chegando ao banco, provavelmente reflexo de melhora no cadastro.
+  </div>
+
+  <div class="alert alert-info">
+    💡 <strong>Prioridade máxima:</strong> corrigir o SLO walletpl — é a causa raiz que explica KR 3.1 e KR 3.5 zerando em agosto e a taxa de conversão do checkout em colapso (34,5% em ago vs 52,2% em jun). Os outros KRs têm problemas estruturais de meta vs capacidade de execução que merecem revisão de OKR separada.
+  </div>
+</div>
+
+<div class="footer">
+  +maisTODOS · Diretoria de Lealdade · Relatório OKR 3 Jan–Ago 2026 · gerado 28/ago/2026 · Accounts DB (DB39) + Metabase Lake (DB41)
+</div>
+
+</div>
+</body>
+</html>
