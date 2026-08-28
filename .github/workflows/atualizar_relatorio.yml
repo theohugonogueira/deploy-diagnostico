@@ -1,0 +1,42 @@
+name: Atualizar relatório OKR 3
+
+on:
+  schedule:
+    - cron: '0 11 * * *'   # 08:00 BRT (UTC-3) todos os dias
+  workflow_dispatch:        # permite rodar manualmente pelo GitHub
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar dependências
+        run: pip install requests
+
+      - name: Gerar relatorio.html
+        env:
+          METABASE_URL:       ${{ secrets.METABASE_URL }}
+          METABASE_EMAIL:     ${{ secrets.METABASE_EMAIL }}
+          METABASE_PASSWORD:  ${{ secrets.METABASE_PASSWORD }}
+          SLACK_WEBHOOK_URL:  ${{ secrets.SLACK_WEBHOOK_URL }}
+          MIXPANEL_SA_USER:   ${{ secrets.MIXPANEL_SA_USER }}
+          MIXPANEL_SA_SECRET: ${{ secrets.MIXPANEL_SA_SECRET }}
+          DD_API_KEY:         ${{ secrets.DD_API_KEY }}
+          DD_APP_KEY:         ${{ secrets.DD_APP_KEY }}
+        run: python scripts/gerar_relatorio.py
+
+      - name: Commitar e fazer push se houver mudança
+        run: |
+          git config user.name  "relatorio-bot"
+          git config user.email "bot@maistodos.com.br"
+          git add relatorio.html
+          git diff --cached --quiet || git commit -m "chore: atualiza relatorio.html ($(date -u '+%Y-%m-%d %H:%M UTC'))"
+          git push
