@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico · Onboarding de Parceiros · MaisTODOS</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mt-roxo: #7200D6;
+    --mt-verde: #70E000;
+    --mt-magenta: #E5087E;
+    --mt-cinza: #7E7E7E;
+    --mt-branco: #FFFFFF;
+    --bg: #F7F7FA;
+    --bg2: #ffffff;
+    --bg3: #EEE8FA;
+    --text: #1a0033;
+    --text2: #3d1a66;
+    --text3: #7E7E7E;
+    --border: #DDD0F5;
+    --border2: #C4AAE8;
+    --blue: #7200D6;
+    --blue-bg: #EEE8FA;
+    --blue-text: #5100A0;
+    --green: #4A9900;
+    --green-bg: #EDFAC8;
+    --green-text: #2D6600;
+    --purple: #7200D6;
+    --purple-bg: #EEE8FA;
+    --purple-text: #5100A0;
+    --amber: #C47000;
+    --amber-bg: #FFF3D0;
+    --amber-text: #7A4400;
+    --red: #E5087E;
+    --red-bg: #FDEAF3;
+    --red-text: #99004F;
+    --radius: 6px;
+    --radius-lg: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.6; padding: 48px 24px 80px; }
+  .doc { max-width: 860px; margin: 0 auto; }
+  .header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1.5px solid var(--border2); }
+  .header-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--text3); margin-bottom: 10px; font-family: 'DM Mono', monospace; }
+  .header h1 { font-size: 32px; font-weight: 700; color: #7200D6; line-height: 1.2; margin-bottom: 12px; }
+  .header-sub { font-size: 15px; color: var(--text2); max-width: 600px; line-height: 1.65; }
+  .header-meta { display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap; }
+  .meta-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text3); font-family: 'DM Mono', monospace; }
+  .meta-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .intro-box { background: #EEE8FA; border: 1px solid #C4AAE8; border-radius: var(--radius-lg); padding: 20px 24px; margin-bottom: 48px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  @media(max-width:640px){ .intro-box { grid-template-columns: 1fr; } }
+  .intro-col h3 { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: var(--text3); margin-bottom: 8px; font-family: 'DM Mono', monospace; }
+  .intro-col p { font-size: 13px; color: var(--text2); line-height: 1.5; }
+  .intro-col .tag { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 4px; margin: 2px 2px 2px 0; }
+  .tag-blue { background: var(--blue-bg); color: var(--blue-text); }
+  .tag-green { background: var(--green-bg); color: var(--green-text); }
+  .tag-purple { background: var(--purple-bg); color: var(--purple-text); }
+  .tag-amber { background: var(--amber-bg); color: var(--amber-text); }
+  .tag-red { background: var(--red-bg); color: var(--red-text); }
+  .tag-gray { background: var(--bg3); color: var(--text2); }
+  .section { margin-bottom: 56px; }
+  .section-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #7200D6; }
+  .section-icon { font-size: 18px; line-height: 1; }
+  .section-title { font-size: 20px; font-weight: 700; color: #7200D6; }
+  .section-count { font-size: 12px; color: var(--text3); font-family: 'DM Mono', monospace; margin-left: auto; }
+  .section-desc { font-size: 13px; color: var(--text2); margin-bottom: 20px; line-height: 1.6; max-width: 700px; }
+  .group-label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: .09em; color: var(--text3); font-family: 'DM Mono', monospace; margin: 24px 0 8px; }
+  .ind-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 8px; }
+  .ind-head { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-bottom: 1px solid var(--border); background: #F7F0FF; }
+  .ind-n { font-size: 11px; font-weight: 600; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'DM Mono', monospace; }
+  .n-plat { background: #7200D6; color: #ffffff; }
+  .n-conta { background: #70E000; color: #1a0033; }
+  .n-app { background: #7200D6; color: #ffffff; }
+  .ind-title { font-size: 13px; font-weight: 500; color: var(--text); flex: 1; }
+  .ind-etapa { font-size: 11px; color: var(--text3); font-family: 'DM Mono', monospace; white-space: nowrap; }
+  .ind-body { padding: 12px 16px; display: grid; grid-template-columns: 1.3fr 1.4fr 1fr 0.8fr; gap: 16px; }
+  @media(max-width:640px){ .ind-body { grid-template-columns: 1fr 1fr; } }
+  .ind-field label { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: .07em; color: var(--text3); display: block; margin-bottom: 3px; font-family: 'DM Mono', monospace; }
+  .ind-field p { font-size: 12px; color: var(--text2); line-height: 1.5; }
+  .ind-field strong { font-weight: 500; color: var(--text); }
+  .sev { display: inline-block; font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 4px; margin-top: 4px; font-family: 'DM Mono', monospace; }
+  .sev-c { background: #FDEAF3; color: #99004F; border-left: 3px solid #E5087E; padding-left: 8px; }
+  .sev-a { background: #EEE8FA; color: #5100A0; border-left: 3px solid #7200D6; padding-left: 8px; }
+  .sev-m { background: #EDFAC8; color: #2D6600; border-left: 3px solid #70E000; padding-left: 8px; }
+  .stag { display: inline-flex; font-size: 10px; font-weight: 500; padding: 1px 6px; border-radius: 3px; margin: 1px; white-space: nowrap; font-family: 'DM Mono', monospace; }
+  .st-ini { background: #EEE8FA; color: #5100A0; }
+  .st-proc { background: #FFF3D0; color: #7A4400; }
+  .st-ok { background: #EDFAC8; color: #2D6600; font-weight: 600; }
+  .st-fail { background: #FDEAF3; color: #99004F; }
+  .st-pend { background: #FFF3D0; color: #7A4400; }
+  .st-rev { background: #F0ECF8; color: #7E7E7E; }
+  .tool-badge { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 4px; border: 1px solid var(--border2); color: var(--text2); background: var(--bg); margin: 2px 2px 0 0; font-family: 'DM Mono', monospace; }
+  .sc-table-wrap { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 8px; }
+  .sc-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .sc-table th { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: .07em; color: var(--text3); padding: 8px 14px; border-bottom: 1px solid var(--border); text-align: left; background: #fafaf9; font-family: 'DM Mono', monospace; }
+  .sc-table td { padding: 8px 14px; border-bottom: 1px solid var(--border); color: var(--text2); vertical-align: top; }
+  .sc-table tr:last-child td { border-bottom: none; }
+  .sc-table td strong { font-weight: 500; color: var(--text); }
+  .sev-summary { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .sev-pill { font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 20px; font-family: 'DM Mono', monospace; }
+  .sev-pill.sev-c { background: #FDEAF3; color: #99004F; border: none; }
+  .sev-pill.sev-a { background: #EEE8FA; color: #5100A0; border: none; }
+  .sev-pill.sev-m { background: #EDFAC8; color: #2D6600; border: none; }
+  .footer { margin-top: 64px; padding: 16px 24px; border-top: 3px solid #70E000; background: #7200D6; border-radius: var(--radius-lg); font-size: 12px; color: #ffffff; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .global-nav { position:fixed;top:0;left:0;right:0;z-index:999;background:#7200D6;border-bottom:2px solid #70E000;display:flex;align-items:center;padding:0 24px;height:44px;font-family:'DM Sans',sans-serif; }
+  .global-nav-logo { font-size:13px;font-weight:700;color:#fff;margin-right:24px;letter-spacing:-.01em; }
+  .global-nav-logo span { color:#70E000; }
+  .global-nav-tabs { display:flex; }
+  .gnav-tab { font-size:12px;font-weight:500;padding:0 16px;height:44px;display:flex;align-items:center;cursor:pointer;color:rgba(255,255,255,.45);border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap; }
+  .gnav-tab:hover { color:rgba(255,255,255,.75); }
+  .gnav-tab.active { color:#fff;border-bottom-color:#70E000; }
+  .gnav-pill { font-size:10px;font-weight:600;padding:2px 7px;border-radius:10px;margin-left:6px;font-family:'DM Mono',monospace; }
+  .pill-dd { background:#ffffff;color:#7200D6;font-weight:700; }
+  .page { display:none; }
+  .page.active { display:block; }
+  .page-briefing { padding-top:44px; }
+  .page-briefing .doc { padding-top:48px; }
+  .page-dd { padding-top:44px;font-family:'Inter',sans-serif;background:#1b1b2e;min-height:100vh;color:#e0e0f0;font-size:12px; }
+  .dd-inner { display:flex; }
+  .dd-sidebar { width:200px;background:#0f0f1a;border-right:1px solid #2a2a45;min-height:calc(100vh - 44px);padding:10px 0;flex-shrink:0; }
+  .dd-sb-section { font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#404060;padding:12px 14px 4px; }
+  .dd-sb-item { display:flex;align-items:center;gap:8px;padding:7px 14px;cursor:pointer;color:#8080a0;font-size:11px;border-left:2px solid transparent; }
+  .dd-sb-item:hover { background:rgba(255,255,255,.04);color:#c0c0d8; }
+  .dd-sb-item.active { background:rgba(114,0,214,.2);color:#B87FFF;border-left-color:#7200D6; }
+  .dd-main { flex:1; }
+  .dd-dash-header { padding:12px 20px 10px;border-bottom:1px solid #2a2a45;background:#0f0f1a; }
+  .dd-breadcrumb { font-size:11px;color:#505070;margin-bottom:4px; }
+  .dd-dash-title { font-size:15px;font-weight:600;color:#e0e0f0; }
+  .dd-controls { display:flex;gap:6px;margin-top:8px;align-items:center; }
+  .dd-ctrl-btn { font-size:11px;padding:4px 10px;border-radius:4px;border:1px solid #3a3a5c;color:#8080a0;background:#23233a;cursor:pointer; }
+  .dd-ctrl-btn.act { background:#3a3a5c;color:#e0e0f0; }
+  .dd-live { display:flex;align-items:center;gap:5px;font-size:11px;color:#70E000; }
+  .dd-live-dot { width:6px;height:6px;border-radius:50%;background:#70E000;animation:ddp 2s infinite; }
+  @keyframes ddp{0%,100%{opacity:1}50%{opacity:.3}}
+  .dd-ftabs { display:flex;padding:0 20px;border-bottom:1px solid #2a2a45;background:#1b1b2e; }
+  .dd-ftab { font-size:12px;color:#505070;padding:9px 14px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap; }
+  .dd-ftab:hover { color:#8080a0; }
+  .dd-ftab.active { color:#e0e0f0;border-bottom-color:#70E000; }
+  .dd-content { padding:16px 20px; }
+  .dd-slbl { font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#404060;margin:16px 0 8px;padding-bottom:6px;border-bottom:1px solid #2a2a45; }
+  .dd-slbl:first-child { margin-top:0; }
+  .dd-grid { display:grid;gap:8px;margin-bottom:8px; }
+  .dd-g4 { grid-template-columns:repeat(4,1fr); }
+  .dd-g3 { grid-template-columns:repeat(3,1fr); }
+  .dd-g2 { grid-template-columns:repeat(2,1fr); }
+  @media(max-width:900px){.dd-g4,.dd-g3{grid-template-columns:repeat(2,1fr)}}
+  .dd-w { background:#23233a;border:1px solid #2a2a45;border-radius:4px;overflow:hidden; }
+  .dd-wh { display:flex;align-items:center;justify-content:space-between;padding:7px 12px;border-bottom:1px solid #2a2a45; }
+  .dd-wt { font-size:11px;font-weight:500;color:#8080a0; }
+  .dd-qv { padding:14px; }
+  .dd-qv-v { font-size:28px;font-weight:600;font-family:monospace;line-height:1; }
+  .dd-qv-l { font-size:10px;color:#404060;margin-top:5px;font-family:monospace;line-height:1.4; }
+  .dd-qv-d { display:inline-flex;font-size:10px;padding:1px 6px;border-radius:3px;margin-top:4px; }
+  .dg{color:#70E000}.dy{color:#f5c400}.dr{color:#ff4d4d}.db{color:#4da6ff}
+  .dg-bg{background:#EDFAC8;color:#2D6600}
+  .dy-bg{background:#EEE8FA;color:#7200D6}
+  .dr-bg{background:#FDEAF3;color:#E5087E}
+  .dd-tlr { display:flex;align-items:center;gap:8px;padding:6px 12px;border-bottom:1px solid #2a2a45; }
+  .dd-tlr:last-child{border-bottom:none}
+  .dd-tln { font-size:11px;color:#8080a0;width:140px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+  .dd-tlbw { flex:1;height:12px;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden; }
+  .dd-tlb { height:100%;border-radius:2px;opacity:.8; }
+  .dd-tlv { font-size:11px;font-family:monospace;color:#c0c0d8;min-width:56px;text-align:right; }
+  .dd-ar { display:flex;align-items:center;gap:10px;padding:7px 12px;border-bottom:1px solid #2a2a45;cursor:pointer; }
+  .dd-ar:hover{background:rgba(255,255,255,.02)}
+  .dd-ar:last-child{border-bottom:none}
+  .dd-as { font-size:10px;font-weight:600;padding:2px 7px;border-radius:3px;min-width:42px;text-align:center; }
+  .as-c{background:#FDEAF3;color:#E5087E;font-weight:600}
+  .as-w{background:#EEE8FA;color:#7200D6;font-weight:600}
+  .as-o{background:#EDFAC8;color:#2D6600;font-weight:600}
+  .dd-an{flex:1;font-size:11px;color:#8080a0}
+  .dd-an strong{font-weight:500;color:#c0c0d8}
+  .dd-at{font-size:10px;color:#404060;font-family:monospace}
+  .dd-panel{display:none}.dd-panel.active{display:block}
+  @media print { body { background: white; padding: 24px; } .ind-card, .sc-table-wrap, .intro-box { break-inside: avoid; } }
+  /* ---- Evolução 15d ---- */
+  .page-evo { padding-top:44px; }
+  .page-evo .doc { padding-top:48px; }
+  .evo-hl { display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:40px; }
+  @media(max-width:640px){ .evo-hl { grid-template-columns:1fr; } }
+  .evo-hl-card { background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px; }
+  .evo-hl-card.up  { border-top:3px solid var(--green); }
+  .evo-hl-card.crit { border-top:3px solid var(--red); }
+  .evo-hl-card.warn { border-top:3px solid var(--amber); }
+  .evo-hl-eyebrow { font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);font-family:'DM Mono',monospace;margin-bottom:6px; }
+  .evo-hl-val { font-size:26px;font-weight:700;line-height:1;font-family:'DM Mono',monospace;margin-bottom:4px; }
+  .evo-hl-card.up .evo-hl-val  { color:var(--green); }
+  .evo-hl-card.crit .evo-hl-val { color:var(--red); }
+  .evo-hl-card.warn .evo-hl-val { color:var(--amber); }
+  .evo-hl-label { font-size:12px;color:var(--text2);line-height:1.4; }
+  .delta { display:inline-flex;align-items:center;gap:2px;font-size:11px;font-weight:600;padding:2px 7px;border-radius:4px;font-family:'DM Mono',monospace;white-space:nowrap;font-variant-numeric:tabular-nums; }
+  .d-up         { background:var(--green-bg);color:var(--green-text); }
+  .d-down-good  { background:var(--green-bg);color:var(--green-text); }
+  .d-up-bad     { background:var(--red-bg);color:var(--red-text); }
+  .d-flat       { background:var(--bg3);color:var(--text3); }
+  .d-warn       { background:var(--amber-bg);color:var(--amber-text); }
+  .d-new        { background:var(--red-bg);color:var(--red-text); }
+  .period-chip  { display:inline-flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius-lg);padding:7px 14px;margin-top:14px;font-family:'DM Mono',monospace;font-size:12px;color:var(--text2); }
+  .period-chip .sep { color:var(--mt-roxo);font-weight:600; }
+  .period-chip .b   { color:var(--text);font-weight:500; }
+  .trend-bar-row { display:flex;align-items:center;gap:8px;padding:8px 14px;border-bottom:1px solid var(--border); }
+  .trend-bar-row:last-child { border-bottom:none; }
+  .trend-month { font-size:11px;font-family:'DM Mono',monospace;color:var(--text3);width:80px;flex-shrink:0; }
+  .trend-bar-wrap { flex:1;height:8px;background:rgba(0,0,0,.06);border-radius:4px;overflow:hidden; }
+  .trend-bar { height:100%;border-radius:4px; }
+  .trend-val { font-size:12px;font-family:'DM Mono',monospace;font-weight:600;color:var(--text);min-width:48px;text-align:right; }
+  .alert-inline { border-radius:var(--radius-lg);padding:14px 18px;margin-bottom:8px;border-left:4px solid; }
+  .ai-crit { background:var(--red-bg);border-color:var(--mt-magenta); }
+  .ai-info { background:var(--bg3);border-color:var(--mt-roxo); }
+  .ai-head { font-size:12px;font-weight:600;margin-bottom:4px; }
+  .ai-crit .ai-head { color:var(--red-text); }
+  .ai-info .ai-head { color:var(--text2); }
+  .ai-body { font-size:12px;color:var(--text2);line-height:1.55; }
+  /* ── Evolução 15d v2 — componentes ── */
+  .eyebrow { font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;font-family:'DM Mono',monospace; }
+  .table-wrap { background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;overflow-x:auto;margin-bottom:8px; }
+  .table-wrap table { width:100%;border-collapse:collapse;font-size:12px;min-width:500px; }
+  .table-wrap thead th { font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);padding:8px 14px;border-bottom:1px solid var(--border);text-align:left;background:#fafaf9;font-family:'DM Mono',monospace; }
+  .table-wrap tbody td { padding:8px 14px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top; }
+  .table-wrap tbody tr:last-child td { border-bottom:none; }
+  .table-wrap tbody td strong { font-weight:500;color:var(--text); }
+  .etapa-row { display:flex;align-items:center;gap:10px;padding:9px 16px;border-radius:var(--radius);margin-bottom:10px; }
+  .etapa-num { font-size:11px;font-weight:700;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'DM Mono',monospace; }
+  .etapa-info { flex:1; }
+  .etapa-name { font-size:13px;font-weight:600;color:var(--text); }
+  .etapa-sub { font-size:12px;margin-left:8px; }
+  .etapa-meta { font-size:11px;white-space:nowrap;font-family:'DM Mono',monospace; }
+  .er-plat { background:#EEE8FA;border-left:4px solid var(--mt-roxo); }
+  .er-plat .etapa-num { background:var(--mt-roxo);color:#fff; }
+  .er-plat .etapa-sub { color:#5100A0; }
+  .er-plat .etapa-meta { color:var(--mt-roxo); }
+  .er-conta { background:var(--red-bg);border-left:4px solid var(--mt-magenta); }
+  .er-conta .etapa-num { background:var(--mt-magenta);color:#fff; }
+  .er-conta .etapa-sub { color:var(--red-text); }
+  .er-conta .etapa-meta { color:var(--mt-magenta); }
+  .er-app { background:var(--green-bg);border-left:4px solid var(--mt-verde); }
+  .er-app .etapa-num { background:var(--mt-verde);color:#1a0033; }
+  .er-app .etapa-sub { color:var(--green-text); }
+  .er-app .etapa-meta { color:var(--green); }
+  .grid-3 { display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px; }
+  @media(max-width:640px){ .grid-3 { grid-template-columns:1fr; } }
+  .ccard { background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px; }
+  .ccard-title { font-size:13px;font-weight:700;margin-bottom:10px; }
+  .ccard-body { font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:14px; }
+  .ccard-stats { font-size:11px;font-family:'DM Mono',monospace;border-top:1px solid var(--border);padding-top:10px;line-height:1.85; }
+  .alert { border-radius:var(--radius-lg);padding:14px 18px;margin-bottom:8px;border-left:4px solid; }
+  .alert-crit { background:var(--red-bg);border-color:var(--mt-magenta); }
+  .alert-info { background:var(--bg3);border-color:var(--mt-roxo); }
+  .alert-warn { background:var(--amber-bg);border-color:var(--amber); }
+  .alert-head { font-size:12px;font-weight:600;margin-bottom:4px; }
+  .alert-crit .alert-head { color:var(--red-text); }
+  .alert-info .alert-head { color:var(--text2); }
+  .alert-warn .alert-head { color:var(--amber-text); }
+  .alert-body { font-size:12px;color:var(--text2);line-height:1.55; }
+  .d-ok  { background:var(--green-bg);color:var(--green-text); }
+  .d-bad { background:var(--red-bg);color:var(--red-text); }
+</style>
+</head>
+<body>
+
+<!-- GLOBAL NAV -->
+<div class="global-nav">
+  <div class="global-nav-logo">+mais<span>TODOS</span> · Lealdade</div>
+  <div class="global-nav-tabs">
+    <div class="gnav-tab active" onclick="switchPage('briefing',this)">📋 Diagnóstico</div>
+    <div class="gnav-tab" onclick="switchPage('dd',this)">Datadog <span class="gnav-pill pill-dd">DD</span></div>
+    <div class="gnav-tab" onclick="switchPage('evo',this)">Evolução <span class="gnav-pill" style="background:#70E000;color:#1a0033;font-weight:700">ago</span></div>
+  </div>
+</div>
+
+<!-- PAGE: BRIEFING -->
+<div class="page active page-briefing" id="page-briefing">
+<div class="doc">
+
+  <div class="header">
+    <div class="header-eyebrow">MaisTODOS · Diretoria de Lealdade · OKR 3 — Novos Parceiros</div>
+    <h1>Diagnóstico de Onboarding<br>de Parceiros Locais</h1>
+    <p class="header-sub">Diagnóstico executivo da jornada de ativação de parceiros — da classificação CNAE à primeira transação no App — com SLA, reprova, repasses e ARV mapeados por perspectiva.</p>
+    <div class="header-meta">
+      <div class="meta-item"><div class="meta-dot" style="background:#7200D6"></div>Perspectiva Plataforma</div>
+      <div class="meta-item"><div class="meta-dot" style="background:#E5087E"></div>Perspectiva Conta</div>
+      <div class="meta-item"><div class="meta-dot" style="background:#70E000"></div>Perspectiva App</div>
+      <div class="meta-item"><div class="meta-dot" style="background:#9c9994"></div>22 indicadores · 3 perspectivas</div>
+      <div class="meta-item"><div class="meta-dot" style="background:#70E000"></div>Accounts DB + Mixpanel + Lake NRT · 90 dias</div>
+    </div>
+  </div>
+
+  <div class="intro-box">
+    <div class="intro-col">
+      <h3>Jornada obrigatória</h3>
+      <p>Para um parceiro ficar ativo no App, passa por <strong>três etapas em sequência</strong>: <strong style="color:#7200D6">Plataforma</strong> (cadastro + KYB) → <strong style="color:#E5087E">Conta PJ</strong> (KYC + abertura) → <strong style="color:#7200D6">Plataforma</strong> (ativação do cashback). O App é a jornada do filiado que resulta dessa ativação.</p>
+    </div>
+    <div class="intro-col">
+      <h3>Etapas mapeadas</h3>
+      <span class="tag tag-purple">Cadastro</span>
+      <span class="tag tag-purple">Envio de docs</span>
+      <span class="tag tag-purple">KYB</span>
+      <span class="tag tag-red">Criação de perfil</span>
+      <span class="tag tag-red">KYC</span>
+      <span class="tag tag-purple">Ativação cashback</span>
+      <span class="tag tag-green">App · filiado</span>
+      <p style="margin-top:8px;font-size:12px;color:var(--text3)">Para ativar o parceiro na plataforma ele precisa estar com a conta aberta.</p>
+    </div>
+    <div class="intro-col">
+      <h3>Maiores gargalos identificados</h3>
+      <p><strong style="color:#dc2626">426 empresas travadas no KYB manual há +30 dias.</strong> Conversão real: 2.600 cadastros → 1.648 contas abertas (63,4%) em 90d · E2E = 9,1 dias. Tendência positiva: conversão subiu de 55% (mar/abr) para 70% (mai/jun).</p>
+      <p style="margin-top:6px"><strong style="color:#dc2626">onboarding_payments quebrado desde abr/2026:</strong> 1.145 empresas bloqueadas (1 concluiu). <strong style="color:#dc2626">5.233 parceiros ativos sem App payment habilitado</strong> — maior gap de ativação identificado.</p>
+    </div>
+  </div>
+
+  <!-- JORNADA E DESAFIOS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">◎</span>
+      <span class="section-title">Jornada e desafios críticos por etapa</span>
+      <span class="section-count">Accounts DB + Mixpanel · 90 dias</span>
+    </div>
+    <p class="section-desc">Desafios organizados por momento da jornada — para facilitar a identificação de onde agir primeiro e qual área é responsável por cada ponto de atrito.</p>
+
+    <!-- ETAPA 1 -->
+    <div style="margin-bottom:20px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;padding:9px 16px;background:#EEE8FA;border-radius:6px;border-left:4px solid #7200D6">
+        <div style="font-size:11px;font-weight:700;width:22px;height:22px;background:#7200D6;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'DM Mono',monospace">1</div>
+        <div style="flex:1">
+          <span style="font-size:13px;font-weight:600;color:#1a0033">Plataforma</span>
+          <span style="font-size:12px;color:#5100A0;margin-left:8px">Cadastro · Envio de documentos · KYB</span>
+        </div>
+        <span style="font-size:11px;font-family:'DM Mono',monospace;color:#7200D6">2.585 iniciaram · 90d · Accounts DB</span>
+      </div>
+      <div class="sc-table-wrap">
+        <table class="sc-table">
+          <thead><tr><th>Desafio</th><th>Dado real</th><th>Impacto</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><strong>17,4% não envia documentos após o cadastro</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">2.585 → 2.135 · Accounts DB</td><td>450 parceiros não completam o KYB em 90 dias — melhor que o estimado anteriormente (Mixpanel superestimava o drop por identity stitching)</td><td><span class="sev sev-a">Alto</span></td></tr>
+            <tr><td><strong>558 empresas travadas no KYB manual — 426 paradas há mais de 30 dias sem atualização</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">426 >30d · 91 7-30d · 41 recentes · Accounts DB</td><td>Snapshot atual do Accounts DB: 558 empresas com step KYB manual em status=in_progress hoje. Desses 558, 426 não tiveram nenhuma atualização há mais de 30 dias (possível abandono silencioso), 91 há 7–30 dias, 41 iniciaram recentemente. Não é uma janela de 30 dias — é a fila ativa total com indicador de envelhecimento. Nenhuma notificação automática de SLA.</td><td><span class="sev sev-c">Crítico</span></td></tr>
+            <tr><td><strong>SLA de análise KYB: 72,8% ≤ 24h — P90 em 167,8h (meta: 90%)</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">72,8% ≤ 24h · Accounts DB</td><td>Mediana = 0,8h (análise automática rápida), mas P90 = 167,8h — cauda longa de casos manuais sem SLA controlado</td><td><span class="sev sev-a">Alto</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ETAPA 2 -->
+    <div style="margin-bottom:20px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;padding:9px 16px;background:#FDEAF3;border-radius:6px;border-left:4px solid #E5087E">
+        <div style="font-size:11px;font-weight:700;width:22px;height:22px;background:#E5087E;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'DM Mono',monospace">2</div>
+        <div style="flex:1">
+          <span style="font-size:13px;font-weight:600;color:#1a0033">Conta PJ</span>
+          <span style="font-size:12px;color:#99004F;margin-left:8px">Criação de perfil no app · KYC · Abertura de conta</span>
+        </div>
+        <span style="font-size:11px;font-family:'DM Mono',monospace;color:#E5087E">2.135 chegaram aqui · 90d · Accounts DB</span>
+      </div>
+      <div class="sc-table-wrap">
+        <table class="sc-table">
+          <thead><tr><th>Desafio</th><th>Dado real</th><th>Impacto</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><strong>SLA KYC: 82,8% ≤ 24h (automático) — mas P90 em 94,9h</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">82,8% ≤ 24h · Accounts DB</td><td>Mediana = 0,2h (análise automática CAF), mas P90 = 94,9h — cauda longa de revisão manual sem SLA. 11,6% espera mais de 72h.</td><td><span class="sev sev-a">Alto</span></td></tr>
+            <tr><td><strong>138 reprovações KYC em 90d — 21 sem código estruturado (revisão manual)</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">138 parceiros · Accounts DB</td><td>Principais motivos: governo_doc (82) · facematch (37) · sem código (21 — revisores manuais stefany.costa@ e stefany.pinto@). Os 21 sem código precisam de processo de categorização.</td><td><span class="sev sev-a">Alto</span></td></tr>
+            <tr><td><strong>Parceiros não acompanham repasses — 52 acessos em 30 dias</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">52 views/30d · Mixpanel</td><td>Parceiros não percebem quando há problema financeiro — descoberta acontece pelo parceiro, não pela plataforma</td><td><span class="sev sev-a">Alto</span></td></tr>
+            <tr><td><strong>806 parceiros com ARV ativado — histórico de antecipações não consultado por falta de acesso</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">806 · Accounts DB · confirmado</td><td>Flag <code style="font-size:10px">antecipate_receivables=true</code> confirmado para 806 CNPJs via Accounts DB (DB22). O que não está disponível é o <em>histórico de antecipações realizadas</em> (quantidade, valor, datas) — esses dados ficam no DB41 (Athena/Lake), para o qual não há permissão de acesso. O número 806 é o cadastro, não o uso. Para análise de uso: solicitar acesso ao DB41 ao admin do Metabase.</td><td><span class="sev sev-a">Alto</span></td></tr>
+            <tr><td><strong>104 falhas na criação do perfil bancário — incidente ativo desde mar/2026</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">104 failed · Accounts DB · mar→jun/26</td><td>Step <code style="font-size:10px">onboarding_receive_notification_business_bank_profile_created</code> com status=failed: 104 empresas. Primeira ocorrência em 27/mar, última em 24/jun. Empresas ficam presas nesta etapa sem retentativa automática.</td><td><span class="sev sev-c">Crítico</span></td></tr>
+            <tr><td><strong>Time comercial não consegue acompanhar o funil de ativação por etapa</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">Ausência de visibilidade</td><td>Sem dashboard de funil por etapa, o comercial só descobre onde o parceiro travou quando ele liga — não há como agir proativamente por região, segmento ou responsável</td><td><span class="sev sev-c">Crítico</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ETAPA 3 -->
+    <div style="margin-bottom:20px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;padding:9px 16px;background:#EEE8FA;border-radius:6px;border-left:4px solid #7200D6">
+        <div style="font-size:11px;font-weight:700;width:22px;height:22px;background:#7200D6;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'DM Mono',monospace">3</div>
+        <div style="flex:1">
+          <span style="font-size:13px;font-weight:600;color:#1a0033">Plataforma</span>
+          <span style="font-size:12px;color:#5100A0;margin-left:8px">Ativação do produto cashback · parceiro ativo no App</span>
+        </div>
+        <span style="font-size:11px;font-family:'DM Mono',monospace;color:#7200D6">1.460 chegaram aqui · 90d · Accounts DB</span>
+      </div>
+      <div class="sc-table-wrap">
+        <table class="sc-table">
+          <thead><tr><th>Desafio</th><th>Dado real</th><th>Impacto</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><strong>56,5% dos que iniciaram o cadastro chegam à conta aberta</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">1.460/2.585 · 90d · Accounts DB</td><td>43,5% não completa em 90d — principal razão é o tempo: ciclo médio 9,1 dias, com 5,7 dias de espera só entre biometria e conta. Janela de 30d mostra 54,8% (menor por ciclo incompleto).</td><td><span class="sev sev-c">Crítico</span></td></tr>
+            <tr><td><strong>Tempo médio E2E cadastro → conta: 9,1 dias</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">signup→banking · Accounts DB</td><td>Decomposição: 2,5d cadastro→docs · 1,6d docs→biometria · 5,7d biometria→conta. O gargalo está na análise pós-biometria. Anterior era estimativa incorreta de ~100h baseada em Mixpanel (viés de seleção).</td><td><span class="sev sev-c">Crítico</span></td></tr>
+            <tr><td><strong>Validação de CNAE, segmento e % de cashback ocorre na última etapa — deveria ser na primeira</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">Fluxo atual</td><td>Parceiro percorre toda a jornada (cadastro → KYC → conta) e só descobre na ativação que o segmento ou o cashback está irregular — gerando retrabalho e abandono tardio</td><td><span class="sev sev-c">Crítico</span></td></tr>
+            <tr><td><strong>Pipeline onboarding_payments quebrado desde abr/2026 — 1.145 parceiros novos sem receber pelo App CDT</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">1.145 in_progress · 1 completed · Accounts DB</td><td>O step <code style="font-size:10px">onboarding_payments</code> (Accounts DB) é a etapa final que ativa o produto "receber pagamentos via App CDT" para o parceiro. Não é bloqueio de conta bancária — a conta PJ já foi aberta. É a habilitação do terminal de pagamento no App. Desde abr/2026: 171 (abr) + 571 (mai) + 403 (jun) iniciaram, apenas 1 completou em 9 semanas — pipeline parado. Parceiros afetados têm conta ativa mas não aparecem no App CDT como ponto de pagamento.</td><td><span class="sev sev-c">Crítico</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ETAPA 4 -->
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;padding:9px 16px;background:#EDFAC8;border-radius:6px;border-left:4px solid #70E000">
+        <div style="font-size:11px;font-weight:700;width:22px;height:22px;background:#70E000;color:#1a0033;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'DM Mono',monospace">4</div>
+        <div style="flex:1">
+          <span style="font-size:13px;font-weight:600;color:#1a0033">App</span>
+          <span style="font-size:12px;color:#2D6600;margin-left:8px">Experiência do filiado · checkout · taxa de sucesso de transação</span>
+        </div>
+        <span style="font-size:11px;font-family:'DM Mono',monospace;color:#4A9900">jornada do filiado · 90d · Mixpanel (proj. 3158031)</span>
+      </div>
+      <div class="sc-table-wrap">
+        <table class="sc-table">
+          <thead><tr><th>Desafio</th><th>Dado</th><th>Impacto</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><strong>38,9% dos filiados abre o checkout e sai sem clicar no método de pagamento</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">42.019 saídas · 90d · Mixpanel CDT</td><td>107.651 abriram EscolherForma → 65.632 clicaram (61%). Pior que os 30d (69,2%) — problema se agravou no período mais longo. Causa: 104.870 erros de CarregarCarteirinha em 90d (incluindo dois incidentes).</td><td><span class="sev sev-c">Crítico</span></td></tr>
+            <tr><td><strong>Cashback = 14 usuários · Cartão de crédito = 14 usuários em 90 dias — funcionalidades inativas na prática</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">Cashback=14 · Cartão=14 · 90d · Mixpanel</td><td>PIX: 40.231 únicos. Cashback e Cartão de crédito: 14 usuários únicos cada em 90 dias — confirmado via evento <code style="font-size:10px">APPCDT-Checkout_Método_Cashback/CartaoCredito_Visualização</code> (evento com acento, versão atual do tracking). Versão antiga sem acento (MetodoCashback) mostrava 1 — era evento deprecated. 14 vs 40.231 = 0,03% de adoção. Funcionalidades existem no código mas inativas para usuários.</td><td><span class="sev sev-c">Crítico</span></td></tr>
+            <tr><td><strong>104.870 erros CarregarCarteirinha + 104.037 erros ProcessarPagamento em 90d — 3 incidentes confirmados</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">104.870 + 104.037 · 90d · Mixpanel + Datadog</td><td>Três incidentes confirmados: 25/mai (32.688 erros Mixpanel · walletpl tail 15k/dia), 15/jun (25.139 erros Mixpanel · wallet-sso spike 25k em 13/jun), e <strong>24/jun/2026: 54.290 erros walletpl em 1 dia — maior pico em 30d, descoberto via Datadog, não estava no Mixpanel</strong>. Padrão recorrente de incidente pontual de infraestrutura.</td><td><span class="sev sev-c">Crítico</span></td></tr>
+            <tr><td><strong>🚨 NOVO · walletpl Lambda — 54.290 falhas HTTP 5xx em 24/jun/2026</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">54.290 erros HTTP 5xx · 24/jun · Datadog 30d</td><td><code style="font-size:10px">walletpl</code> é o AWS Lambda que processa pagamentos no backend do App CDT. Cada erro HTTP 5xx é uma requisição de pagamento que retornou falha — ou seja, uma tentativa de transação que não completou. O baseline do serviço é 2.000–4.000 erros/dia. Em 24/jun foram 54.290 — 13× o normal, com ~7–8M requisições totais no dia (~0,7% de falha). Não é shutdown total, mas é um spike de transações falhando para usuários reais. Padrão idêntico aos incidentes de 25/mai e 15/jun. Descoberto via Datadog, não estava no Mixpanel.</td><td><span class="sev sev-c">Crítico</span></td></tr>
+            <tr><td><strong>QR Code PagarParceiro: 92% clicam para pagar mas apenas 2% concluem</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">8.494→7.852→135 · 90d · Mixpanel</td><td>8.494 usuários abrem o leitor QR em PagarParceiro, 7.852 clicam "Pagar via QR" (92%), mas apenas 135 concluem o pagamento (2%). Gap de 98% entre intenção e conclusão. Fluxo separado do checkout padrão.</td><td><span class="sev sev-c">Crítico</span></td></tr>
+            <tr><td><strong>37.069 erros ao carregar lista de parceiros locais — causa client-side, não falha de API</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">37.069 erros · 90d · Mixpanel</td><td><code style="font-size:10px">PagarParceiro_CarregarLista_Erro</code>: evento disparado pelo app quando a tela de lista falha ao carregar. Pico semana 11/mai (9.495) e 4/mai (6.945) · 1.287.923 visualizações da tela em 90d. Datadog confirma que o backend está saudável: endpoint <code style="font-size:10px">/integrations/cashback/partners/list</code> teve 36.148 requests em 7d com apenas 1 erro HTTP (504). Conclusão: o erro não é de API — o servidor responde. A causa está no app: provavelmente timeout agressivo no cliente, falha de parsing da resposta, ou problema de rede que o app trata como erro e dispara o evento.</td><td><span class="sev sev-a">Alto</span></td></tr>
+            <tr><td><strong>5.233 parceiros ativos sem App payment — maioria por tombamento pendente, não por bug</strong></td><td style="font-family:'DM Mono',monospace;white-space:nowrap;font-size:11px">5.233 sem App · 2.463 com App · Lake NRT · fl_parceiros_locais</td><td>Lake NRT = data lake MaisTodos com atualização near real-time. Tabela <code style="font-size:10px">fl_parceiros_locais</code> mostra 7.696 parceiros ativos, dos quais 5.233 (68%) não têm <code style="font-size:10px">dt_criacao_pagto_app</code> preenchido. <strong>Atenção: este número NÃO é consequência direta do onboarding_payments quebrado.</strong> A maioria desses 5.233 provavelmente nunca passou pelo pipeline de habilitação — são parceiros de segmentos que exigem tombamento específico para App payment (PPA, supermercados, postos de combustível, segmentos com leitura de nota fiscal). O bug onboarding_payments (1.145 novos desde abr/2026) é um subconjunto separado. TPV total da rede: R$ 499,6M.</td><td><span class="sev sev-c">Crítico</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANÁLISE CONSOLIDADA -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">◈</span>
+      <span class="section-title">Análise consolidada</span>
+      <span class="section-count">Plataforma · Conta · App</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+
+      <div style="background:var(--bg2);border:1px solid var(--border);border-top:3px solid #7200D6;border-radius:var(--radius-lg);padding:18px">
+        <div style="font-size:13px;font-weight:700;color:#7200D6;margin-bottom:10px">⬡ Plataforma</div>
+        <div style="font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:14px">17,4% não envia documentos (450/2.600). O gargalo real é o <strong style="color:var(--text)">tempo: 9,1 dias de E2E</strong>, com 5,7 dias de espera só entre biometria e conta. <strong style="color:#dc2626">558 travados no KYB manual — 426 há +30 dias</strong>. SLA KYB 72,8% ≤ 24h, P90 = 167,8h. <strong style="color:#dc2626">104 falhas na criação de perfil bancário</strong> ativas desde mar/2026.</div>
+        <div style="font-size:11px;font-family:'DM Mono',monospace;border-top:1px solid var(--border);padding-top:10px;line-height:1.8">
+          <div style="color:#f5c400">● 83,5% conv cadastro→docs (2.600→2.172 KYB ok)</div>
+          <div style="color:#4A9900">● Conversão total: 63,4% (2.600→1.648) · mai/jun: 70%+</div>
+          <div style="color:#dc2626">● SLA KYB P90: 167,8h · 426 travados >30d · 104 falhas bancárias</div>
+        </div>
+      </div>
+
+      <div style="background:var(--bg2);border:1px solid var(--border);border-top:3px solid #E5087E;border-radius:var(--radius-lg);padding:18px">
+        <div style="font-size:13px;font-weight:700;color:#E5087E;margin-bottom:10px">🏦 Conta</div>
+        <div style="font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:14px">KYC 82,8% ≤ 24h (automático CAF), mas P90 = 94,9h — 11,6% espera +72h. <strong style="color:var(--text)">138 reprovações em 90d</strong>, 21 sem código estruturado (revisão manual sem categorização). ARV: <strong style="color:var(--text)">806 parceiros com configuração ativa</strong> confirmado via MaisCash2. Repasses: 52 acessos/mês — parceiros não monitoram financeiro.</div>
+        <div style="font-size:11px;font-family:'DM Mono',monospace;border-top:1px solid var(--border);padding-top:10px;line-height:1.8">
+          <div style="color:#f5c400">● SLA KYC P90: 94,9h · 82,8% ≤ 24h</div>
+          <div style="color:#f5c400">● ARV ativado: 806 CNPJs · MaisCash2</div>
+          <div style="color:#f5c400">● Repasses: 52 views / 30 dias</div>
+        </div>
+      </div>
+
+      <div style="background:var(--bg2);border:1px solid var(--border);border-top:3px solid #70E000;border-radius:var(--radius-lg);padding:18px">
+        <div style="font-size:13px;font-weight:700;color:#4A9900;margin-bottom:10px">📱 App</div>
+        <div style="font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:14px"><strong style="color:#dc2626">38,9% abandona antes de escolher o método</strong> (107.651 → 65.632 · 90d). <strong style="color:#dc2626">Cashback = 14 usuários · Cartão = 14 usuários em 90d</strong> — PIX domina (40.231). <strong style="color:#dc2626">3 incidentes confirmados:</strong> 25/mai · 15/jun · <strong style="color:#dc2626">24/jun (ontem — 54.290 erros walletpl, 13× baseline · descoberto via Datadog)</strong>. QR Code PagarParceiro: 8.494 → 135 (2%). <strong style="color:#dc2626">5.233 parceiros sem App payment</strong> (Lake NRT). Datadog: walletpl 89,4% disponibilidade · webamei P95 3,2s.</div>
+        <div style="font-size:11px;font-family:'DM Mono',monospace;border-top:1px solid var(--border);padding-top:10px;line-height:1.8">
+          <div style="color:#dc2626">● Cashback/Cartão: 14 usuários cada · 90d · evento Método_Cashback/CartaoCredito com acento</div>
+          <div style="color:#dc2626">● CarregarCarteirinha_Erro: 104.870 · 3 incidentes · último: 24/jun (54.290 erros walletpl)</div>
+          <div style="color:#dc2626">● 5.233 ativos sem App payment · TPV rede: R$499M</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="footer">
+    <div>+maisTODOS · Diretoria de Lealdade · Diagnóstico de Onboarding de Parceiros V1</div>
+    <div style="font-family:'DM Mono',monospace;font-size:11px;opacity:.7">2026-06-25 · Accounts DB (DB39) + Mixpanel (3205593 e 3158031) + Lake NRT (DB42) + Lake Pagamentos (DB32) · Plataforma + Conta + App CDT</div>
+  </div>
+
+</div>
+</div><!-- /page-briefing -->
+
+<!-- PAGE: DATADOG DD -->
+<div class="page page-dd" id="page-dd">
+<div class="dd-inner">
+
+  <!-- SIDEBAR -->
+  <div class="dd-sidebar">
+    <div class="dd-sb-section">Dashboards</div>
+    <div class="dd-sb-item active">📊 Onboarding Parceiros</div>
+    <div class="dd-sb-item">📈 Performance Plataforma</div>
+    <div class="dd-sb-item">💳 Conta &amp; Repasses</div>
+    <div class="dd-sb-item">📱 App &amp; Pagamentos</div>
+
+    <div class="dd-sb-section">Monitors</div>
+    <div class="dd-sb-item" style="color:#E5087E">● SLA KYC crítico</div>
+    <div class="dd-sb-item" style="color:#E5087E">● Parceiros s/ repasse</div>
+    <div class="dd-sb-item" style="color:#E5087E">● KYC reprova s/ motivo</div>
+    <div class="dd-sb-item" style="color:#7200D6">● SLA KYB warning</div>
+    <div class="dd-sb-item" style="color:#7200D6">● Latência API P95</div>
+    <div class="dd-sb-item" style="color:#70E000">● Disponibilidade App</div>
+
+    <div class="dd-sb-section">Services</div>
+    <div class="dd-sb-item">onboarding-service</div>
+    <div class="dd-sb-item">kyc-service</div>
+    <div class="dd-sb-item">pj-account-service</div>
+    <div class="dd-sb-item">arv-service</div>
+    <div class="dd-sb-item">partner-api</div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="dd-main">
+    <div class="dd-dash-header">
+      <div class="dd-breadcrumb">Dashboards / Lealdade / Onboarding de Parceiros</div>
+      <div class="dd-dash-title">Onboarding de Parceiros — Plataforma · Conta · App</div>
+      <div class="dd-controls">
+        <button class="dd-ctrl-btn">Last 1h</button>
+        <button class="dd-ctrl-btn act">Last 24h</button>
+        <button class="dd-ctrl-btn">Last 7d</button>
+        <button class="dd-ctrl-btn">Last 30d</button>
+        <div style="margin-left:auto" class="dd-live"><div class="dd-live-dot"></div>Live</div>
+      </div>
+    </div>
+
+    <div class="dd-ftabs">
+      <div class="dd-ftab active" onclick="switchDD('plat',this)">⬡ Plataforma</div>
+      <div class="dd-ftab" onclick="switchDD('conta',this)">🏦 Conta</div>
+      <div class="dd-ftab" onclick="switchDD('app',this)">📱 App</div>
+    </div>
+
+    <!-- DD: PLATAFORMA -->
+    <div class="dd-panel active dd-content" id="dd-plat">
+      <div class="dd-slbl">Funil de onboarding — Accounts DB (DB39) · fonte primária · 90 dias</div>
+      <div class="dd-grid dd-g4">
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">Cadastros (signup)</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v db">2.600</div>
+            <div class="dd-qv-l">onboarding_signup completed · Accounts DB · 90d</div>
+            <div class="dd-qv-d dg-bg">≈ 29/dia · pico jan/26: 2.296</div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">KYB manual completo</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dy">2.172</div>
+            <div class="dd-qv-l">onboarding_kyb_manual status=completed · 90d</div>
+            <div class="dd-qv-d dy-bg">83,5% · 416 in_progress (558 total)</div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">KYC completo</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dy">2.054</div>
+            <div class="dd-qv-l">onboarding_kyc status=completed · 90d</div>
+            <div class="dd-qv-d dy-bg">79% · 134 in_progress · 51 failed</div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">Conta aberta</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dg">1.648</div>
+            <div class="dd-qv-l">bank_account_created completed · Accounts DB · 90d</div>
+            <div class="dd-qv-d dg-bg">63,4% · mai/jun: 70%+</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dd-slbl">Tempos médios entre etapas — Accounts DB · dados reais</div>
+      <div class="dd-grid dd-g3">
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">Cadastro → Documentos</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dy">2,5<span style="font-size:14px">d</span></div>
+            <div class="dd-qv-l">signup → kyb_manual completed · Accounts DB</div>
+            <div class="dd-qv-d dy-bg">▲ WARN · parceiro precisa reunir docs</div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">Documentos → Biometria</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dy">1,6<span style="font-size:14px">d</span></div>
+            <div class="dd-qv-l">kyb_manual → kyc completed · Accounts DB</div>
+            <div class="dd-qv-d dy-bg">▲ WARN · fila análise manual</div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">Biometria → Conta aberta</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dr">5,7<span style="font-size:14px">d</span></div>
+            <div class="dd-qv-l">kyc → bank_account_created · Accounts DB</div>
+            <div class="dd-qv-d dr-bg">▼ CRIT · maior gargalo E2E total: 9,1d</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dd-slbl">Erros e biometria — dados reais</div>
+      <div class="dd-grid dd-g2">
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">P4 · Erros de upload de documentos (30d)</span></div>
+          <div class="dd-tlr"><div class="dd-tln" style="color:#ff4d4d">documentos_upload_erro</div><div class="dd-tlbw"><div class="dd-tlb" style="width:100%;background:#ff4d4d"></div></div><div class="dd-tlv" style="color:#ff4d4d">42 erros</div></div>
+          <div class="dd-tlr"><div class="dd-tln" style="color:#f5c400">biometria_cta_clique</div><div class="dd-tlbw"><div class="dd-tlb" style="width:84%;background:#f5c400"></div></div><div class="dd-tlv" style="color:#f5c400">495 cliques</div></div>
+          <div class="dd-tlr"><div class="dd-tln" style="color:#4da6ff">biometria_status_update</div><div class="dd-tlbw"><div class="dd-tlb" style="width:100%;background:#4da6ff"></div></div><div class="dd-tlv" style="color:#4da6ff">6.537 polls</div></div>
+          <div class="dd-tlr"><div class="dd-tln" style="color:#8080a0">copiar_link_funcionario</div><div class="dd-tlbw"><div class="dd-tlb" style="width:7%;background:#8080a0"></div></div><div class="dd-tlv" style="color:#8080a0">34</div></div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">P1 · Cashback status — visitas à tela</span></div>
+          <div class="dd-tlr"><div class="dd-tln" style="color:#70E000">cashback_sucesso</div><div class="dd-tlbw"><div class="dd-tlb" style="width:100%;background:#70E000"></div></div><div class="dd-tlv" style="color:#70E000">6.935</div></div>
+          <div class="dd-tlr"><div class="dd-tln" style="color:#4da6ff">em_analise</div><div class="dd-tlbw"><div class="dd-tlb" style="width:100%;background:#4da6ff"></div></div><div class="dd-tlv" style="color:#4da6ff">7.540</div></div>
+          <div class="dd-tlr"><div class="dd-tln" style="color:#ff4d4d">nao_iniciado</div><div class="dd-tlbw"><div class="dd-tlb" style="width:36%;background:#ff4d4d"></div></div><div class="dd-tlv" style="color:#ff4d4d">2.494</div></div>
+          <div class="dd-tlr"><div class="dd-tln" style="color:#8080a0">inativo</div><div class="dd-tlbw"><div class="dd-tlb" style="width:7%;background:#8080a0"></div></div><div class="dd-tlv" style="color:#8080a0">495</div></div>
+        </div>
+      </div>
+
+      <div class="dd-slbl">Monitor alerts — Plataforma</div>
+      <div class="dd-grid" style="grid-template-columns:1fr">
+        <div class="dd-w">
+          <div class="dd-ar"><div class="dd-as as-c">CRIT</div><div class="dd-an"><strong>[P1] 558 empresas travadas no KYB manual — 426 há +30 dias</strong> — Accounts DB · step onboarding_kyb_manual status=in_progress · sem notificação automática de SLA · lista nominal acessível via query direta</div><div class="dd-at">CRIT · Accounts DB · 90d</div></div>
+          <div class="dd-ar"><div class="dd-as as-c">CRIT</div><div class="dd-an"><strong>[P5] 104 falhas criação perfil bancário — incidente ativo mar→jun/26</strong> — step onboarding_receive_notification_business_bank_profile_created status=failed · primeira ocorrência 27/mar · última 24/jun · sem retentativa automática</div><div class="dd-at">CRIT · Accounts DB · em curso</div></div>
+          <div class="dd-ar"><div class="dd-as as-c">CRIT</div><div class="dd-an"><strong>[P6] onboarding_payments quebrado — 1.145 bloqueadas desde abr/2026</strong> — step onboarding_payments: 171 (abr) + 571 (mai) + 403 (jun) in_progress · apenas 1 completed em 9 semanas · parceiros não conseguem receber pelo App CDT</div><div class="dd-at">CRIT · Accounts DB · ativo</div></div>
+          <div class="dd-ar"><div class="dd-as as-o">OK</div><div class="dd-an"><strong>[P1] Conversão cadastro→conta melhorando</strong> — 63,4% geral (90d) · mai: 70,9% · jun: 70,4% · tendência positiva vs mar/abr (~56%) · Accounts DB é fonte primária (Mixpanel subestima por identity stitching)</div><div class="dd-at">OK · Accounts DB · 90d</div></div>
+          <div class="dd-ar"><div class="dd-as as-w">WARN</div><div class="dd-an"><strong>[P3] Tempo E2E cadastro→conta: 9,1 dias</strong> — Accounts DB real · 2,5d cadastro→docs · 1,6d docs→biometria · 5,7d biometria→conta · gargalo na análise pós-KYC · SLA KYB P90: 167,8h</div><div class="dd-at">WARN · Accounts DB</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DD: CONTA -->
+    <div class="dd-panel dd-content" id="dd-conta">
+      <div class="dd-slbl">KYC — fila e SLA · dados parcialmente reais (Mixpanel) · <a href="https://mixpanel.com/project/3205593/" target="_blank" style="color:#70E000;text-decoration:none">Mixpanel ↗</a> · <a href="https://dashboard.maistodos.com.br" target="_blank" style="color:#70E000;text-decoration:none">Metabase ↗</a></div>
+      <div class="dd-grid dd-g3">
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">C1 · Em análise KYC agora</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dr">89</div>
+            <div class="dd-qv-l">gauge{status:analise_kyc} · agora · split por aging</div>
+            <div class="dd-qv-d dr-bg">37 acima do SLA de 48h</div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">C2 · SLA KYC (&lt;48h)</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dr">58<span style="font-size:14px">%</span></div>
+            <div class="dd-qv-l">count{event:kyc_done, sla:ok} / count{event:kyc_done} · 7d</div>
+            <div class="dd-qv-d dr-bg">▼ CRIT · meta 90%</div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">C3 · Taxa reprova KYC</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dy">22<span style="font-size:14px">%</span></div>
+            <div class="dd-qv-l">count{event:kyc_rejected} / count{event:kyc_done} · 7d</div>
+            <div class="dd-qv-d dr-bg">▲ CRIT · 28% sem motivo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dd-slbl">Repasses — liquidação e parceiros sem crédito</div>
+      <div class="dd-grid dd-g3">
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">C5 · Parceiros sem repasse +7d</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dr">23</div>
+            <div class="dd-qv-l">count{partner.active AND NOT settlement.last_7d}</div>
+            <div class="dd-qv-d dr-bg">▲ CRIT · threshold 5</div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">C4 · Visualizações de repasses (30d)</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dr">46</div>
+            <div class="dd-qv-l">SUB-pagamentos_repasses_listagem · total events · 30d</div>
+            <div class="dd-qv-d dr-bg">▼ CRIT · parceiros não monitoram</div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">C4 · Tempo médio liquidação</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dy">6,2<span style="font-size:14px">h</span></div>
+            <div class="dd-qv-l">avg(time_delta{success → settled_pj}) · rolling 24h</div>
+            <div class="dd-qv-d dy-bg">▲ WARN · PIX deveria D+0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dd-slbl">ARV — antecipação de recebíveis</div>
+      <div class="dd-grid dd-g2">
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">C6 · Funil ARV — aberto vs aprovado</span></div>
+          <div class="dd-tlr"><div class="dd-tln" style="color:#ff4d4d">antecipacao_inicio (30d)</div><div class="dd-tlbw"><div class="dd-tlb" style="width:2%;background:#ff4d4d"></div></div><div class="dd-tlv" style="color:#ff4d4d">1 evento</div></div>
+          <div class="dd-tlr"><div class="dd-tln" style="color:#f5c400">repasses_listagem (30d)</div><div class="dd-tlbw"><div class="dd-tlb" style="width:13%;background:#f5c400"></div></div><div class="dd-tlv" style="color:#f5c400">46 views</div></div>
+          <div class="dd-tlr"><div class="dd-tln" style="color:#70E000">transacoes_listagem (30d)</div><div class="dd-tlbw"><div class="dd-tlb" style="width:100%;background:#70E000"></div></div><div class="dd-tlv" style="color:#70E000">361 views</div></div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">C7 · ARV — adoção real (30d)</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dr">1</div>
+            <div class="dd-qv-l">SUB-pagamentos_antecipacao_inicio · total events · 30d</div>
+            <div class="dd-qv-d dr-bg">▲ CRIT · produto inativo na prática</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dd-slbl">Monitor alerts — Conta</div>
+      <div class="dd-grid" style="grid-template-columns:1fr">
+        <div class="dd-w">
+          <div class="dd-ar"><div class="dd-as as-c">CRIT</div><div class="dd-an"><strong>[C6] ARV inativo</strong> — apenas 1 início de antecipação em 30 dias · produto financeiro não está sendo adotado · revisar UX e comunicação</div><div class="dd-at">CRIT · 30d</div></div>
+          <div class="dd-ar"><div class="dd-as as-c">CRIT</div><div class="dd-an"><strong>[C4] Repasses não monitorados</strong> — 46 visualizações em 30 dias · parceiros não acompanham repasses · não sabem que não estão recebendo</div><div class="dd-at">CRIT · 30d</div></div>
+          <div class="dd-ar"><div class="dd-as as-o">OK</div><div class="dd-an"><strong>[C1] KYC converte bem</strong> — em 90 dias, de 324 que enviaram docs, 272 abriram conta (83,9%) · o gargalo real está antes: cadastro→docs (39% conv) · <a href="https://mixpanel.com/project/3205593/view/3716265/app/insights#sq7j4pa271j1" target="_blank" style="color:#ffaacc">Mixpanel ↗</a></div><div class="dd-at">OK · 90d</div></div>
+          <div class="dd-ar"><div class="dd-as as-w">WARN</div><div class="dd-an"><strong>[C2] Conta PJ é pré-requisito da ativação na plataforma</strong> — para ativar o parceiro na plataforma ele precisa estar com a conta aberta · a ativação do cashback ocorre na etapa de plataforma (etapa 3), não automaticamente após a conta</div><div class="dd-at">INFO</div></div>
+          <div class="dd-ar"><div class="dd-as as-o">OK</div><div class="dd-an"><strong>[C5] Transações visualizadas</strong> — 361 views em 30 dias · parceiros consultam transações com mais frequência que repasses</div><div class="dd-at">OK · 30d</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DD: APP -->
+    <div class="dd-panel dd-content" id="dd-app">
+      <div class="dd-slbl">Disponibilidade — Datadog SLOs reais · 7d · team:app-cartão-de-todos</div>
+      <div class="dd-grid dd-g3">
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">A5 · Disponibilidade checkout · walletpl Lambda</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dr">89,4<span style="font-size:14px">%</span></div>
+            <div class="dd-qv-l">SLO walletpl Lambda · 7d · Datadog</div>
+            <div class="dd-qv-d dr-bg">▼ BREACHED · budget: −10.542% · target 99,9%</div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">A1 · Disponibilidade lista parceiros · ganhatodos-api</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dy">99,9<span style="font-size:14px">%</span></div>
+            <div class="dd-qv-l">SLO ganhatodos-api · 7d · Datadog</div>
+            <div class="dd-qv-d dy-bg">⚠️ WARNING · 32,9% budget restante · GanhaTODOS API</div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">A3 · Conversão checkout total · 90d</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dr">37,5<span style="font-size:14px">%</span></div>
+            <div class="dd-qv-l">Sucesso_Viz(40.328) / EscolherForma_Viz(107.651) · Mixpanel 90d</div>
+            <div class="dd-qv-d dr-bg">▼ CRIT · 86,9% pós-PIX gerado</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dd-slbl">APM real — RPS · P95 Latência · Erros 5xx · 7d · Datadog</div>
+      <div class="dd-grid dd-g4">
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">ganhatodos-api</span></div>
+          <div style="font-size:11px;font-family:'DM Mono',monospace;line-height:2;padding:4px 0">
+            <div>RPS: <strong>42,2 req/s</strong></div>
+            <div>P95: <strong>572ms</strong></div>
+            <div style="color:#f5c400">Erros 5xx: <strong>102/intervalo</strong> ⚠️</div>
+            <div>SLO: <span style="color:#f5c400">99,93% WARNING</span></div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">wallet-sso</span></div>
+          <div style="font-size:11px;font-family:'DM Mono',monospace;line-height:2;padding:4px 0">
+            <div>RPS: <strong>28,1 req/s</strong></div>
+            <div>P95: <strong>414ms</strong></div>
+            <div style="color:#ff4d4d">Erros 5xx: <strong>1.203/intervalo</strong> ▲ ALTO</div>
+            <div>SLO: <span style="color:#f5c400">99,91% WARNING</span></div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">webamei</span></div>
+          <div style="font-size:11px;font-family:'DM Mono',monospace;line-height:2;padding:4px 0">
+            <div>RPS: <strong>17,9 req/s</strong></div>
+            <div style="color:#ff4d4d">P95: <strong>3.246ms</strong> ▲ CRÍTICO</div>
+            <div style="color:#ff4d4d">Erros 5xx: <strong>328/intervalo</strong></div>
+            <div>SLO: <span style="color:#ff4d4d">99,52% BREACHED</span></div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">carrier-prod</span></div>
+          <div style="font-size:11px;font-family:'DM Mono',monospace;line-height:2;padding:4px 0">
+            <div>RPS: <strong>25,9 req/s</strong></div>
+            <div>P95: <strong>1.489ms</strong></div>
+            <div style="color:#70E000">Erros 5xx: <strong>18/intervalo</strong> ✓ normal</div>
+            <div>SLO: <span style="color:#70E000">99,9978% OK</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dd-slbl">Lista parceiros — backend health · ganhatodos-maiscash · /integrations/cashback/partners/list · 7d</div>
+      <div class="dd-grid dd-g2">
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">Backend endpoint saúde</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dg">36.148</div>
+            <div class="dd-qv-l">requests ao endpoint parceiros · 7d · Datadog spans</div>
+            <div class="dd-qv-d dg-bg">✓ apenas 1 erro 504 · backend saudável</div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">Diagnóstico erros CarregarLista</span></div>
+          <div style="font-size:11px;font-family:'DM Mono',monospace;line-height:1.8;padding:4px 0;color:#f5c400">
+            <div>⚠️ Backend OK ≠ App OK</div>
+            <div>37.069 erros CarregarLista no Mixpanel (90d)</div>
+            <div>vs 1 erro HTTP no backend (7d)</div>
+            <div style="color:#70E000;margin-top:4px">→ Causa provável: timeout/client-side no app</div>
+            <div style="color:#70E000">→ Investigar logs mobile / CDT app</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dd-slbl">Checkout — funil real · 90 dias · Mixpanel proj. 3158031</div>
+      <div class="dd-grid dd-g4">
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">Checkout aberto</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v db">107.651</div>
+            <div class="dd-qv-l">EscolherForma_Visualização · unique · 90d</div>
+            <div class="dd-qv-d dg-bg">≈ 1.196/dia</div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">Clicou no método</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dr">65.632</div>
+            <div class="dd-qv-l">EscolherForma_Clique · unique · 90d</div>
+            <div class="dd-qv-d dr-bg">▼ 38,9% saem aqui (42.019)</div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">PIX gerado</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dy">46.430</div>
+            <div class="dd-qv-l">GerarPix_Clique · unique · 90d</div>
+            <div class="dd-qv-d dy-bg">43,1% do checkout</div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">Pagamento concluído</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dg">40.328</div>
+            <div class="dd-qv-l">Sucesso_Visualização · unique · 90d</div>
+            <div class="dd-qv-d dy-bg">37,5% do checkout · 86,9% pós-PIX</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dd-slbl">Métodos de pagamento e erros · 90d · Mixpanel</div>
+      <div class="dd-grid dd-g2">
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">A3 · Adoção por método de pagamento (90d)</span></div>
+          <div class="dd-tlr"><div class="dd-tln" style="color:#70E000">PIX</div><div class="dd-tlbw"><div class="dd-tlb" style="width:100%;background:#70E000"></div></div><div class="dd-tlv" style="color:#70E000">40.231 únicos</div></div>
+          <div class="dd-tlr"><div class="dd-tln" style="color:#ff4d4d">Cashback</div><div class="dd-tlbw"><div class="dd-tlb" style="width:1%;background:#ff4d4d"></div></div><div class="dd-tlv" style="color:#ff4d4d">14 únicos</div></div>
+          <div class="dd-tlr"><div class="dd-tln" style="color:#ff4d4d">Cartão crédito</div><div class="dd-tlbw"><div class="dd-tlb" style="width:1%;background:#ff4d4d"></div></div><div class="dd-tlv" style="color:#ff4d4d">14 únicos</div></div>
+          <div class="dd-tlr"><div class="dd-tln" style="color:#ff4d4d">Erro (tela)</div><div class="dd-tlbw"><div class="dd-tlb" style="width:75%;background:#ff4d4d"></div></div><div class="dd-tlv" style="color:#ff4d4d">30.339 únicos</div></div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">A4 · Erros por tipo (90d · total events)</span></div>
+          <div class="dd-tlr"><div class="dd-tln" style="color:#ff4d4d">CarregarCarteirinha</div><div class="dd-tlbw"><div class="dd-tlb" style="width:100%;background:#ff4d4d"></div></div><div class="dd-tlv" style="color:#ff4d4d">104.870</div></div>
+          <div class="dd-tlr"><div class="dd-tln" style="color:#ff4d4d">ProcessarPagamento</div><div class="dd-tlbw"><div class="dd-tlb" style="width:99%;background:#ff4d4d"></div></div><div class="dd-tlv" style="color:#ff4d4d">104.037</div></div>
+          <div class="dd-tlr"><div class="dd-tln" style="color:#f5c400">CarregarLista</div><div class="dd-tlbw"><div class="dd-tlb" style="width:35%;background:#f5c400"></div></div><div class="dd-tlv" style="color:#f5c400">37.069</div></div>
+          <div class="dd-tlr"><div class="dd-tln" style="color:#f5c400">CarregarSaldo</div><div class="dd-tlbw"><div class="dd-tlb" style="width:29%;background:#f5c400"></div></div><div class="dd-tlv" style="color:#f5c400">30.711</div></div>
+        </div>
+      </div>
+
+      <div class="dd-slbl">QR Code PagarParceiro — funil · 90d · Mixpanel</div>
+      <div class="dd-grid dd-g3">
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">Abriu leitor QR</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v db">8.494</div>
+            <div class="dd-qv-l">PagarParceiro_LerQRCode_Visualização · unique · 90d</div>
+            <div class="dd-qv-d dg-bg">entrada pelo Tabbar: 1.316</div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">Clicou "Pagar via QR"</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dy">7.852</div>
+            <div class="dd-qv-l">PagarParceiro_PagarQRCode_Clique · unique · 90d</div>
+            <div class="dd-qv-d dy-bg">92% dos que abriram</div>
+          </div>
+        </div>
+        <div class="dd-w">
+          <div class="dd-wh"><span class="dd-wt">Pagamento concluído</span></div>
+          <div class="dd-qv">
+            <div class="dd-qv-v dr">135</div>
+            <div class="dd-qv-l">via QR → Sucesso_Visualização · 1d window · 90d</div>
+            <div class="dd-qv-d dr-bg">▼ CRIT · 2% conversão · 98% abandono</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dd-slbl">Monitor alerts — App · Mixpanel + Datadog SLOs</div>
+      <div class="dd-grid" style="grid-template-columns:1fr">
+        <div class="dd-w">
+          <div class="dd-ar"><div class="dd-as as-c">CRIT</div><div class="dd-an"><strong>[A9] 🚨 NOVO INCIDENTE: walletpl — 54.290 erros em 24/jun/2026 (ontem)</strong> — maior pico em 30d · baseline recente 2k–4k erros/dia · spike 13× o normal · padrão idêntico aos incidentes de mai/jun · verificar impacto em pagamentos do dia 24 · não capturado pelo Mixpanel</div><div class="dd-at">CRIT · Datadog 30d · descoberto 25/jun</div></div>
+          <div class="dd-ar"><div class="dd-as as-c">CRIT</div><div class="dd-an"><strong>[A5] walletpl Lambda — 89,36% disponibilidade (7d) · webamei 3,2s P95</strong> — walletpl SLO BREACHED · budget −10.542% · webamei SLO BREACHED 99,52% com P95 latência de 3.246ms (6× acima do normal) · wallet-sso 1.203 erros 5xx por intervalo</div><div class="dd-at">CRIT · Datadog SLO 7d + APM</div></div>
+          <div class="dd-ar"><div class="dd-as as-c">CRIT</div><div class="dd-an"><strong>[A3] Conversão checkout 37,5%</strong> — 107.651 abriram → 40.328 sucesso (90d) · 38,9% abandona antes de clicar no método · causa: 104.870 erros CarregarCarteirinha</div><div class="dd-at">CRIT · Mixpanel 90d</div></div>
+          <div class="dd-ar"><div class="dd-as as-c">CRIT</div><div class="dd-an"><strong>[A4] 2 incidentes de CarregarCarteirinha_Erro</strong> — pico 25/mai: 32.688 erros (8× normal) · pico 15/jun: 25.139 · padrão de falha pontual de infraestrutura · histórico disponível por semana no Mixpanel</div><div class="dd-at">CRIT · Mixpanel 90d</div></div>
+          <div class="dd-ar"><div class="dd-as as-c">CRIT</div><div class="dd-an"><strong>[A7] QR Code PagarParceiro — 2% conversão</strong> — 8.494 abriram QR · 7.852 clicaram (92%) · apenas 135 concluíram · gap de 98% entre intenção e sucesso · investigar backend QR</div><div class="dd-at">CRIT · Mixpanel 90d</div></div>
+          <div class="dd-ar"><div class="dd-as as-c">CRIT</div><div class="dd-an"><strong>[A8] 5.233 parceiros ativos sem App payment</strong> — dt_criacao_pagto_app nulo em 68% dos ativos · onboarding_payments: 1.145 bloqueados desde abr/2026 (1 completed em 9 sem) · TPV rede potencial: R$499M (Lake NRT)</div><div class="dd-at">CRIT · fl_parceiros_locais</div></div>
+          <div class="dd-ar"><div class="dd-as as-c">CRIT</div><div class="dd-an"><strong>[A3] Cashback = 14 usuários · Cartão = 14 em 90d</strong> — confirmado via evento <code style="font-size:10px">APPCDT-Checkout_Método_Cashback/CartaoCredito_Visualização</code> (versão com acento, evento atual) · versão deprecated sem acento mostrava 1 · PIX: 40.231 · Cashback/Cartão inativas na prática (0,03% adoção)</div><div class="dd-at">CRIT · Mixpanel 90d</div></div>
+          <div class="dd-ar"><div class="dd-as as-w">WARN</div><div class="dd-an"><strong>[A1] Lista parceiros locais — ganhatodos-api 99,93% (7d)</strong> — SLO WARNING · 32,9% budget restante · 37.069 erros CarregarLista 90d · pico mai/4-18 · GanhaTODOS API abaixo do ideal</div><div class="dd-at">WARN · Datadog SLO 7d + Mixpanel 90d</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div><!-- /page-dd -->
+
+<!-- PAGE: EVOLUÇÃO 15d -->
+<div class="page page-evo" id="page-evo">
+<div class="doc">
+
+  <div class="header">
+    <div class="eyebrow">MaisTODOS · Diretoria de Lealdade · OKR 3 — Novos Parceiros</div>
+    <h1>Diagnóstico de Onboarding<br>de Parceiros Locais</h1>
+    <p class="header-sub">Diagnóstico executivo da jornada de ativação de parceiros — da classificação CNAE à primeira transação no App — com funil App CDT, desempenho de OKRs e análise de autorização mapeados por perspectiva.</p>
+    <div class="period-chip">
+      <span class="b">01/ago – 28/ago · 2026</span>
+      <span class="sep">·</span>
+      <span>28 dias · Mixpanel + Metabase OKR 3</span>
+    </div>
+    <div class="header-meta">
+      <div class="meta-item"><div class="meta-dot" style="background:#7200D6"></div>Perspectiva Plataforma</div>
+      <div class="meta-item"><div class="meta-dot" style="background:#E5087E"></div>Perspectiva Conta</div>
+      <div class="meta-item"><div class="meta-dot" style="background:#70E000"></div>Perspectiva App</div>
+      <div class="meta-item"><div class="meta-dot" style="background:#dc2626"></div>Accounts DB (DB39) sem acesso SQL em ago/2026</div>
+      <div class="meta-item"><div class="meta-dot" style="background:#70E000"></div>Mixpanel (proj. 3158031) + Metabase OKR 3 · 28 dias</div>
+    </div>
+  </div>
+
+  <!-- INTRO BOX -->
+  <div class="intro-box">
+    <div class="intro-col">
+      <h3>Jornada obrigatória</h3>
+      <p>Para um parceiro ficar ativo no App, passa por <strong>três etapas em sequência</strong>: <strong style="color:#7200D6">Plataforma</strong> (cadastro + KYB) → <strong style="color:#E5087E">Conta PJ</strong> (KYC + abertura) → <strong style="color:#7200D6">Plataforma</strong> (ativação do cashback). O App é a jornada do filiado que resulta dessa ativação.</p>
+    </div>
+    <div class="intro-col">
+      <h3>Etapas mapeadas</h3>
+      <span class="tag tag-purple">Cadastro</span>
+      <span class="tag tag-purple">Envio de docs</span>
+      <span class="tag tag-purple">KYB</span>
+      <span class="tag tag-red">Criação de perfil</span>
+      <span class="tag tag-red">KYC</span>
+      <span class="tag tag-purple">Ativação cashback</span>
+      <span class="tag tag-green">App · filiado</span>
+      <p style="margin-top:8px;font-size:12px;color:var(--text3)"><strong style="color:#dc2626">Etapas 1–3 sem dados em agosto</strong> — Accounts DB (DB39) sem permissão SQL. Funil completo disponível via análise pontual com acesso direto ao banco.</p>
+    </div>
+    <div class="intro-col">
+      <h3>Destaques do período</h3>
+      <p><strong style="color:#dc2626">Conversão App caiu para 34,5%</strong> (vs 52,2% em jun) — queda de 17,7 p.p. Volume normalizado por dia −46% vs junho. <strong style="color:#dc2626">Cashout CDT: R$ 1.278 em agosto — quase zero.</strong> Taxa de autorização melhorou +8,58 p.p. com mudança de regra de risco. KR 3.6 Cashin: R$ 7,3M (54% da meta mensal) — melhor KR do período.</p>
+    </div>
+  </div>
+
+  <!-- JORNADA E DESAFIOS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">◎</span>
+      <span class="section-title">Jornada e desafios críticos por etapa</span>
+      <span class="section-count">Mixpanel + Metabase OKR 3 · 01/ago–28/ago</span>
+    </div>
+    <p class="section-desc">Desafios organizados por momento da jornada. Etapas 1–3 dependem do Accounts DB (DB39), sem acesso SQL em agosto. Etapa 4 (App) completa via Mixpanel.</p>
+
+    <!-- ETAPA 1 -->
+    <div style="margin-bottom:20px">
+      <div class="etapa-row er-plat">
+        <div class="etapa-num">1</div>
+        <div class="etapa-info">
+          <span class="etapa-name">Plataforma</span>
+          <span class="etapa-sub">Cadastro · Envio de documentos · KYB</span>
+        </div>
+        <span class="etapa-meta">Accounts DB · sem acesso SQL em ago/2026</span>
+      </div>
+      <div style="padding:18px 20px;background:#fff8f0;border:1px solid #f5c400;border-radius:6px;font-size:13px;color:#7A4400;line-height:1.7">
+        <strong>Dados indisponíveis — Accounts DB (DB39) sem permissão de SQL nativo.</strong><br>
+        Referência jun/2026 (15d): 368 cadastros → 312 enviaram docs (84,8%) · 55 travados no KYB · SLA KYB P90 = 75,6h · E2E médio = 3,9 dias. Para dados de agosto, executar consulta direta no Accounts DB ou aguardar integração via saved questions no Metabase.
+      </div>
+    </div>
+
+    <!-- ETAPA 2 -->
+    <div style="margin-bottom:20px">
+      <div class="etapa-row er-conta">
+        <div class="etapa-num">2</div>
+        <div class="etapa-info">
+          <span class="etapa-name">Conta PJ</span>
+          <span class="etapa-sub">Criação de perfil no app · KYC · Abertura de conta</span>
+        </div>
+        <span class="etapa-meta">Accounts DB · sem acesso SQL em ago/2026</span>
+      </div>
+      <div style="padding:18px 20px;background:#fff8f0;border:1px solid #f5c400;border-radius:6px;font-size:13px;color:#7A4400;line-height:1.7">
+        <strong>Dados indisponíveis — Accounts DB (DB39) sem permissão de SQL nativo.</strong><br>
+        Referência jun/2026 (15d): 313 chegaram à etapa KYC · SLA KYC P90 = 57,9h (82,3% ≤ 24h) · 4 reprovações · 175 contas abertas (47,6% — subestimado por maturação de coorte).
+      </div>
+    </div>
+
+    <!-- ETAPA 3 -->
+    <div style="margin-bottom:20px">
+      <div class="etapa-row er-plat">
+        <div class="etapa-num">3</div>
+        <div class="etapa-info">
+          <span class="etapa-name">Plataforma</span>
+          <span class="etapa-sub">Ativação do produto cashback · parceiro ativo no App</span>
+        </div>
+        <span class="etapa-meta">Accounts DB · sem acesso SQL em ago/2026</span>
+      </div>
+      <div style="padding:18px 20px;background:#fff8f0;border:1px solid #f5c400;border-radius:6px;font-size:13px;color:#7A4400;line-height:1.7">
+        <strong>Dados indisponíveis — Accounts DB (DB39) sem permissão de SQL nativo.</strong><br>
+        Referência jun/2026 (15d): onboarding_payments com 253 bloqueados em 15d / 0 concluídos automaticamente — gargalo crítico identificado em junho permanece sem confirmação de resolução em agosto. Status atual do bug dependente de update de Tech.
+      </div>
+    </div>
+
+    <!-- ETAPA 4 -->
+    <div>
+      <div class="etapa-row er-app">
+        <div class="etapa-num">4</div>
+        <div class="etapa-info">
+          <span class="etapa-name">App</span>
+          <span class="etapa-sub">Experiência do filiado · checkout · taxa de sucesso de transação</span>
+        </div>
+        <span class="etapa-meta">jornada do filiado · 01/ago–28/ago · Mixpanel (proj. 3158031)</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Desafio</th><th>Dado</th><th>Impacto</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Volume de checkout caiu −46%/dia vs junho — efeito Copa dissipado</strong></td>
+              <td class="mono">46.479 checkouts · 28d · 1.660/dia · Mixpanel</td>
+              <td>Junho (Copa): 45.821 em 15d = 3.055/dia. Agosto: 46.479 em 28d = 1.660/dia. Queda real de 46% no fluxo diário — reflexo direto no TPV do KR 3.2 (R$ 2,4M em ago vs R$ 7,3M em jun). Nível de ago/2026 abaixo de jul (KR 3.2: R$ 5,4M).</td>
+              <td><span class="sev sev-a">Alto</span></td>
+            </tr>
+            <tr>
+              <td><strong>Conversão checkout: 34,5% — queda de 17,7 p.p. vs junho</strong></td>
+              <td class="mono">16.031/46.479 únicos · 28d · Mixpanel CDT</td>
+              <td>46.479 abriram checkout → 22.121 geraram PIX (47,6%) → 16.031 concluíram pagamento (34,5%). Queda expressiva vs jun/2026 (52,2%). Conversão pós-PIX caiu de 97,9% para 72,5% — alinhado com recusa do emissor subindo de 22,13% para 27,63% após mudança de regra de risco.</td>
+              <td><span class="sev sev-c">Crítico</span></td>
+            </tr>
+            <tr>
+              <td><strong>Taxa de autorização subiu +8,58 p.p. com mudança de regra de risco</strong></td>
+              <td class="mono">35,60% → 44,18% · 28d de regra · Rafael Aleixo 27/ago</td>
+              <td>Bloqueio por risco caiu de 42,28% para 28,20% (−14,08 p.p.). Do volume desbloqueado: 61% converteu em autorização de vendas; 39% foi retido pelo emissor (recusa emissor subiu: 22,13% → 27,63%). Ganho líquido real de +8,58 p.p., mas dependência do emissor emergiu como nova vulnerabilidade a monitorar.</td>
+              <td><span class="sev sev-m">Melhora</span></td>
+            </tr>
+            <tr>
+              <td><strong>SLOs BREACHED: walletpl 89,30% · webamei 99,51% — 7d rolling · 28/ago</strong></td>
+              <td class="mono">7d rolling · Datadog · team:app-cartão-de-todos</td>
+              <td>walletpl (Lambda pagamentos): 89,30% — budget esgotado em −373 req. Leve melhora vs jun (88,24%) mas ainda massivamente abaixo da meta de 99,9%. webamei (Django wallet): 99,51% — budget −56.309 req, também BREACHED. Ambos os serviços continuam sem SLO saudável em agosto — nenhuma recuperação de budget desde junho.</td>
+              <td><span class="sev sev-c">Crítico</span></td>
+            </tr>
+            <tr>
+              <td><strong>Crash-free rate em queda livre: 95,03% no último dia — monitor em ALERTA</strong></td>
+              <td class="mono">Monitor #316062969 · ALERT desde 24/ago · Datadog RUM</td>
+              <td>Monitor criado por Vinicius Alencar em 24/ago/2026 disparou imediatamente. Crash-free rate (caminho ingerido, não retido): 30d 99,55% → 7d 99,21% → 3d 98,19% → <strong style="color:#dc2626">1d 95,03%</strong>. Threshold: &lt; 99,2%. Tendência de queda acentuada — 5% das sessões com crash no último dia. Investigar por versão e OS no Error Tracking: <code style="font-size:11px">service:wallet-app @error.is_crash:true</code>.</td>
+              <td><span class="sev sev-c">Crítico</span></td>
+            </tr>
+            <tr>
+              <td><strong>31.396 erros CarregarCarteirinha + 22.925 ProcessarPagamento + 5.519 CarregarSaldo em 28d</strong></td>
+              <td class="mono">31.396 + 22.925 + 5.519 · 28d · Mixpanel</td>
+              <td>CarregarCarteirinha: 0,675 erros/checkout (melhora vs jun 0,95, −29%). ProcessarPagamento: 0,493/checkout (vs 0,51 em jun — estável). Total de 59.840 erros em 28d. Erros por checkout melhoraram, mas volume absoluto permanece alto — cada erro é uma experiência degradada para o filiado.</td>
+              <td><span class="sev sev-a">Alto</span></td>
+            </tr>
+            <tr>
+              <td><strong>99,4% dos filiados escolhe cashback como método — concentração extrema</strong></td>
+              <td class="mono">46.170/46.479 · 28d · Mixpanel CDT</td>
+              <td>46.170 usuários únicos visualizaram o método cashback de 46.479 que abriram o checkout (99,4%). Total de 34.399 pagamentos concluídos (events) — média de 2,15 pagamentos por usuário bem-sucedido. Ticket médio implícito: ~R$ 70/pagamento (KR 3.2: R$ 2,4M ÷ 34.399 pagtos).</td>
+              <td><span class="sev sev-m">OK</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="alert alert-crit" style="margin-top:16px">
+      <div class="alert-head">🚨 Monitor em ALERTA · wallet-app crash-free · desde 24/ago/2026</div>
+      <div class="alert-body"><strong>Crash-free rate caiu para 95,03% no último dia</strong> — 5% das sessões com crash nativo. Tendência em queda acelerada: 30d 99,55% → 7d 99,21% → 3d 98,19% → 1d 95,03%. Monitor criado em 24/ago por Vinicius Alencar e disparado imediatamente. O número anterior de "99,9% estável" vinha do caminho <em>retido</em> do RUM — otimista. O caminho <em>ingerido</em> (real) mostra degradação severa. Investigação por versão + OS pendente com Tech.</div>
+    </div>
+
+    <div class="alert alert-warn" style="margin-top:8px">
+      <div class="alert-head">Nota metodológica · Accounts DB indisponível via MCP</div>
+      <div class="alert-body">As etapas 1–3 da jornada (Plataforma, Conta PJ, Ativação) dependem do Accounts DB (DB39), que não possui permissão para queries SQL nativas via MCP. Para habilitar: Metabase Admin → Permissions → Data → DB39 → "Native query writing" → Yes. Os dados dessas etapas neste documento são referência de junho/2026.</div>
+    </div>
+  </div>
+
+  <!-- OKR 3 PERFORMANCE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">◆</span>
+      <span class="section-title">OKR 3 — Performance financeira · agosto/2026</span>
+      <span class="section-count">Metabase · Coleção OKR 3 · 01/ago–28/ago</span>
+    </div>
+    <p class="section-desc">Desempenho dos Key Results do OKR 3 em agosto. KR 3.4 (cashin modelo) com 0% — não conectado. Accounts DB bloqueado impede leitura de KRs de onboarding.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>KR</th>
+            <th>Descrição</th>
+            <th>Agosto real</th>
+            <th>Meta mensal ref.</th>
+            <th>% meta</th>
+            <th>Tendência</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mono"><strong>KR 3.1</strong></td>
+            <td>Cashout CDT + AmorSaúde + Outros</td>
+            <td class="mono">R$ 1.187.714<br><span style="font-size:11px;color:#dc2626">CDT: R$ 1.278 ⚠</span></td>
+            <td class="mono">R$ 3.261.522</td>
+            <td><span class="d-bad">36,4%</span></td>
+            <td><span style="color:#dc2626;font-size:12px">CDT colapso: R$594K jun → R$1K ago</span></td>
+          </tr>
+          <tr>
+            <td class="mono"><strong>KR 3.2</strong></td>
+            <td>App CDT · checkout TPV (store maiscash)</td>
+            <td class="mono">R$ 2.409.881</td>
+            <td class="mono">R$ 11.411.480</td>
+            <td><span class="d-bad">21,1%</span></td>
+            <td><span style="color:#dc2626;font-size:12px">↓ vs jun R$7,3M · jul R$5,4M</span></td>
+          </tr>
+          <tr>
+            <td class="mono"><strong>KR 3.3</strong></td>
+            <td>Canais alternativos (Ultragaz, Giftcard, Raia)</td>
+            <td class="mono">R$ 1.376.733</td>
+            <td class="mono">R$ 3.682.993</td>
+            <td><span class="d-bad">37,4%</span></td>
+            <td><span style="color:#dc2626;font-size:12px">↓ vs jun R$1,5M · jul R$1,6M</span></td>
+          </tr>
+          <tr>
+            <td class="mono"><strong>KR 3.4</strong></td>
+            <td>Cashin (modelo de receita)</td>
+            <td class="mono">R$ 0</td>
+            <td class="mono">—</td>
+            <td><span class="d-bad">0%</span></td>
+            <td><span style="color:#dc2626;font-size:12px">Modelo não implementado — zero YTD</span></td>
+          </tr>
+          <tr>
+            <td class="mono"><strong>KR 3.5</strong></td>
+            <td>Total de transações (cashout + checkout)</td>
+            <td class="mono">89.015 transações</td>
+            <td class="mono">430.931</td>
+            <td><span class="d-bad">20,7%</span></td>
+            <td><span style="color:#dc2626;font-size:12px">↓ vs jun 154K · jul 126K</span></td>
+          </tr>
+          <tr>
+            <td class="mono"><strong>KR 3.6</strong></td>
+            <td>Cashin nacional (Raia, Rakuten, Awin, Giftcard, Ultragaz)</td>
+            <td class="mono">R$ 7.342.942</td>
+            <td class="mono">R$ 13.508.665</td>
+            <td><span class="d-bad">54,3%</span></td>
+            <td><span style="color:#f5c400;font-size:12px">Melhor KR · estável vs jul R$7,8M</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert alert-crit" style="margin-top:16px">
+      <div class="alert-head">Alerta crítico · Cashout CDT · agosto/2026</div>
+      <div class="alert-body"><strong>R$ 1.278 de cashout CDT em agosto</strong> — contra R$ 75K em jan, R$ 77K em abr, R$ 594K em jun (Copa). Queda de 99,8% vs pico de junho. Pode indicar bug de pipeline de dados, interrupção de produto ou ausência de parceiros CDT gerando transações. Verificação urgente com Tech/Dados antes de fechar o mês.</div>
+    </div>
+  </div>
+
+  <!-- ANÁLISE CONSOLIDADA -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">◈</span>
+      <span class="section-title">Análise consolidada</span>
+      <span class="section-count">Plataforma · Conta · App · 01/ago–28/ago</span>
+    </div>
+
+    <div class="grid-3">
+
+      <div class="ccard" style="border-top:3px solid #7200D6">
+        <div class="ccard-title" style="color:#7200D6">⬡ Plataforma</div>
+        <div class="ccard-body"><strong style="color:#7A4400">Dados indisponíveis em agosto</strong> — Accounts DB sem permissão SQL via MCP. Referência jun/2026: E2E 3,9 dias · 84,8% conv cadastro→docs · KYB P90 75,6h · <strong style="color:#dc2626">onboarding_payments bloqueando 253 parceiros / 0 concluídos</strong>. Status do bug em agosto: não confirmado se foi resolvido por Tech.</div>
+        <div class="ccard-stats">
+          <div style="color:#7A4400">● Sem dados agosto — Accounts DB bloqueado</div>
+          <div style="color:#f5c400">● Ref. jun: 368 cadastros · E2E 3,9d · KYB P90 75,6h</div>
+          <div style="color:#dc2626">● Bug onboarding_payments: status em ago desconhecido</div>
+        </div>
+      </div>
+
+      <div class="ccard" style="border-top:3px solid #E5087E">
+        <div class="ccard-title" style="color:#E5087E">🏦 Conta</div>
+        <div class="ccard-body"><strong style="color:#7A4400">Dados indisponíveis em agosto</strong> — Accounts DB sem permissão SQL via MCP. Referência jun/2026: KYC P90 57,9h · 82,3% ≤ 24h · 4 reprovações · 175 contas abertas (47,6% — subestimado). Meta de 90% ≤ 24h ainda não atingida em junho.</div>
+        <div class="ccard-stats">
+          <div style="color:#7A4400">● Sem dados agosto — Accounts DB bloqueado</div>
+          <div style="color:#f5c400">● Ref. jun: KYC P90 57,9h · 82,3% ≤ 24h</div>
+          <div style="color:#f5c400">● Ref. jun: 4 reprovações · 175 contas abertas</div>
+        </div>
+      </div>
+
+      <div class="ccard" style="border-top:3px solid #70E000">
+        <div class="ccard-title" style="color:#4A9900">📱 App</div>
+        <div class="ccard-body"><strong style="color:#dc2626">Conversão 34,5% — queda de 17,7 p.p. vs jun (52,2%).</strong> Volume −46%/dia vs Copa. Crash-free rate em queda livre: 95,03% no último dia — monitor em ALERTA desde 24/ago. SLOs ainda BREACHED: walletpl 89,30% · webamei 99,51%. Taxa de autorização melhorou +8,58 p.p. com mudança de regra de risco. Erros/checkout melhoraram −29%.</div>
+        <div class="ccard-stats">
+          <div style="color:#dc2626">● Conversão: 34,5% · −17,7 p.p. vs jun · crash-free 95,03% (1d)</div>
+          <div style="color:#dc2626">● walletpl SLO 89,30% BREACHED · webamei 99,51% BREACHED</div>
+          <div style="color:#4A9900">● Autorização: +8,58 p.p. · CarregarCarteirinha erros: −29%</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>+maisTODOS · Diretoria de Lealdade · Diagnóstico Onboarding · 01/ago–28/ago/2026</div>
+    <div style="font-family:'DM Mono',monospace;font-size:11px;opacity:.7">Mixpanel (proj. 3158031) + Metabase OKR 3 (col. 518) · Accounts DB (DB39) sem acesso SQL · 28/ago/2026</div>
+  </div>
+
+</div>
+</div><!-- /page-evo -->
+
+<script>
+function switchPage(page, el) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.gnav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  el.classList.add('active');
+}
+function switchDD(tab, el) {
+  document.querySelectorAll('.dd-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.dd-ftab').forEach(t => t.classList.remove('active'));
+  document.getElementById('dd-' + tab).classList.add('active');
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>

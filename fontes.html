@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fontes de dados — Diagnóstico MaisTODOS + Cartão de Todos</title>
+<style>
+  :root {
+    --mt-roxo:#7200D6;--mt-verde:#70E000;--mt-magenta:#E5087E;
+    --bg:#F7F7FA;--bg2:#fff;--border:#E5E5F0;
+    --text:#0D0019;--text2:#4B4B6B;--text3:#8888AA;
+    --radius:8px;--radius-lg:12px;
+    --ok:#166534;--ok-bg:#dcfce7;
+    --warn:#92400e;--warn-bg:#fef3c7;
+    --crit:#991b1b;--crit-bg:#fee2e2;
+    --pending:#1e40af;--pending-bg:#dbeafe;
+    --override:#7200D6;--override-bg:#EEE8FA;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.6}
+  .page-wrap{max-width:1000px;margin:0 auto;padding:24px 16px}
+  h1{font-size:20px;font-weight:700;color:var(--mt-roxo);margin-bottom:4px}
+  .subtitle{color:var(--text2);font-size:12px;margin-bottom:24px}
+  .legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;padding:12px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius)}
+  .leg-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)}
+  .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;font-family:'DM Mono',monospace}
+  .b-ok{background:var(--ok-bg);color:var(--ok)}
+  .b-warn{background:var(--warn-bg);color:var(--warn)}
+  .b-crit{background:var(--crit-bg);color:var(--crit)}
+  .b-pending{background:var(--pending-bg);color:var(--pending)}
+  .b-override{background:var(--override-bg);color:var(--override)}
+  .section{margin-bottom:28px}
+  .section-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:8px}
+  .section-title span.dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex-shrink:0}
+  table{width:100%;border-collapse:collapse;background:var(--bg2);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border)}
+  th{background:#F0EAF9;color:var(--mt-roxo);font-weight:600;font-size:11px;padding:8px 12px;text-align:left;border-bottom:1px solid var(--border)}
+  td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;font-size:12px}
+  tr:last-child td{border-bottom:none}
+  td.metric{font-weight:600;color:var(--text);min-width:220px}
+  td.value{font-family:'DM Mono',monospace;font-size:11px;color:var(--mt-roxo);white-space:nowrap}
+  td.source{color:var(--text2)}
+  td.calc{color:var(--text2);font-size:11px}
+  td.status{min-width:90px;text-align:center}
+  a{color:var(--mt-roxo);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .note{background:#EEE8FA;border-left:3px solid var(--mt-roxo);border-radius:var(--radius);padding:10px 14px;font-size:11px;color:var(--text2);margin-bottom:16px}
+  .note strong{color:var(--mt-roxo)}
+  .note-warn{background:var(--warn-bg);border-left:3px solid #d97706;border-radius:var(--radius);padding:10px 14px;font-size:11px;color:var(--warn);margin-bottom:16px}
+  .note-crit{background:var(--crit-bg);border-left:3px solid #dc2626;border-radius:var(--radius);padding:10px 14px;font-size:11px;color:var(--crit);margin-bottom:16px}
+  .mono{font-family:'DM Mono',monospace;font-size:10px;background:#F0EAF9;padding:1px 5px;border-radius:3px;color:var(--mt-roxo)}
+  .sql{font-family:'DM Mono',monospace;font-size:10px;background:#F0EAF9;padding:8px 10px;border-radius:4px;color:var(--mt-roxo);white-space:pre-wrap;margin-top:4px;display:block;line-height:1.5}
+  .old{font-size:10px;color:var(--text3);text-decoration:line-through}
+  footer{text-align:center;font-size:11px;color:var(--text3);padding:24px 0 16px;border-top:1px solid var(--border);margin-top:32px}
+  .prompt-box{background:#0D0019;color:#70E000;font-family:'DM Mono',monospace;font-size:11px;padding:16px;border-radius:var(--radius-lg);white-space:pre-wrap;margin-top:8px;line-height:1.7}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:700px){.two-col{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <h1>Fontes de dados — Diagnóstico de Onboarding + App Cartão de Todos</h1>
+  <p class="subtitle">Verificado via Accounts DB API (Metabase DB39) · Mixpanel MCP (projetos 3205593 e 3158031) · Datadog APM MCP (OAuth) · Lake NRT (DB42) · 2026-06-27 &nbsp;|&nbsp; Cada dado tem a fonte exata, query e motivo de escolha</p>
+
+  <div class="legend">
+    <div class="leg-item"><span class="badge b-ok">CONFIRMADO</span> Consultado diretamente via API/MCP nesta sessão</div>
+    <div class="leg-item"><span class="badge b-override">CORRIGE DOC ANTERIOR</span> Substitui valor incorreto do documento anterior</div>
+    <div class="leg-item"><span class="badge b-warn">ESTIMADO</span> Calculado ou inferido com fonte indireta</div>
+    <div class="leg-item"><span class="badge b-crit">ALERTA</span> Anomalia identificada — requer atenção</div>
+    <div class="leg-item"><span class="badge b-pending">PENDENTE</span> Fonte identificada, acesso bloqueado</div>
+  </div>
+
+  <!-- DECISÃO DE FONTE -->
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:#dc2626"></span>Decisão de fonte: Accounts DB prevalece sobre Mixpanel para onboarding de parceiros</div>
+    <div class="note-warn"><strong>Por que o Mixpanel dá números errados para onboarding de parceiros:</strong> O fluxo de cadastro começa com o usuário anônimo (<span class="mono">$device_id</span>) e termina com usuário identificado (<span class="mono">$user_id</span>). Se o Mixpanel não faz o merge dos perfis, funnels e contagens únicas quebram — o mesmo usuário vira duas pessoas distintas. Resultado: o documento anterior mostrava 837 iniciaram / 272 abriram conta via Mixpanel; o Accounts DB mostra 2.600 / 1.648 para 90 dias. A fonte correta é o Accounts DB.</div>
+    <table>
+      <thead><tr><th>Métrica</th><th>Mixpanel (INCORRETO)</th><th>Accounts DB (CORRETO)</th><th>Fonte correta / Query</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="metric">Parceiros iniciaram cadastro (90d)</td>
+          <td class="value old">837</td>
+          <td class="value">2.600</td>
+          <td class="source"><code class="sql">SELECT COUNT(DISTINCT company_id)
+FROM onboarding_companystep cs
+JOIN onboarding_steptemplate st ON st.id = cs.step_template_id
+WHERE st.code = 'onboarding_signup'
+  AND cs.created_at >= NOW() - INTERVAL '90 days'</code></td>
+        </tr>
+        <tr>
+          <td class="metric">Completaram KYB manual (docs) (90d)</td>
+          <td class="value old">324 (38,7%)</td>
+          <td class="value">2.172 (83,5%)</td>
+          <td class="source"><code class="sql">... WHERE st.code = 'onboarding_kyb_manual'
+  AND cs.status_field = 'completed'</code></td>
+        </tr>
+        <tr>
+          <td class="metric">Completaram biometria KYC (90d)</td>
+          <td class="value old">294 (clique, não conclusão)</td>
+          <td class="value">2.054 (79%)</td>
+          <td class="source"><code class="sql">... WHERE st.code = 'onboarding_kyc'
+  AND cs.status_field = 'completed'</code></td>
+        </tr>
+        <tr>
+          <td class="metric">Conta digital aberta (90d)</td>
+          <td class="value old">272 (32,5%)</td>
+          <td class="value">1.648 (63,4%)</td>
+          <td class="source"><code class="sql">SELECT COUNT(DISTINCT company_id)
+FROM banking_bankaccount
+WHERE code = '332' AND active = true
+  AND created_at >= NOW() - INTERVAL '90 days'</code><br><em style="font-size:10px">code='332' = banco MaisTODOS (confirmado via card 27065 do time de dados)</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TEMPOS MÉDIOS -->
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:var(--mt-magenta)"></span>Tempos médios de conversão — onboarding de parceiros (90d)</div>
+    <div class="note"><strong>Fonte:</strong> Accounts DB (DB39) · cruzamento de <span class="mono">onboarding_companystep.created_at / completed_at</span> com <span class="mono">banking_bankaccount.created_at</span> · Por que não Mixpanel: funil retornou 0 conversões por identity stitching. Por que não Datadog: métricas de APM não têm granularidade de negócio (início/fim de jornada do parceiro).</div>
+    <table>
+      <thead><tr><th>Métrica</th><th>Mixpanel (anterior)</th><th>Accounts DB (confirmado)</th><th>Steps usados</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="metric">Início cadastro → conta aberta (E2E)</td>
+          <td class="value old">~100h (4,2 dias) <br><em style="font-size:10px">⚠ apenas 110 usuários, viés de seleção</em></td>
+          <td class="value">9,1 dias</td>
+          <td class="source"><span class="mono">onboarding_signup.created_at</span> → <span class="mono">banking_bankaccount.created_at</span></td>
+        </tr>
+        <tr>
+          <td class="metric">Início cadastro → envio de docs plataforma</td>
+          <td class="value old">~25h</td>
+          <td class="value">2,5 dias</td>
+          <td class="source"><span class="mono">onboarding_signup.created_at</span> → <span class="mono">onboarding_kyb_manual.completed_at</span></td>
+        </tr>
+        <tr>
+          <td class="metric">Início cadastro → biometria</td>
+          <td class="value old">~33h</td>
+          <td class="value">4,1 dias</td>
+          <td class="source"><span class="mono">onboarding_signup.created_at</span> → <span class="mono">onboarding_kyc.completed_at</span></td>
+        </tr>
+        <tr>
+          <td class="metric">Biometria → conta aberta (maior gargalo)</td>
+          <td class="value old">~66h (2,7 dias)</td>
+          <td class="value">5,7 dias</td>
+          <td class="source"><span class="mono">onboarding_kyc.completed_at</span> → <span class="mono">banking_bankaccount.created_at</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ESTADO ATUAL 30D -->
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:var(--mt-roxo)"></span>Estado atual do onboarding — últimos 30 dias</div>
+    <div class="two-col">
+      <div>
+        <p style="font-size:12px;font-weight:700;margin-bottom:8px">Travados antes de enviar documentos</p>
+        <table>
+          <thead><tr><th>Situação</th><th>Parceiros</th></tr></thead>
+          <tbody>
+            <tr><td>Passaram pelo KYB — avançaram</td><td class="value">573</td></tr>
+            <tr><td style="color:var(--crit);font-weight:600">Travados no KYB manual (in_progress)</td><td class="value" style="color:var(--crit)">140</td></tr>
+            <tr><td>Travados no KYB automático</td><td class="value">3</td></tr>
+            <tr><td>Não chegaram ao KYB ainda</td><td class="value">6</td></tr>
+            <tr><td style="font-weight:700">Total iniciados (signup 30d)</td><td class="value" style="font-weight:700">722</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:10px;color:var(--text3);margin-top:6px">Fonte: <span class="mono">onboarding_companystep</span> · Accounts DB</p>
+      </div>
+      <div>
+        <p style="font-size:12px;font-weight:700;margin-bottom:8px">Conversão docs → conta aberta (30d)</p>
+        <table>
+          <thead><tr><th>Etapa</th><th>Parceiros</th><th>Conv.</th></tr></thead>
+          <tbody>
+            <tr><td>Enviaram docs (KYB concluído)</td><td class="value">655</td><td class="value">—</td></tr>
+            <tr><td>Fizeram biometria (KYC)</td><td class="value">575</td><td class="value">87,8%</td></tr>
+            <tr><td>KYC aprovado</td><td class="value">575</td><td class="value">100%</td></tr>
+            <tr><td style="font-weight:600">Conta aberta</td><td class="value" style="font-weight:600">359</td><td class="value" style="font-weight:600">54,8%</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:10px;color:var(--text3);margin-top:6px">Taxa baixa reflete janela de 30d (ciclo médio ~9,1 dias)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- KYB TRAVADOS TOTAL (SNAPSHOT) -->
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:#dc2626"></span>KYB travado — snapshot total · fila ativa com envelhecimento</div>
+    <div class="note"><strong>Atenção:</strong> não é uma janela de 30 dias — é a fila ativa total com indicador de envelhecimento. 558 empresas com step <span class="mono">onboarding_kyb_manual</span> em status <span class="mono">in_progress</span> hoje. Sem notificação automática de SLA.</div>
+    <table>
+      <thead><tr><th>Faixa de tempo sem atualização</th><th>Empresas</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td style="color:var(--crit);font-weight:600">Sem atualização há mais de 30 dias (possível abandono)</td><td class="value" style="color:var(--crit)">426</td><td class="status"><span class="badge b-crit">ALERTA</span></td></tr>
+        <tr><td>Sem atualização há 7–30 dias</td><td class="value">91</td><td class="status"><span class="badge b-warn">WARN</span></td></tr>
+        <tr><td>Iniciadas recentemente (&lt; 7 dias)</td><td class="value">41</td><td class="status"><span class="badge b-ok">RECENTE</span></td></tr>
+        <tr><td style="font-weight:700">Total in_progress (snapshot atual)</td><td class="value" style="font-weight:700">558</td><td class="status"><span class="badge b-crit">ALERTA</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ERROS UPLOAD DOCS -->
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:#d97706"></span>Erros de upload de documentos — plataforma (últimos 30d)</div>
+    <div class="note"><strong>Fonte:</strong> Accounts DB (DB39) · <span class="mono">onboarding_companystep JOIN onboarding_steptemplate WHERE st.code='onboarding_kyb_manual'</span> · Por que não Mixpanel: evento <span class="mono">ONBRD-onboarding_documentos_upload_erro</span> retornou apenas ~16/mês (subamostragem do frontend). Por que não Datadog: granularidade insuficiente por parceiro. <strong>Nota:</strong> <span class="mono">actions_companynecessaryactions</span> foi descartada — sem novos registros desde jan/2026 (tabela obsoleta).</div>
+    <table>
+      <thead><tr><th>Status</th><th>Parceiros</th><th>Com tentativas no response_history</th></tr></thead>
+      <tbody>
+        <tr><td>Completed (concluíram)</td><td class="value">659</td><td class="value">656</td></tr>
+        <tr><td style="font-weight:700;color:var(--crit)">In_progress — espelho atual (upload incompleto)</td><td class="value" style="color:var(--crit)">141</td><td class="value">22</td></tr>
+        <tr><td>Skipped</td><td class="value">1</td><td class="value">0</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--text2);margin-top:8px">Para detalhar quais documentos faltam por parceiro: <code class="sql">SELECT company_id, response_history->>0 AS ultimo_upload
+FROM onboarding_companystep cs
+JOIN onboarding_steptemplate st ON st.id = cs.step_template_id
+WHERE st.code = 'onboarding_kyb_manual'
+  AND cs.status_field = 'in_progress'
+  AND cs.updated_at >= NOW() - INTERVAL '30 days'</code></p>
+  </div>
+
+  <!-- SLA E REPROVAÇÕES -->
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:#f5c400"></span>SLA de análise e reprovações (90d)</div>
+    <div class="note"><strong>Fonte:</strong> Accounts DB (DB39) · <span class="mono">onboarding_companystep.completed_at - created_at</span> · Métrica por step: <span class="mono">onboarding_kyb_manual</span> = KYB plataforma; <span class="mono">onboarding_kyc</span> = KYC conta digital (via CAF). Por que não Datadog: dados de SLA de negócio não disponíveis no APM. Valores confirmados via Accounts DB.</div>
+    <div class="two-col">
+      <table>
+        <thead><tr><th colspan="2">SLA KYB — Análise de documentos da plataforma</th></tr></thead>
+        <tbody>
+          <tr><td>Média</td><td class="value">58,8 h</td></tr>
+          <tr><td>Mediana</td><td class="value">0,8 h <em style="font-size:10px">(automático)</em></td></tr>
+          <tr><td>P90</td><td class="value">167,8 h</td></tr>
+          <tr><td>≤ 24h</td><td class="value">1.554 / 2.136 = <strong>72,8%</strong></td></tr>
+          <tr><td>≤ 48h</td><td class="value">1.670 / 2.136 = 78,2%</td></tr>
+          <tr><td>&gt; 72h</td><td class="value">403 / 2.136 = 18,9%</td></tr>
+        </tbody>
+      </table>
+      <table>
+        <thead><tr><th colspan="2">SLA KYC — Biometria / conta digital (via CAF)</th></tr></thead>
+        <tbody>
+          <tr><td>Média</td><td class="value">39,9 h</td></tr>
+          <tr><td>Mediana</td><td class="value">0,2 h <em style="font-size:10px">(automático)</em></td></tr>
+          <tr><td>P90</td><td class="value">94,9 h</td></tr>
+          <tr><td>≤ 24h</td><td class="value">1.669 / 2.015 = <strong>82,8%</strong></td></tr>
+          <tr><td>&gt; 72h</td><td class="value">234 / 2.015 = 11,6%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:11px;color:var(--text2);margin-top:12px;margin-bottom:8px"><strong>Reprovações KYC — 138 parceiros únicos em 90d</strong> &nbsp;|&nbsp; Fonte: <span class="mono">onboarding_kyc.response_history</span> JSONB · campo <span class="mono">statusReasons[].resultStatus = 'REPROVED'</span></p>
+    <table>
+      <thead><tr><th>Código da reprovação</th><th>Parceiros únicos</th><th>Interpretação</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">government_document_approved</td><td class="value">82</td><td>CAF reprovou validação do documento (foto ilegível, documento vencido, dados não batem)</td></tr>
+        <tr><td class="mono">facematch_is_equal</td><td class="value">37</td><td>Selfie não bate com foto do documento</td></tr>
+        <tr><td style="color:var(--crit);font-weight:600">Sem código (MANUAL_REVIEW s/ categoria)</td><td class="value" style="color:var(--crit)">21</td><td>Revisor manual reprovou com descrição livre mas sem código estruturado. Todos têm texto (ex: "Documento ilegível") mas sem <span class="mono">code</span> no payload. Revisores: stefany.costa@ e stefany.pinto@</td></tr>
+        <tr><td class="mono">government_document_available</td><td class="value">2</td><td>Documento não disponível para consulta</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ONBOARDING_PAYMENTS QUEBRADO -->
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:#dc2626"></span>Pipeline onboarding_payments quebrado — incidente ativo desde abr/2026</div>
+    <div class="note-crit"><strong>O que é:</strong> O step <span class="mono">onboarding_payments</span> (Accounts DB) é a etapa final que ativa o produto "receber pagamentos via App CDT" para o parceiro. <strong>Não é bloqueio de conta bancária</strong> — a conta PJ já foi aberta. É a habilitação do terminal de pagamento no App. Desde abr/2026: apenas 1 completou em 9 semanas. Parceiros afetados têm conta ativa mas não aparecem no App CDT como ponto de pagamento.</div>
+    <table>
+      <thead><tr><th>Métrica</th><th>Valor</th><th>Fonte</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="metric">Total in_progress (pipeline parado)</td>
+          <td class="value" style="color:var(--crit)">1.145</td>
+          <td class="source">Accounts DB (DB39) · step <span class="mono">onboarding_payments</span> · status=in_progress</td>
+          <td class="status"><span class="badge b-crit">ALERTA</span></td>
+        </tr>
+        <tr>
+          <td class="metric">Total completed desde abr/2026</td>
+          <td class="value" style="color:var(--crit)">1</td>
+          <td class="source">Accounts DB (DB39) · step <span class="mono">onboarding_payments</span> · status=completed</td>
+          <td class="status"><span class="badge b-crit">ALERTA</span></td>
+        </tr>
+        <tr>
+          <td class="metric">Distribuição por mês de entrada</td>
+          <td class="value">Abr: 171 · Mai: 571 · Jun: 403</td>
+          <td class="source">Accounts DB · <span class="mono">cs.created_at</span> agrupado por mês</td>
+          <td class="status"><span class="badge b-ok">CONFIRMADO</span></td>
+        </tr>
+        <tr>
+          <td class="metric">Perfil bancário falhando (step anterior)</td>
+          <td class="value" style="color:var(--crit)">104 failed</td>
+          <td class="source">step <span class="mono">onboarding_receive_notification_business_bank_profile_created</span> · primeira 27/mar · última 24/jun · sem retentativa automática</td>
+          <td class="status"><span class="badge b-crit">ALERTA</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- LAKE NRT -->
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:#00838F"></span>Lake NRT — parceiros sem App payment habilitado</div>
+    <div class="note"><strong>Fonte:</strong> Lake NRT (DB42) · tabela <span class="mono">fl_parceiros_locais</span> · atualização near real-time. Campo <span class="mono">dt_criacao_pagto_app</span>: nulo = sem terminal de pagamento no App CDT. <strong>Atenção:</strong> os 5.233 NÃO são consequência direta do bug onboarding_payments. A maioria nunca passou pelo pipeline de habilitação — são segmentos que exigem tombamento específico (PPA, supermercados, postos de combustível, leitura de nota fiscal). O bug afeta 1.145 parceiros novos, subconjunto separado.</div>
+    <table>
+      <thead><tr><th>Métrica</th><th>Valor</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="metric">Parceiros ativos total (<span class="mono">fl_parceiros_locais</span>)</td><td class="value">7.696</td><td class="status"><span class="badge b-ok">CONFIRMADO</span></td></tr>
+        <tr><td class="metric"><span class="mono">dt_criacao_pagto_app</span> preenchido (habilitados)</td><td class="value">2.463 (32%)</td><td class="status"><span class="badge b-ok">CONFIRMADO</span></td></tr>
+        <tr><td class="metric" style="color:var(--crit)"><span class="mono">dt_criacao_pagto_app</span> nulo (sem App payment)</td><td class="value" style="color:var(--crit)">5.233 (68%)</td><td class="status"><span class="badge b-crit">ALERTA</span></td></tr>
+        <tr><td class="metric">TPV total da rede</td><td class="value">R$ 499,6M</td><td class="status"><span class="badge b-ok">CONFIRMADO</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- APP CDT CHECKOUT -->
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:var(--mt-magenta)"></span>App Cartão de Todos — Checkout</div>
+    <div class="note"><strong>Fonte:</strong> Mixpanel · Projeto <strong>App CDT (Prod)</strong> (ID 3158031) · eventos <span class="mono">APPCDT-Checkout_*</span> · Todos os eventos têm prefixo <span class="mono">APPCDT-</span>. Dois intervalos consultados: 90 dias (visão geral) e dois períodos de 15d para comparativo de evolução. Por que não Datadog: dados de APM focados em disponibilidade de serviço, não em comportamento de filiado no checkout.</div>
+
+    <p style="font-size:12px;font-weight:700;margin-bottom:8px">Funil acumulado 90 dias — unique users</p>
+    <table>
+      <thead><tr><th>Evento (nome exato no Mixpanel)</th><th>Usuários únicos</th><th>Conversão acumulada</th><th>Drop desta etapa</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">APPCDT-Checkout_EscolherForma_Visualização</td><td class="value">107.651</td><td class="value">100%</td><td class="value">—</td></tr>
+        <tr><td class="mono">APPCDT-Checkout_EscolherMetodo_Clique</td><td class="value">65.632</td><td class="value">61%</td><td class="value" style="color:var(--crit)">42.019 (38,9%) saem sem clicar</td></tr>
+        <tr><td class="mono">APPCDT-Checkout_GerarPix_Clique</td><td class="value">46.430</td><td class="value">43,1%</td><td class="value">—</td></tr>
+        <tr><td class="mono" style="color:var(--ok)">APPCDT-Checkout_Sucesso_Visualização</td><td class="value" style="color:var(--ok)">40.328</td><td class="value" style="color:var(--ok)">37,5%</td><td class="value">—</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:12px;font-weight:700;margin:16px 0 8px">Comparativo 15 dias — funil de checkout · unique users</p>
+    <table>
+      <thead><tr><th>Evento</th><th>28/mai – 11/jun</th><th>12/jun – 26/jun</th><th>Δ%</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">APPCDT-Checkout_EscolherForma_Visualização</td><td class="value">25.702</td><td class="value">45.821</td><td class="value" style="color:var(--ok)">+78,3%</td></tr>
+        <tr><td class="mono">APPCDT-Checkout_EscolherMetodo_Clique</td><td class="value">17.222</td><td class="value">34.775</td><td class="value" style="color:var(--ok)">+101,9%</td></tr>
+        <tr><td class="mono">APPCDT-Checkout_GerarPix_Clique</td><td class="value">10.269</td><td class="value">24.460</td><td class="value" style="color:var(--ok)">+138,2%</td></tr>
+        <tr><td class="mono">APPCDT-Checkout_Sucesso_Visualização</td><td class="value">11.785</td><td class="value">23.937</td><td class="value" style="color:var(--ok)">+103,1%</td></tr>
+        <tr><td style="font-weight:600">Conversão total (sucesso ÷ aberto)</td><td class="value" style="font-weight:600">45,9%</td><td class="value" style="font-weight:600;color:var(--ok)">52,2%</td><td class="value" style="color:var(--ok)">+6,3 p.p.</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:12px;font-weight:700;margin:16px 0 8px">Métodos de pagamento — 90d · unique users</p>
+    <table>
+      <thead><tr><th>Método</th><th>Evento (nome exato)</th><th>Usuários únicos 90d</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>PIX</strong> (método dominante)</td>
+          <td class="mono">APPCDT-Checkout_Método_PIX_Visualização</td>
+          <td class="value">40.231</td>
+          <td class="status"><span class="badge b-ok">CONFIRMADO</span></td>
+        </tr>
+        <tr>
+          <td><strong>Cashback</strong></td>
+          <td><span class="mono">APPCDT-Checkout_Método_Cashback_Visualização</span> <span class="badge b-override">CORRIGE DOC</span></td>
+          <td class="value">14 <span class="old">anterior: 1 (evento deprecated)</span></td>
+          <td class="status"><span class="badge b-ok">CONFIRMADO</span></td>
+        </tr>
+        <tr>
+          <td><strong>Cartão de crédito</strong></td>
+          <td><span class="mono">APPCDT-Checkout_Método_CartaoCredito_Visualização</span> <span class="badge b-override">CORRIGE DOC</span></td>
+          <td class="value">14 <span class="old">anterior: 1 (evento deprecated)</span></td>
+          <td class="status"><span class="badge b-ok">CONFIRMADO</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note-warn"><strong>Por que o dado anterior mostrava "1":</strong> o evento deprecated (sem acento) <span class="mono">APPCDT-Checkout_MetodoCashback_Visualização</span> retornou 1 usuário. O evento atual com acento <span class="mono">APPCDT-Checkout_Método_Cashback_Visualização</span> retorna 14. Ambos existem no Mixpanel — sempre usar a versão com acento (é o evento ativo do tracking atual).</div>
+
+    <p style="font-size:12px;font-weight:700;margin:16px 0 8px">Erros no checkout — comparativo 15d · total events</p>
+    <div class="note-crit"><strong>Alerta:</strong> <span class="mono">CarregarCarteirinha_Erro</span> disparou 104.870 vezes em 90d — volume maior que os pagamentos concluídos. Esse erro ocorre no início do checkout e é a causa dos 38,9% que saem sem clicar no método. Na comparação 15d: erros absolutos subiram +10,7%, mas o checkout dobrou (+78%) — a taxa por usuário melhorou 38%.</div>
+    <table>
+      <thead><tr><th>Evento de erro</th><th>90d total</th><th>28/mai–11/jun</th><th>12/jun–26/jun</th><th>Δ% absoluto</th><th>Taxa/checkout → hoje</th></tr></thead>
+      <tbody>
+        <tr><td class="mono" style="color:var(--crit)">APPCDT-Checkout_CarregarCarteirinha_Erro</td><td class="value" style="color:var(--crit)">104.870</td><td class="value">39.150</td><td class="value">43.347</td><td class="value" style="color:var(--crit)">+10,7%</td><td class="value" style="color:var(--ok)">152% → 95% ↓</td></tr>
+        <tr><td class="mono" style="color:var(--crit)">APPCDT-Checkout_ProcessarPagamento_Erro</td><td class="value" style="color:var(--crit)">104.037</td><td class="value">21.122</td><td class="value">23.549</td><td class="value" style="color:var(--crit)">+11,5%</td><td class="value" style="color:var(--ok)">82% → 51% ↓</td></tr>
+        <tr><td class="mono">APPCDT-PagarParceiro_CarregarLista_Erro</td><td class="value">37.069</td><td class="value">5.166</td><td class="value">3.850</td><td class="value" style="color:var(--ok)">−25,5%</td><td class="value" style="color:var(--ok)">20% → 8% ↓</td></tr>
+        <tr><td class="mono">APPCDT-Checkout_CarregarSaldo_Erro</td><td class="value">30.711</td><td class="value">—</td><td class="value">—</td><td class="value">—</td><td class="value">—</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:12px;font-weight:700;margin:16px 0 8px">QR Code PagarParceiro — comparativo 15d · unique users</p>
+    <table>
+      <thead><tr><th>Evento</th><th>90d</th><th>28/mai–11/jun</th><th>12/jun–26/jun</th><th>Δ%</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">APPCDT-PagarParceiro_LerQRCode_Visualização</td><td class="value">8.494</td><td class="value">1.229</td><td class="value">1.145</td><td class="value">−6,8%</td></tr>
+        <tr><td class="mono">APPCDT-PagarParceiro_PagarQRCode_Clique</td><td class="value">7.852</td><td class="value">1.178</td><td class="value">1.110</td><td class="value">−5,8%</td></tr>
+        <tr><td class="mono">APPCDT-PagarParceiro_Sucesso_Visualização</td><td class="value">135 <em style="font-size:10px">(via QR)</em></td><td class="value">2.113</td><td class="value">2.164</td><td class="value">+2,4%</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--text2);margin-top:6px">QR Code 90d: 8.494 → 7.852 → 135 concluíram via QR (2% conversão). <span class="mono">PagarParceiro_Sucesso</span> no comparativo 15d inclui pagamentos no mesmo parceiro por outros fluxos — por isso número maior que os cliques QR.</p>
+  </div>
+
+  <!-- DATADOG APM -->
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:#632CA6"></span>Datadog APM — SLOs, latência e erros backend · consultado 25/jun/2026 via MCP OAuth</div>
+    <div class="note"><strong>Fonte:</strong> Datadog APM · tag <span class="mono">team:app-cartão-de-todos</span> · acesso via MCP OAuth (claude.ai Datadog). SLOs obtidos via <span class="mono">search_datadog_slos</span>. Série diária de erros via <span class="mono">aggregate_spans</span> com filtro por <span class="mono">status:error</span>. Dados de lista parceiros via <span class="mono">aggregate_spans</span> filtrando <span class="mono">resource_name:/integrations/cashback/partners/list</span>.</div>
+
+    <p style="font-size:12px;font-weight:700;margin-bottom:8px">SLOs reais — snapshot 7d</p>
+    <table>
+      <thead><tr><th>Serviço</th><th>SLO 7d</th><th>Status</th><th>P95 Latência</th><th>Erros 5xx/intervalo</th><th>RPS</th></tr></thead>
+      <tbody>
+        <tr><td><strong>walletpl</strong> (Lambda pagamentos)</td><td class="value" style="color:var(--crit)">89,36%</td><td class="status"><span class="badge b-crit">BREACHED</span></td><td class="value">—</td><td class="value" style="color:var(--crit)">ver incidente 24/jun</td><td class="value">—</td></tr>
+        <tr><td><strong>webamei</strong></td><td class="value" style="color:var(--crit)">99,52%</td><td class="status"><span class="badge b-crit">BREACHED</span></td><td class="value" style="color:var(--crit)">3.246 ms</td><td class="value">328</td><td class="value">17,9</td></tr>
+        <tr><td><strong>ganhatodos-api</strong></td><td class="value" style="color:var(--warn)">99,93%</td><td class="status"><span class="badge b-warn">WARNING</span></td><td class="value">572 ms</td><td class="value">102</td><td class="value">42,2</td></tr>
+        <tr><td><strong>wallet-sso</strong></td><td class="value" style="color:var(--warn)">99,91%</td><td class="status"><span class="badge b-warn">WARNING</span></td><td class="value">414 ms</td><td class="value" style="color:var(--crit)">1.203</td><td class="value">28,1</td></tr>
+        <tr><td><strong>carrier-prod</strong></td><td class="value" style="color:var(--ok)">99,9978%</td><td class="status"><span class="badge b-ok">OK</span></td><td class="value">1.489 ms</td><td class="value">18</td><td class="value">25,9</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:12px;font-weight:700;margin:16px 0 8px">Erros HTTP 5xx por serviço — split 15d de dados 30d</p>
+    <div class="note"><strong>Metodologia:</strong> série diária de 30 dias obtida via <span class="mono">aggregate_spans</span>. Split manual: dias 1–15 = 28/mai–11/jun; dias 16–30 = 12/jun–26/jun. Jun 24 está no segundo período.</div>
+    <table>
+      <thead><tr><th>Serviço</th><th>28/mai – 11/jun</th><th>12/jun – 26/jun</th><th>Δ%</th><th>Observação</th></tr></thead>
+      <tbody>
+        <tr><td><strong>walletpl</strong></td><td class="value">227.407</td><td class="value">148.322</td><td class="value" style="color:var(--ok)">−34,8%</td><td>inclui spike 24/jun (54.290). Sem o spike: −58,7%</td></tr>
+        <tr><td><strong>webamei</strong></td><td class="value">489.007</td><td class="value">104.204</td><td class="value" style="color:var(--ok)">−78,7%</td><td>melhora significativa</td></tr>
+        <tr><td><strong>wallet-sso</strong> <span class="badge b-crit">nova degradação</span></td><td class="value">~0</td><td class="value" style="color:var(--crit)">72.718</td><td class="value" style="color:var(--crit)">novo</td><td>não havia erros no período anterior — regressão a investigar</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:12px;font-weight:700;margin:16px 0 8px">Incidente crítico — walletpl · 24/jun/2026</p>
+    <div class="note-crit"><strong>Descoberto via Datadog 30d daily series — não estava no Mixpanel.</strong> walletpl é o AWS Lambda que processa pagamentos no backend do App CDT. Cada erro HTTP 5xx = tentativa de transação que não completou.</div>
+    <table>
+      <thead><tr><th>Métrica</th><th>Valor</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="metric">Erros HTTP 5xx em 24/jun</td><td class="value" style="color:var(--crit)">54.290</td><td class="status"><span class="badge b-ok">CONFIRMADO</span></td></tr>
+        <tr><td class="metric">Baseline diário normal</td><td class="value">2.000 – 4.000</td><td class="status"><span class="badge b-ok">CONFIRMADO</span></td></tr>
+        <tr><td class="metric">Multiplicador do baseline</td><td class="value">~13×</td><td class="status"><span class="badge b-warn">ESTIMADO</span></td></tr>
+        <tr><td class="metric">Taxa de falha estimada no dia</td><td class="value">~0,7% das transações</td><td class="status"><span class="badge b-warn">ESTIMADO</span></td></tr>
+        <tr><td class="metric">Padrão histórico semelhante</td><td class="value">25/mai (32.688) · 15/jun (25.139)</td><td class="status"><span class="badge b-ok">CONFIRMADO</span></td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:12px;font-weight:700;margin:16px 0 8px">Lista parceiros — endpoint health · Datadog Spans · 7d</p>
+    <table>
+      <thead><tr><th>Endpoint</th><th>Serviço</th><th>Requests 7d</th><th>Erros HTTP</th><th>Diagnóstico</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="mono">/integrations/cashback/partners/list</td>
+          <td class="source">ganhatodos-maiscash</td>
+          <td class="value">36.148</td>
+          <td class="value">1 (504)</td>
+          <td>Backend saudável. 37.069 erros CarregarLista no Mixpanel 90d são client-side (timeout/parsing no app, não falha de API)</td>
+          <td class="status"><span class="badge b-ok">CONFIRMADO</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ARV -->
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:var(--mt-magenta)"></span>ARV — antecipação de recebíveis</div>
+    <div class="note"><strong>Situação:</strong> O card 29837 ("Antecipação Parceiros") e a tabela <span class="mono">integrations_partnerinbox</span> no MaisCash2 registram a <strong>flag de ativação de antecipação na plataforma</strong> — configuração por parceiro. Dados operacionais de ARV (transações individuais de antecipação) vivem no <strong>DB41 (Athena)</strong>, usado pelo card 28990 "Originação ARV", mas sem permissão de acesso com o token atual. Para acessar DB41: solicitar ao admin do Metabase.</div>
+    <table>
+      <thead><tr><th>Métrica</th><th>Valor</th><th>Fonte</th><th>Query</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="metric">Parceiros com ARV ativado</td>
+          <td class="value">806</td>
+          <td class="source">MaisCash2 (DB22) · <span class="mono">integrations_partnerinbox</span> · flag <span class="mono">antecipate_receivables</span></td>
+          <td><code class="sql">SELECT COUNT(*) FROM (
+  SELECT DISTINCT ON (cnpj) cnpj,
+    CAST(payload->'payment_configuration'
+      ->>'antecipate_receivables' AS boolean) AS arv
+  FROM integrations_partnerinbox
+  WHERE cnpj IS NOT NULL
+  ORDER BY cnpj, updated_at DESC
+) t WHERE arv = true AND status = 'SUCCESS'</code></td>
+          <td class="status"><span class="badge b-ok">CONFIRMADO</span></td>
+        </tr>
+        <tr>
+          <td class="metric">Antecipações realizadas (histórico)</td>
+          <td class="value">⚠️ sem acesso</td>
+          <td class="source">DB41 (Athena) · card 28990 "Originação ARV" · <strong>sem permissão</strong></td>
+          <td><em style="font-size:11px">Solicitar acesso ao DB41 no Metabase ao time de dados</em></td>
+          <td class="status"><span class="badge b-pending">PENDENTE</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- REPASSE E MÉTRICAS OPERACIONAIS -->
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:var(--mt-verde)"></span>Telas de repasse e demais métricas operacionais</div>
+    <table>
+      <thead><tr><th>Métrica</th><th>Valor</th><th>Fonte</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="metric">Visualizações lista de repasses (30d)</td>
+          <td class="value">52 eventos</td>
+          <td class="source">Mixpanel · projeto 3205593 · <span class="mono">SUB-pagamentos_repasses_listagem</span></td>
+          <td class="status"><span class="badge b-ok">CONFIRMADO</span></td>
+        </tr>
+        <tr>
+          <td class="metric">Cliques link repasse na LP (30d)</td>
+          <td class="value">16 eventos</td>
+          <td class="source">Mixpanel · <span class="mono">LP-clique_link_repasses</span></td>
+          <td class="status"><span class="badge b-ok">CONFIRMADO</span></td>
+        </tr>
+        <tr>
+          <td class="metric">Visualizações detalhe de repasse (30d)</td>
+          <td class="value">7 eventos</td>
+          <td class="source">Mixpanel · <span class="mono">SUB-pagamentos_repasses_detalhes</span></td>
+          <td class="status"><span class="badge b-ok">CONFIRMADO</span></td>
+        </tr>
+        <tr>
+          <td class="metric">Início de antecipação ARV (30d)</td>
+          <td class="value">1 evento</td>
+          <td class="source">Mixpanel · proj. 3205593 · <span class="mono">SUB-pagamentos_antecipacao_inicio</span></td>
+          <td class="status"><span class="badge b-ok">CONFIRMADO</span></td>
+        </tr>
+        <tr>
+          <td class="metric">Visualizações de transações (30d)</td>
+          <td class="value">361 eventos</td>
+          <td class="source">Mixpanel · proj. 3205593 · <span class="mono">SUB-pagamentos_transacoes_listagem</span></td>
+          <td class="status"><span class="badge b-ok">CONFIRMADO</span></td>
+        </tr>
+        <tr>
+          <td class="metric">Conversão mensal cadastro → conta (Accounts DB)</td>
+          <td class="value">Mar/Abr: ~56% · Mai: 70,9% · Jun: 70,4% · 90d: 63,4%</td>
+          <td class="source">Accounts DB (DB39) · <span class="mono">banking_bankaccount</span> agrupado por mês</td>
+          <td class="status"><span class="badge b-ok">CONFIRMADO</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PROMPT DEPLOY -->
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:#0D0019"></span>Prompt para Claude Code — deploy do documento atualizado</div>
+    <div class="note">Copie e cole o prompt abaixo no Claude Code para enviar o arquivo atualizado ao Vercel.</div>
+    <div class="prompt-box">Faça o deploy dos arquivos do projeto em `C:\Users\fernando.dib\deploy-diagnostico\` no Vercel.
+
+Passos esperados:
+1. Acesse o diretório `C:\Users\fernando.dib\deploy-diagnostico\`
+2. Verifique se o Vercel CLI está disponível (`vercel --version`)
+3. Execute: $env:NODE_TLS_REJECT_UNAUTHORIZED = "0"; npx vercel --prod --yes --scope lealdade
+4. Confirme que a URL https://deploy-diagnostico-xi.vercel.app/ foi atualizada
+
+Arquivos no projeto:
+- index.html       → diagnóstico completo + aba Evolução 15d
+- fontes.html      → esta página de fontes de dados
+- dados.html       → base de dados em formato tabular
+- evolucao.html    → apresentação de evolução standalone
+
+Se encontrar erros de autenticação: `! vercel login` no terminal do Claude Code.</div>
+  </div>
+
+  <footer>
+    Diagnóstico de Onboarding + App Cartão de Todos · MaisTodos · 2026-06-27 &nbsp;|&nbsp;
+    Fontes confirmadas: Accounts DB (Metabase DB39) · Mixpanel projetos 3205593 e 3158031 · Datadog APM (MCP OAuth) · Lake NRT (DB42) &nbsp;|&nbsp;
+    <a href="https://deploy-diagnostico-xi.vercel.app" target="_blank">deploy-diagnostico-xi.vercel.app ↗</a>
+  </footer>
+
+</div>
+</body>
+</html>
