@@ -1,0 +1,579 @@
+﻿<title>Evolução Ago/2026 · 01/ago–28/ago · Onboarding de Parceiros · MaisTODOS</title>
+<meta name="description" content="Evolução dos indicadores de onboarding de parceiros MaisTODOS — período 01/ago–28/ago/2026 vs 01/jul–28/jul/2026.">
+<style>
+  :root {
+    --roxo: #7200D6;
+    --verde: #70E000;
+    --magenta: #E5087E;
+    --bg: #F7F7FA;
+    --bg2: #ffffff;
+    --bg3: #EEE8FA;
+    --text: #1a0033;
+    --text2: #3d1a66;
+    --text3: #7E7E7E;
+    --border: #DDD0F5;
+    --border2: #C4AAE8;
+    --green: #4A9900;
+    --green-bg: #EDFAC8;
+    --green-text: #2D6600;
+    --amber: #C47000;
+    --amber-bg: #FFF3D0;
+    --amber-text: #7A4400;
+    --red-bg: #FDEAF3;
+    --red-text: #99004F;
+    --r: 6px;
+    --rl: 10px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+    padding-bottom: 80px;
+  }
+  code {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: .88em;
+  }
+  .gnav {
+    position: sticky; top: 0; z-index: 99;
+    background: var(--roxo);
+    border-bottom: 2px solid var(--verde);
+    display: flex; align-items: center;
+    height: 44px; padding: 0 24px;
+  }
+  .gnav-logo {
+    font-size: 13px; font-weight: 700; color: #fff;
+    margin-right: 24px; letter-spacing: -.01em; white-space: nowrap;
+  }
+  .gnav-logo span { color: var(--verde); }
+  .gnav-link {
+    font-size: 12px; font-weight: 500;
+    height: 44px; display: flex; align-items: center;
+    padding: 0 16px;
+    color: rgba(255,255,255,.45);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color .15s;
+    white-space: nowrap;
+  }
+  .gnav-link:hover { color: rgba(255,255,255,.75); }
+  .gnav-link.active { color: #fff; border-bottom-color: var(--verde); }
+  .gnav-pill {
+    font-size: 10px; font-weight: 700;
+    padding: 2px 7px; border-radius: 10px; margin-left: 6px;
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    background: var(--verde); color: #1a0033;
+  }
+  .doc { max-width: 860px; margin: 0 auto; padding: 48px 24px 0; }
+  .header { margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1.5px solid var(--border2); }
+  .eyebrow {
+    font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--text3); margin-bottom: 10px;
+    font-family: 'SFMono-Regular', Consolas, monospace;
+  }
+  .header h1 {
+    font-size: 32px; font-weight: 700; color: var(--roxo);
+    line-height: 1.2; margin-bottom: 12px; text-wrap: balance;
+  }
+  .header-sub { font-size: 15px; color: var(--text2); max-width: 600px; line-height: 1.65; }
+  .period-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--bg3); border: 1px solid var(--border2);
+    border-radius: var(--rl); padding: 7px 14px; margin-top: 14px;
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    font-size: 12px; color: var(--text2);
+  }
+  .period-chip .sep { color: var(--roxo); font-weight: 600; }
+  .period-chip .b { color: var(--text); font-weight: 600; }
+  .header-meta { display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap; }
+  .meta-item {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; color: var(--text3);
+    font-family: 'SFMono-Regular', Consolas, monospace;
+  }
+  .meta-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .intro-box {
+    background: var(--bg3); border: 1px solid var(--border2);
+    border-radius: var(--rl); padding: 20px 24px;
+    margin-bottom: 48px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;
+  }
+  @media (max-width: 640px) { .intro-box { grid-template-columns: 1fr; } }
+  .intro-col h3 {
+    font-size: 11px; font-weight: 500; text-transform: uppercase;
+    letter-spacing: .08em; color: var(--text3); margin-bottom: 8px;
+    font-family: 'SFMono-Regular', Consolas, monospace;
+  }
+  .intro-col p { font-size: 13px; color: var(--text2); line-height: 1.5; }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: 500;
+    padding: 2px 8px; border-radius: 4px; margin: 2px 2px 2px 0;
+  }
+  .tag-purple { background: var(--bg3); color: #5100A0; }
+  .tag-red    { background: var(--red-bg); color: var(--red-text); }
+  .tag-green  { background: var(--green-bg); color: var(--green-text); }
+  .section { margin-bottom: 56px; }
+  .section-header {
+    display: flex; align-items: baseline; gap: 12px;
+    margin-bottom: 20px; padding-bottom: 12px;
+    border-bottom: 2px solid var(--roxo);
+  }
+  .section-icon { font-size: 18px; line-height: 1; }
+  .section-title { font-size: 20px; font-weight: 700; color: var(--roxo); }
+  .section-count {
+    font-size: 12px; color: var(--text3);
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    margin-left: auto;
+  }
+  .section-desc { font-size: 13px; color: var(--text2); margin-bottom: 20px; line-height: 1.6; max-width: 700px; }
+  .group-label {
+    font-size: 10px; font-weight: 500; text-transform: uppercase;
+    letter-spacing: .09em; color: var(--text3);
+    font-family: 'SFMono-Regular', Consolas, monospace;
+    margin: 24px 0 8px;
+  }
+  .etapa-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 16px; border-radius: var(--r);
+    margin-bottom: 10px;
+  }
+  .etapa-num {
+    font-size: 11px; font-weight: 700;
+    width: 22px; height: 22px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-family: 'SFMono-Regular', Consolas, monospace;
+  }
+  .etapa-info { flex: 1; }
+  .etapa-name { font-size: 13px; font-weight: 600; color: #1a0033; }
+  .etapa-sub { font-size: 12px; margin-left: 8px; }
+  .etapa-meta { font-size: 11px; white-space: nowrap; font-family: 'SFMono-Regular', Consolas, monospace; }
+  .er-plat { background: #EEE8FA; border-left: 4px solid var(--roxo); }
+  .er-plat .etapa-num  { background: var(--roxo); color: #fff; }
+  .er-plat .etapa-sub  { color: #5100A0; }
+  .er-plat .etapa-meta { color: var(--roxo); }
+  .er-conta { background: var(--red-bg); border-left: 4px solid var(--magenta); }
+  .er-conta .etapa-num  { background: var(--magenta); color: #fff; }
+  .er-conta .etapa-sub  { color: var(--red-text); }
+  .er-conta .etapa-meta { color: var(--magenta); }
+  .er-app { background: var(--green-bg); border-left: 4px solid var(--verde); }
+  .er-app .etapa-num  { background: var(--verde); color: #1a0033; }
+  .er-app .etapa-sub  { color: var(--green-text); }
+  .er-app .etapa-meta { color: var(--green); }
+  .table-wrap {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: var(--rl); overflow: hidden;
+    margin-bottom: 8px; overflow-x: auto;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 500px; }
+  thead th {
+    font-size: 10px; font-weight: 500; text-transform: uppercase;
+    letter-spacing: .07em; color: var(--text3);
+    padding: 8px 14px; border-bottom: 1px solid var(--border);
+    text-align: left; background: #fafaf9;
+    font-family: 'SFMono-Regular', Consolas, monospace;
+  }
+  tbody td {
+    padding: 8px 14px; border-bottom: 1px solid var(--border);
+    color: var(--text2); vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody td strong { font-weight: 500; color: var(--text); }
+  .mono { font-family: 'SFMono-Regular', Consolas, monospace; white-space: nowrap; font-size: 11px; }
+  .sev {
+    display: inline-block; font-size: 10px; font-weight: 500;
+    padding: 2px 8px; border-radius: 4px; margin-top: 4px;
+    font-family: 'SFMono-Regular', Consolas, monospace;
+  }
+  .sev-c { background: var(--red-bg);   color: var(--red-text);   border-left: 3px solid var(--magenta); padding-left: 8px; }
+  .sev-a { background: var(--bg3);      color: #5100A0;           border-left: 3px solid var(--roxo);    padding-left: 8px; }
+  .sev-m { background: var(--green-bg); color: var(--green-text); border-left: 3px solid var(--verde);   padding-left: 8px; }
+  .alert {
+    border-radius: var(--rl); padding: 14px 18px;
+    margin-bottom: 8px; border-left: 4px solid;
+  }
+  .alert-crit { background: var(--red-bg);   border-color: var(--magenta); }
+  .alert-info { background: var(--bg3);      border-color: var(--roxo); }
+  .alert-warn { background: var(--amber-bg); border-color: var(--amber); }
+  .alert-head { font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+  .alert-crit .alert-head { color: var(--red-text); }
+  .alert-info .alert-head { color: var(--text2); }
+  .alert-warn .alert-head { color: var(--amber-text); }
+  .alert-body { font-size: 12px; color: var(--text2); line-height: 1.55; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .grid-3 { grid-template-columns: 1fr; } }
+  .ccard { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--rl); padding: 18px; }
+  .ccard-title { font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+  .ccard-body  { font-size: 12px; color: var(--text2); line-height: 1.7; margin-bottom: 14px; }
+  .ccard-stats {
+    font-size: 11px; font-family: 'SFMono-Regular', Consolas, monospace;
+    border-top: 1px solid var(--border); padding-top: 10px; line-height: 1.85;
+  }
+  .footer {
+    margin-top: 64px; padding: 16px 24px;
+    border-top: 3px solid var(--verde);
+    background: var(--roxo); border-radius: var(--rl);
+    font-size: 12px; color: #fff;
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  .footer-mono { font-family: 'SFMono-Regular', Consolas, monospace; font-size: 11px; opacity: .7; }
+  @media print { .gnav { display: none; } body { background: #fff; padding-bottom: 0; } }
+</style>
+
+<nav class="gnav">
+  <div class="gnav-logo">+mais<span>TODOS</span> · Lealdade</div>
+  <a class="gnav-link" href="/">📋 Diagnóstico</a>
+  <a class="gnav-link" href="/evolucao.html">Datadog <span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;margin-left:6px;background:#fff;color:#7200D6">DD</span></a>
+  <a class="gnav-link active" href="/evolucao-ago.html">Evolução <span class="gnav-pill">Ago</span></a>
+</nav>
+
+<div class="doc">
+
+  <div class="header">
+    <div class="eyebrow">MaisTODOS · Diretoria de Lealdade · OKR 3 — Novos Parceiros</div>
+    <h1>Evolução de Indicadores<br>Agosto 2026</h1>
+    <p class="header-sub">Comparativo 01/ago–28/ago vs 01/jul–28/jul — App CDT, pipeline de onboarding e backend. Dados extraídos diretamente de Mixpanel, Accounts DB (DB39) e Datadog em 28/ago/2026.</p>
+    <div class="period-chip">
+      <span>01/jul – 28/jul · 2026</span>
+      <span class="sep">→</span>
+      <span class="b">01/ago – 28/ago · 2026</span>
+      <span class="sep">·</span>
+      <span>28 dias cada · Accounts DB + Mixpanel + Datadog</span>
+    </div>
+    <div class="header-meta">
+      <div class="meta-item"><div class="meta-dot" style="background:#7200D6"></div>Perspectiva Plataforma</div>
+      <div class="meta-item"><div class="meta-dot" style="background:#E5087E"></div>Perspectiva Conta</div>
+      <div class="meta-item"><div class="meta-dot" style="background:#70E000"></div>Perspectiva App</div>
+      <div class="meta-item"><div class="meta-dot" style="background:#9c9994"></div>Accounts DB + Mixpanel + Datadog · 28 dias</div>
+    </div>
+  </div>
+
+  <div class="intro-box">
+    <div class="intro-col">
+      <h3>Jornada obrigatória</h3>
+      <p>Para um parceiro ficar ativo no App, passa por <strong>três etapas em sequência</strong>: <strong style="color:#7200D6">Plataforma</strong> (cadastro + KYB) → <strong style="color:#E5087E">Conta PJ</strong> (KYC + abertura) → <strong style="color:#7200D6">Plataforma</strong> (ativação do cashback). O App é a jornada do filiado que resulta dessa ativação.</p>
+    </div>
+    <div class="intro-col">
+      <h3>Dimensões monitoradas</h3>
+      <span class="tag tag-purple">Steps falhos (Accounts DB)</span>
+      <span class="tag tag-purple">Perfil bancário</span>
+      <span class="tag tag-purple">KYB</span>
+      <span class="tag tag-red">KYC</span>
+      <span class="tag tag-purple">onboarding_payments</span>
+      <span class="tag tag-green">Funil de checkout</span>
+      <span class="tag tag-green">SLOs Datadog</span>
+      <p style="margin-top:8px;font-size:12px;color:var(--text3)">Accounts DB: snapshot 28/ago. Mixpanel e Datadog: janela 01–28/ago vs 01–28/jul.</p>
+    </div>
+    <div class="intro-col">
+      <h3>Destaques do período</h3>
+      <p><strong style="color:#dc2626">Conversão checkout caiu para 34,5% — pior registrada (era 42,9% em jul e 52,2% em jun). 3º mês consecutivo de queda.</strong> Falhas de perfil bancário cresceram +89% desde jun (313 acumuladas). <strong style="color:#dc2626">onboarding_payments: 1.323 registros apagados via soft-delete — problema não resolvido, evidência removida. walletpl 89,27% BREACHED há 2 meses sem plano de correção.</strong></p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">◎</span>
+      <span class="section-title">Jornada e desafios críticos por etapa</span>
+      <span class="section-count">Accounts DB + Mixpanel + Datadog · 01/ago–28/ago/2026</span>
+    </div>
+    <p class="section-desc">Desafios organizados por momento da jornada com comparativo ao período anterior (jul). Steps de Accounts DB são snapshot de 28/ago (acumulado histórico). Mixpanel e Datadog com janela 01–28/ago comparada a 01–28/jul.</p>
+
+    <div style="margin-bottom:20px">
+      <div class="etapa-row er-plat">
+        <div class="etapa-num">1</div>
+        <div class="etapa-info">
+          <span class="etapa-name">Plataforma</span>
+          <span class="etapa-sub">Cadastro · Perfil bancário · KYB</span>
+        </div>
+        <span class="etapa-meta">01/jul–28/jul vs 01/ago–28/ago · Accounts DB</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Desafio</th><th>Jul 1–28</th><th>Ago 1–28</th><th>Impacto</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Falhas de notificação de perfil bancário crescendo — business +27,6% · personal +33,3%</strong></td>
+              <td class="mono">29 business<br>15 personal</td>
+              <td class="mono">37 business<br>20 personal</td>
+              <td><code>notification_business_bank_profile_created</code>: 29 → 37 (+27,6%). <code>notification_personal_bank_profile_created</code>: 15 → 20 (+33,3%). Ambos crescendo mês a mês. Steps correlatos — provavelmente compartilham a mesma causa raiz no fluxo de criação de perfil bancário.</td>
+              <td><span class="sev sev-c">Crítico</span></td>
+            </tr>
+            <tr>
+              <td><strong>Envio de perfil bancário para criação disparou +333%</strong></td>
+              <td class="mono">3 falhas</td>
+              <td class="mono">13 falhas</td>
+              <td><code>send_business_bank_profile_for_creation</code>: 3 → 13 falhas (+333%). Maior crescimento relativo do período. Step upstream das notificações — quando ele falha, o perfil não é criado e a notificação nunca chega. Os três steps formam uma cascata de falha.</td>
+              <td><span class="sev sev-c">Crítico</span></td>
+            </tr>
+            <tr>
+              <td><strong>Verificação de conta duplicada caiu — melhora</strong></td>
+              <td class="mono">4 falhas</td>
+              <td class="mono">2 falhas</td>
+              <td><code>verify_bank_account_already_exists</code>: 4 → 2 (−50%). Menos conflitos de duplicidade no período. Pode indicar menor volume de retentativas ou resolução manual de casos históricos.</td>
+              <td><span class="sev sev-m">Melhora</span></td>
+            </tr>
+            <tr>
+              <td><strong>KYB automático: volume baixo, tendência de queda</strong></td>
+              <td class="mono">2 falhas</td>
+              <td class="mono">1 falha</td>
+              <td><code>onboarding_kyb_automatic</code>: 2 → 1. Volume residual, sem escalada.</td>
+              <td><span class="sev sev-m">Estável</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="margin-bottom:20px">
+      <div class="etapa-row er-conta">
+        <div class="etapa-num">2</div>
+        <div class="etapa-info">
+          <span class="etapa-name">Conta PJ</span>
+          <span class="etapa-sub">KYC · Abertura de conta</span>
+        </div>
+        <span class="etapa-meta">01/jul–28/jul vs 01/ago–28/ago · Accounts DB</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Desafio</th><th>Jul 1–28</th><th>Ago 1–28</th><th>Impacto</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>KYC: leve melhora no volume de falhas no período</strong></td>
+              <td class="mono">12 falhas</td>
+              <td class="mono">10 falhas</td>
+              <td><code>onboarding_kyc</code>: 12 → 10 falhas (−16,7%). Parceiros que falham no KYC ficam presos sem notificação automática — resolução depende de ação manual. Melhora marginal; problema estrutural permanece.</td>
+              <td><span class="sev sev-a">Alto</span></td>
+            </tr>
+            <tr>
+              <td><strong>onboarding_credit: 1 falha nova em agosto — NOVO</strong></td>
+              <td class="mono">0 falhas</td>
+              <td class="mono">1 falha</td>
+              <td>Primeira ocorrência do step em falha dentro de uma janela de 28d. Isolada — monitorar para detectar reincidência.</td>
+              <td><span class="sev sev-m">OK</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="margin-bottom:20px">
+      <div class="etapa-row er-plat">
+        <div class="etapa-num">3</div>
+        <div class="etapa-info">
+          <span class="etapa-name">Plataforma</span>
+          <span class="etapa-sub">Ativação do produto cashback · onboarding_payments</span>
+        </div>
+        <span class="etapa-meta">Accounts DB · snapshot 28/ago</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Desafio</th><th>Dado real</th><th>Impacto</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>1.323 registros onboarding_payments apagados via soft-delete — 0 novos em agosto</strong></td>
+              <td class="mono">1.323 deletados · 5 ativos residuais · 0 novos em ago · Accounts DB</td>
+              <td>
+                Em julho havia 1.145 registros <code>in_progress</code> ativos (1.328 total histórico). Em agosto, 1.323 foram apagados via <code>soft-delete</code>. Restam 5 ativos com <code>updated_at &lt; 29/jul</code> — parados há mais de 30 dias. Nenhum novo registro foi criado em agosto. 4 concluídos históricos (não deletados) — todos via <code>force_complete</code> manual anterior.
+                <div style="margin-top:10px;padding:10px 12px;background:#FDEAF3;border-left:3px solid #E5087E;border-radius:4px;font-size:11px;line-height:1.7;color:#5a0030">
+                  <strong style="display:block;margin-bottom:6px;font-size:11px;color:#99004F">O cleanup não é uma correção — perguntas abertas para Tech</strong>
+                  <div>· <strong>O soft-delete foi intencional ou workaround?</strong> Apagar 1.323 registros em lote indica decisão operacional, não correção de bug.</div>
+                  <div>· <strong>Zero novos registros em agosto</strong> pode significar que a inserção do step no pipeline foi desligada com o cleanup — o que "resolve" o sintoma mas mantém novos parceiros sem habilitação de App CDT.</div>
+                  <div>· <strong>Qual o mecanismo substituto?</strong> Como novos parceiros estão sendo habilitados no App CDT se o step não está sendo gerado?</div>
+                  <div>· <strong>Os 5 residuais ativos</strong> (parados há +30d) serão deletados também ou receberão tratamento?</div>
+                </div>
+              </td>
+              <td><span class="sev sev-c">Crítico</span></td>
+            </tr>
+            <tr>
+              <td><strong>onboarding_cashback: 10 falhas — parado desde jun/2024</strong></td>
+              <td class="mono">10 failed · último update: 24/jun/2024 · Accounts DB</td>
+              <td>Step com falhas acumuladas mas sem updates desde jun/2024 — o problema parou de se reproduzir (possível desativação do step ou correção silenciosa). Sem risco ativo.</td>
+              <td><span class="sev sev-m">Estável</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <div class="etapa-row er-app">
+        <div class="etapa-num">4</div>
+        <div class="etapa-info">
+          <span class="etapa-name">App</span>
+          <span class="etapa-sub">Experiência do filiado · checkout · taxa de sucesso de transação</span>
+        </div>
+        <span class="etapa-meta">jornada do filiado · 01-28/ago · Mixpanel (proj. 3158031) + Datadog</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Desafio</th><th>Dado</th><th>Impacto</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Volume de checkout caiu −24,5% vs julho: 61.895 → 46.712</strong></td>
+              <td class="mono">46.712 EscolherForma · 01-28/ago · Mixpanel CDT</td>
+              <td>Em julho: 61.895 filiados abriram o checkout. Em agosto: 46.712 (−24,5%). PIX gerado: 33.222 (jul) → 22.234 (ago), −33,1%. Queda em todas as etapas do funil — não concentrada em um passo específico. Sugere queda de demanda ou impacto de disponibilidade upstream (walletpl).</td>
+              <td><span class="sev sev-c">Crítico</span></td>
+            </tr>
+            <tr>
+              <td><strong>Conversão checkout: 34,5% — pior registrada, 3º mês consecutivo de queda</strong></td>
+              <td class="mono">16.112/46.712 · 01-28/ago · Mixpanel CDT</td>
+              <td>46.712 checkouts abertos → 16.112 pagamentos concluídos (34,5%). Em julho: 26.528/61.895 = 42,9%. Em junho (12-26/jun): 23.937/45.821 = 52,2%. Três meses de queda consecutiva: −6,3 p.p. (jun→jul) e −8,4 p.p. (jul→ago). A deterioração proporcional ao volume indica problema estrutural — não é apenas reflexo da queda de demanda.</td>
+              <td><span class="sev sev-c">Crítico</span></td>
+            </tr>
+            <tr>
+              <td><strong>SLOs críticos: walletpl 89,27% BREACHED há 2 meses sem correção · webamei 99,50% BREACHED</strong></td>
+              <td class="mono">7d rolling · Datadog · team:app-cartão-de-todos · 28/ago</td>
+              <td>walletpl (Lambda pagamentos): 89,27% de disponibilidade — inalterado desde jun (88,24%→89,36%→89,27%). Sem postmortem publicado, sem prazo de correção. webamei: 99,50%, BREACHED vs meta 99,9%. Dois novos SLOs mobile criados em 24/ago: crash-free (99,58% — WARNING) e ANR-free (99,79% — OK). wallet-sso e ganhatodos-api recuperaram para OK.</td>
+              <td><span class="sev sev-c">Crítico</span></td>
+            </tr>
+            <tr>
+              <td><strong>Erros: CarregarCarteirinha melhorou em taxa/checkout — ProcessarPagamento permanece flat em 49%</strong></td>
+              <td class="mono">CarregarCarteirinha: 31.504 · ProcessarPagamento: 23.013 · CarregarLista: 3.688 · Mixpanel</td>
+              <td>CarregarCarteirinha: 61.158 (jul) → 31.504 (ago), −48,5% em absoluto. Taxa/checkout: 98,8% → 67,4% (−31,4 p.p.) — melhora real. ProcessarPagamento: 30.617 → 23.013 (−24,8%), mas taxa flat: 49,5% → 49,3%. A queda absoluta é proporcional ao volume — sem melhora de qualidade no processamento. CarregarLista: 6.346 → 3.688 (−41,9%), taxa: 10,3% → 7,9%.</td>
+              <td><span class="sev sev-a">Alto</span></td>
+            </tr>
+            <tr>
+              <td><strong>QR Code PagarParceiro: 1.411 abriram · 1.396 clicaram pagar (99% de intenção)</strong></td>
+              <td class="mono">1.411 LerQRCode · 1.396 PagarQRCode · 01-28/ago · Mixpanel</td>
+              <td>Intenção quase total (99% de quem abre o leitor clica para pagar). Volume comparável a jul (+23% vs 15d de jun). Conversão final (sucesso no pagamento QR) não coletada nesta janela — em 90d histórico, o fluxo QR converte apenas ~2%. Gap intenção→conclusão continua sem investigação formal.</td>
+              <td><span class="sev sev-a">Alto</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="alert alert-crit" style="margin-top:16px">
+      <div class="alert-head">🚨 walletpl Lambda BREACHED há 2+ meses — conversão em colapso</div>
+      <div class="alert-body"><strong>walletpl em 89,27% de disponibilidade por mais de 60 dias consecutivos</strong> — meta é 99,9%. O SLO foi 88,24% em 12-26/jun, 89,36% no diagnóstico de jul, e chegou a 28/ago em 89,27%. A queda de conversão de checkout de 52,2% (jun) para 34,5% (ago) é coerente com a degradação acumulada. Sem incidente formal aberto, sem postmortem publicado, sem prazo de correção visível nos dois últimos diagnósticos.</div>
+    </div>
+
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">◈</span>
+      <span class="section-title">Análise consolidada</span>
+      <span class="section-count">Plataforma · Conta · App · 01-28/ago/2026</span>
+    </div>
+
+    <div class="grid-3">
+
+      <div class="ccard" style="border-top:3px solid #7200D6">
+        <div class="ccard-title" style="color:#7200D6">⬡ Plataforma</div>
+        <div class="ccard-body"><strong style="color:#dc2626">Perfil bancário: send_business_bank_profile +333% (3→13)</strong>, notification_business +27,6% (29→37), notification_personal +33,3% (15→20). Três steps do mesmo fluxo crescendo em cascata. <strong style="color:#dc2626">onboarding_payments: 0 novos em ago</strong> — habilitação de App CDT para novos parceiros sem mecanismo visível.</div>
+        <div class="ccard-stats">
+          <div style="color:#dc2626">● send_business_bank_profile: 3 → 13 (+333%)</div>
+          <div style="color:#dc2626">● notification_business: 29 → 37 · notification_personal: 15 → 20</div>
+          <div style="color:#dc2626">● onboarding_payments: 0 novos em ago · 1.323 soft-deleted</div>
+        </div>
+      </div>
+
+      <div class="ccard" style="border-top:3px solid #E5087E">
+        <div class="ccard-title" style="color:#E5087E">🏦 Conta</div>
+        <div class="ccard-body">KYC melhorou levemente: 12 → 10 falhas (−16,7%). Problema estrutural permanece — parceiros presos sem notificação automática. 1 falha nova de <code>onboarding_credit</code> em agosto (0 em jul). <code>verify_bank_account_already_exists</code> caiu: 4 → 2 (−50%).</div>
+        <div class="ccard-stats">
+          <div style="color:#f5c400">● onboarding_kyc: 12 → 10 falhas (−16,7%) · problema persiste</div>
+          <div style="color:#4A9900">● verify_bank_account_already_exists: 4 → 2 (−50%)</div>
+          <div style="color:#f5c400">● onboarding_credit: 0 → 1 (novo em ago)</div>
+        </div>
+      </div>
+
+      <div class="ccard" style="border-top:3px solid #70E000">
+        <div class="ccard-title" style="color:#4A9900">📱 App</div>
+        <div class="ccard-body"><strong style="color:#dc2626">Conversão 34,5% — pior registrada.</strong> Volume −24,5% vs jul. 3º mês consecutivo de queda. <strong style="color:#dc2626">walletpl SLO 89,27% BREACHED há 2 meses sem correção.</strong> CarregarCarteirinha caiu 48,5% em absoluto e −31 p.p. em taxa/checkout — melhora real de qualidade. ProcessarPagamento flat em 49%. Dois novos SLOs mobile (crash-free WARNING, ANR-free OK).</div>
+        <div class="ccard-stats">
+          <div style="color:#dc2626">● Conversão: 52,2% (jun) → 42,9% (jul) → 34,5% (ago)</div>
+          <div style="color:#dc2626">● walletpl SLO 89,27% BREACHED · 2 meses sem melhora</div>
+          <div style="color:#4A9900">● CarregarCarteirinha: 98,8% → 67,4% por checkout (↓ −31 p.p.)</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <span>OKR 3 — Performance financeira</span>
+      <span class="period-chip">ago/2026 · dados Metabase</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:70px">KR</th>
+            <th>Descrição</th>
+            <th class="mono" style="text-align:right">Real ago</th>
+            <th class="mono" style="text-align:right">Meta mensal ref.</th>
+            <th class="mono" style="text-align:right">% meta</th>
+            <th style="text-align:center">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mono sev sev-c">KR 3.1</td>
+            <td>Cashout CDT + AmorSaúde + Outros</td>
+            <td class="mono" style="text-align:right">R$ 1.187.714</td>
+            <td class="mono" style="text-align:right">R$ 3.261.522</td>
+            <td class="mono delta d-bad" style="text-align:right">36,4%</td>
+            <td class="sev sev-c" style="text-align:center">Crítico</td>
+          </tr>
+          <tr>
+            <td class="mono sev sev-c">KR 3.2</td>
+            <td>App CDT · checkout TPV · Private Label</td>
+            <td class="mono" style="text-align:right">R$ 2.409.881</td>
+            <td class="mono" style="text-align:right">R$ 11.411.480</td>
+            <td class="mono delta d-bad" style="text-align:right">21,1%</td>
+            <td class="sev sev-c" style="text-align:center">Crítico</td>
+          </tr>
+          <tr>
+            <td class="mono sev sev-a">KR 3.3</td>
+            <td>Cashout Raia Drogasil + Ultragaz + Giftcard</td>
+            <td class="mono" style="text-align:right">R$ 1.376.733</td>
+            <td class="mono" style="text-align:right">R$ 3.682.993</td>
+            <td class="mono delta d-bad" style="text-align:right">37,4%</td>
+            <td class="sev sev-a" style="text-align:center">Alto</td>
+          </tr>
+          <tr>
+            <td class="mono sev sev-c">KR 3.4</td>
+            <td>Cashin modelo novo (Raia Drogasil)</td>
+            <td class="mono" style="text-align:right">R$ 0</td>
+            <td class="mono" style="text-align:right">R$ 6.302.245</td>
+            <td class="mono delta d-bad" style="text-align:right">0%</td>
+            <td class="sev sev-c" style="text-align:center">Crítico</td>
+          </tr>
+          <tr>
+            <td class="mono sev sev-c">KR 3.5</td>
+            <td>Total de transações (cashout + checkout)</td>
+            <td class="mono" style="text-align:right">89.015 txs</td>
+            <td class="mono" style="text-align:right">430.931 txs</td>
+            <td class="mono delta d-bad" style="text-align:right">20,7%</td>
+            <td class="sev sev-c" style="text-align:center">Crítico</td>
+          </tr>
+          <tr>
+            <td class="mono sev sev-m">KR 3.6</td>
+            <td>Cashin nacional (parceiros + NF + energia)</td>
+            <td class="mono" style="text-align:right">R$ 7.342.942</td>
+            <td class="mono" style="text-align:right">R$ 13.508.665</td>
+            <td class="mono delta d-warn" style="text-align:right">54,3%</td>
+            <td class="sev sev-m" style="text-align:center">Médio</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert alert-crit" style="margin-top:1rem">
+      <strong>4 de 6 KRs abaixo de 40% da meta mensal.</strong> KR 3.4 zerado — produto cashin modelo novo sem lançamento. KR 3.2 em colapso (21,1%): diretamente impactado pela queda de conversão no app (SLO walletpl BREACHED). KR 3.5 com 20,7% das transações meta: reflexo direto do funil Mixpanel em queda pelo 3º mês consecutivo. Único destaque relativo: KR 3.6 (cashin nacional) em 54,3%, mais próximo da meta.
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>+maisTODOS · Diretoria de Lealdade · Evolução Ago/2026 · 01/ago–28/ago</div>
+    <div class="footer-mono">Accounts DB (DB39) + Mixpanel (proj. 3158031) + Datadog APM · team:app-cartão-de-todos · 28/ago/2026</div>
+  </div>
+
+</div>
